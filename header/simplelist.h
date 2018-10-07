@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 namespace SimpleList{
+	int conteo=0;
 	struct Nodo{
 		int dato;
 		Nodo *siguiente=NULL;	
@@ -8,7 +9,39 @@ namespace SimpleList{
 	bool isEmpty(Nodo *inicio){
 		return inicio==NULL;
 	}
+	void contar(Nodo *inicio){
+		if(!isEmpty(inicio)){
+			cout<<"\nCantidad de elementos : "<<conteo<<endl;
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	
+
+	void menorYMayor(Nodo *inicio){
+		if(isEmpty(inicio)){
+			cout<<"\nVacio\n";
+		}else{
+			Nodo *recorrer=new Nodo;
+			recorrer=inicio;
+			int mayor=recorrer->dato;
+			int menor=recorrer->dato;
+			while(recorrer!=NULL){
+				if(menor>recorrer->dato){
+					menor=recorrer->dato;
+				}
+				if(mayor<recorrer->dato){
+					mayor=recorrer->dato;
+				}
+				recorrer=recorrer->siguiente;
+			}
+			
+			cout<<"\nEl menor de los datos es "<<menor;
+			cout<<"\nEl mayor de los datos es "<<mayor;
+		}
+	}
 	void insertToTheStart(Nodo *&inicio,Nodo *&final,int dato){
+		conteo++;
 		Nodo *nuevo1=new Nodo;
 		nuevo1->dato=dato;
 		if(isEmpty(inicio)){
@@ -19,6 +52,7 @@ namespace SimpleList{
 		}
 	}
 	void insertToTheEnd(Nodo *&inicio,Nodo *&final,int dato){
+		conteo++;
 		Nodo *nuevo=new Nodo;
 		nuevo->dato=dato;
 		if(isEmpty(inicio)){
@@ -31,6 +65,7 @@ namespace SimpleList{
 	
 	void deleteToTheStart(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
+			conteo--;
 			if(inicio==final){
 				delete inicio;
 				delete final;
@@ -48,6 +83,7 @@ namespace SimpleList{
 	}
 	void deleteToTheEnd(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
+			conteo--;
 			if(inicio==final){
 				delete inicio;
 				delete final;
@@ -68,7 +104,7 @@ namespace SimpleList{
 			cout<<"\nVacio"<<endl;
 		}
 	}
-	bool find(Nodo *inicio,Nodo *final,int dato){
+	bool find(Nodo *inicio,int dato){
 		Nodo *recorrer=new Nodo;
 		recorrer=inicio;
 		while(recorrer!=NULL && recorrer->dato!=dato){
@@ -76,9 +112,66 @@ namespace SimpleList{
 		}
 		return recorrer!=NULL;
 	}
-	void deleteEspecific(Nodo *inicio,Nodo *final,int dato){
-		if(!isEmpty(inicio)){
-			if(find(inicio,final,dato)){
+	
+	
+	void insertarAntesODespues(Nodo *&inicio,Nodo *&final,int dato,int datoSoA,int opcion){
+			if(find(inicio,dato)){
+				conteo++;
+				Nodo *recorrer=new Nodo;
+				Nodo *nuevo=new Nodo;
+				if(opcion==1){
+					if(inicio->dato==dato){
+						recorrer->dato=datoSoA;
+						recorrer->siguiente=inicio;
+						inicio=recorrer;
+					}else{
+						recorrer=inicio->siguiente;
+						Nodo *anterior=new Nodo;
+						anterior=inicio;
+						while(recorrer->dato!=dato){
+							recorrer=recorrer->siguiente;
+							anterior=anterior->siguiente;
+						}
+						nuevo->dato=datoSoA;
+						anterior->siguiente=nuevo;
+						nuevo->siguiente=recorrer;
+					}
+				}else{
+					if(final->dato==dato){
+						recorrer->dato=datoSoA;
+						final->siguiente=recorrer;
+						final=final->siguiente;
+					}else{
+						nuevo->dato=datoSoA;
+						recorrer=inicio;
+						while(recorrer->dato!=dato){
+							recorrer=recorrer->siguiente;
+						}
+						nuevo->siguiente=recorrer->siguiente;
+						recorrer->siguiente=nuevo;
+					}
+				}
+			}else{
+				cout<<"\nNo existe\n";
+			}
+	}
+	void buscar(Nodo *inicio,Nodo *final,int dato){
+			if(find(inicio,dato)){
+				Nodo *recorrer=new Nodo;
+				recorrer=inicio;
+				int posicion=0;
+				while(recorrer->dato!=dato){
+					posicion++;
+					recorrer=recorrer->siguiente;
+				}
+				cout<<"\nElemento encontrado "<<recorrer->dato<<" en la posicion : "<<posicion<<endl;
+			}else{
+				cout<<"\nNo existe\n";
+			}
+	}
+	void deleteEspecific(Nodo *&inicio,Nodo *&final,int dato){
+			if(find(inicio,dato)){
+				conteo--;
 				Nodo *tem=new Nodo;
 				if(inicio==final && inicio->dato==dato){
 					delete inicio;
@@ -106,9 +199,6 @@ namespace SimpleList{
 			}else{
 				cout<<"\nNo existe"<<endl;
 			}
-		}else{
-			cout<<"\nVacio"<<endl;
-		}
 	}
 	void show(Nodo *inicio){
 		if(!isEmpty(inicio)){
@@ -122,5 +212,11 @@ namespace SimpleList{
 		}else{
 			cout<<"\nVacio"<<endl;
 		}
+	}
+	void ordenarQuickSort(){
+		
+	}
+	void eliminarDuplicados(Nodo *inicio,Nodo *final){
+		
 	}
 }
