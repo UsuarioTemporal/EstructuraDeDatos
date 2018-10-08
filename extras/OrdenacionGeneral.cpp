@@ -198,9 +198,7 @@ void radixSort(){
 }
 
 void mergeSort(int arr[],int inicio,int final){
-	if(inicio==final){
-		return ;
-	}else{
+	if(final-inicio>0){
 		int medio=(inicio+final)/2;
 		mergeSort(arr,inicio,medio);
 		mergeSort(arr,medio+1,final);
