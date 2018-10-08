@@ -15,8 +15,8 @@ void quickSortPivotePrimero(int [],int,int);
 void quickSortPivoteCentro(int [],int,int);
 void quickSortParecido(int [],int ,int);
 void radixSort();
-void mergeSort();
-
+void mergeSort(int[],int,int);
+void merge(int[],int,int,int);
 
 void shellSort();
 void heapSort();
@@ -36,7 +36,8 @@ int main(){
 //	quickSortPivotePrimero(array,0,numero-1);
 //	quickSortPivoteCentro(array,0,numero-1);
 //	quickSortParecido(array,0,numero-1);
-	radixSort();
+//	radixSort();
+	mergeSort(array,0,numero-1);
 	show();
 	delete array;
 }
@@ -193,5 +194,62 @@ void radixSort(){
 			}
 			Vec[k].clear();
 		}
+	}
+}
+
+void mergeSort(int arr[],int inicio,int final){
+	if(inicio==final){
+		return ;
+	}else{
+		int medio=(inicio+final)/2;
+		mergeSort(arr,inicio,medio);
+		mergeSort(arr,medio+1,final);
+		merge(arr,inicio,medio,final);
+	}
+}
+
+
+void merge(int arr[],int inicio,int medio,int final){
+	//Estas variables se usaran en otros bucles 
+	int i,j,k;
+	
+//	Mesclando dos subarrays de arr[]
+//	Primer subarray es arr[inicio - medio]
+//	Segundo subarray es arr[medio+1 -- final]
+	int numTerArrIzq=medio-inicio+1;
+	int numTerArrDer=final-medio;
+	
+//	Creacion de arrays
+	int izquierda[numTerArrIzq],derecha[numTerArrDer];
+	
+	//Copiando los datos a sus respectivos campos o arrays
+	for(i=0;i<numTerArrIzq;i++)
+		izquierda[i]=arr[inicio+i];
+	for(j=0;j<numTerArrDer;j++)
+		derecha[j]=arr[medio+1+j];	
+	i=j=0;
+	k=inicio;
+	while(i<numTerArrIzq && j<numTerArrDer){
+		if(izquierda[i]<=derecha[j]){
+			arr[k]=izquierda[i];
+			i++;
+		}else{
+			arr[k]=derecha[j];
+			j++;
+		}
+		k++;
+	}
+	
+	//Agregando los elemento restantes
+	while(i<numTerArrIzq){
+		arr[k]=izquierda[i];
+		i++;
+		k++;
+	}
+	
+	while(j<numTerArrDer){
+		arr[k]=derecha[j];
+		j++;
+		k++;
 	}
 }
