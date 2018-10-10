@@ -14,9 +14,14 @@ namespace Tree{
 	bool isEmpty(Nodo *raiz){
 		return raiz==NULL;
 	}
-	void show(Nodo *raiz){
+	void show(Nodo *raiz,int contador){
 		if(!isEmpty(raiz)){
-			
+			show(raiz->hijoDere,contador+1);
+			for(int i=0;i<contador;i++){
+				cout<<"  ";
+			}
+			cout<<raiz->dato<<endl;
+			show(raiz->hijoIzqu,contador+1);
 		}else{
 			return ;
 		}

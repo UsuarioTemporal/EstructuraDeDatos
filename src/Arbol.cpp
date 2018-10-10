@@ -11,7 +11,7 @@ void menu(){
 	bool condition=true;
 	do{
 		cout<<"\n1. Insertar"<<endl;
-		
+		cout<<"2.Mostrar "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -24,7 +24,10 @@ bool opciones(int op){
 		case 1:
 			cin>>dato;
 			insertar(raiz,dato);
-			return true;
+			break;
+		case 2:
+			show(raiz,0);
+			break;
 	}
 	return false;
 }
