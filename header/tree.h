@@ -14,13 +14,20 @@ namespace Tree{
 	bool isEmpty(Nodo *raiz){
 		return raiz==NULL;
 	}
+	void show(Nodo *raiz){
+		if(!isEmpty(raiz)){
+			
+		}else{
+			return ;
+		}
+	}
 	void insertar(Nodo *&raiz,int dato){
 		if(isEmpty(raiz)){
 			Nodo *nuevo=createNodo(dato);
 			raiz=nuevo;
 		}else{
 			int valorRaiz=raiz->dato;
-			if(n<valorRaiz){
+			if(dato<valorRaiz){
 				insertar(raiz->hijoIzqu,dato);
 			}else{
 				insertar(raiz->hijoDere,dato);
