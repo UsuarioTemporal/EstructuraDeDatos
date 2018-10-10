@@ -1,6 +1,5 @@
 #include<simplelist.h>
 #include<stdio.h>
-//Eliminar duplicados
 //ordenar
 using namespace SimpleList;
 Nodo *inicio=NULL;
@@ -27,8 +26,9 @@ void menu(){
 		cout<<"8. Mostrar  "<<endl;
 		cout<<"9. Cantidad de elementos  "<<endl;
 		cout<<"10. Menor y mayor "<<endl;
-		cout<<"11. Limpiar "<<endl;
-		cout<<"12. Salir "<<endl;
+		cout<<"11. Eliminar Nodos repetidos "<<endl;
+		cout<<"12. Limpiar "<<endl;
+		cout<<"13. Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -95,6 +95,9 @@ bool opciones(int op){
 			menorYMayor(inicio);
 			break;
 		case 11:
+			eliminarDuplicados(inicio,final);
+			break;
+		case 12:
 			system("cls");
 			break;
 		default : 

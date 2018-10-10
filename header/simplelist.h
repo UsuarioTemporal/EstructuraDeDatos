@@ -5,7 +5,7 @@ namespace SimpleList{
 	struct Nodo{
 		int dato;
 		Nodo *siguiente=NULL;	
-	};
+	}; 
 	bool isEmpty(Nodo *inicio){
 		return inicio==NULL;
 	}
@@ -16,8 +16,6 @@ namespace SimpleList{
 			cout<<"\nVacio\n";
 		}
 	}
-	
-
 	void menorYMayor(Nodo *inicio){
 		if(isEmpty(inicio)){
 			cout<<"\nVacio\n";
@@ -67,8 +65,7 @@ namespace SimpleList{
 		if(!isEmpty(inicio)){
 			conteo--;
 			if(inicio==final){
-				delete inicio;
-				delete final;
+				inicio=final=NULL;
 			}else{
 				Nodo *temporal=new Nodo;
 				temporal=inicio;
@@ -85,8 +82,7 @@ namespace SimpleList{
 		if(!isEmpty(inicio)){
 			conteo--;
 			if(inicio==final){
-				delete inicio;
-				delete final;
+				inicio=final=NULL;
 			}else{
 				Nodo *temporal=new Nodo;
 				temporal = inicio;
@@ -112,7 +108,6 @@ namespace SimpleList{
 		}
 		return recorrer!=NULL;
 	}
-	
 	
 	void insertarAntesODespues(Nodo *&inicio,Nodo *&final,int dato,int datoSoA,int opcion){
 			if(find(inicio,dato)){
@@ -174,8 +169,7 @@ namespace SimpleList{
 				conteo--;
 				Nodo *tem=new Nodo;
 				if(inicio==final && inicio->dato==dato){
-					delete inicio;
-					delete final;
+					inicio=final=NULL;
 				}else if(inicio->dato==dato){
 					tem=inicio;
 					inicio=inicio->siguiente;
@@ -216,7 +210,36 @@ namespace SimpleList{
 	void ordenarQuickSort(){
 		
 	}
-	void eliminarDuplicados(Nodo *inicio,Nodo *final){
+	int  numeroDeRepeticiones(Nodo *inicio,int dato){
+		Nodo *recorrer=new Nodo;
+		recorrer=inicio;
+		int cantidad=0;
+		while(recorrer!=NULL){
+			if(recorrer->dato==dato){
+				cantidad++;
+			}
+			recorrer=recorrer->siguiente ;
+		}
+		return cantidad;
+	}
+	void listaAuxliar(Nodo *&inicio,Nodo *&final){
 		
+	}
+	void eliminarDuplicados(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			Nodo *recorrer=new Nodo;
+			recorrer=inicio;
+			while(recorrer!=NULL ){
+				int dato=recorrer->dato;
+				int cantidad=numeroDeRepeticiones(inicio,dato)-1;
+				for(int i=1;i<=cantidad && recorrer!=NULL;i++){
+					recorrer=recorrer->siguiente;
+					deleteEspecific(inicio,final,dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
 	}
 }
