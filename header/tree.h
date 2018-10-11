@@ -39,4 +39,17 @@ namespace Tree{
 			}
 		}
 	}
+	bool busqueda(Nodo *raiz,int dato){
+		if(!isEmpty(raiz)){
+			if(raiz->dato==dato){
+				return true;
+			}else if(raiz->dato>dato){
+				return busqueda(raiz->hijoIzqu,dato);
+			}else{
+				return busqueda(raiz->hijoDere,dato);
+			}
+		}else{
+			return false;
+		}	
+	}
 } 

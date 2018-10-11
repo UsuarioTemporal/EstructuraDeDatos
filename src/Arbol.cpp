@@ -12,6 +12,7 @@ void menu(){
 	do{
 		cout<<"\n1. Insertar"<<endl;
 		cout<<"2.Mostrar "<<endl;
+		cout<<"3.Buscar "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -27,6 +28,14 @@ bool opciones(int op){
 			break;
 		case 2:
 			show(raiz,0);
+			break;
+		case 3:
+			cin>>dato;
+			if(busqueda(raiz,dato)){
+				cout<<"\nEncontrado\n";
+			}else{
+				cout<<"\nNo existe\n";
+			}
 			break;
 	}
 	return false;
