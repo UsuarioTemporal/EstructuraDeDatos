@@ -52,4 +52,35 @@ namespace Tree{
 			return false;
 		}	
 	}
+	
+	void preOrden(Nodo *raiz){
+		if(isEmpty(raiz)){
+			return ;
+		}else{
+			cout<<raiz->dato<<" ";
+			preOrden(raiz->hijoIzqu);
+			preOrden(raiz->hijoDere);	
+		}
+	}
+	
+	void inOrden(Nodo *raiz){
+		if(isEmpty(raiz)){
+			return ;
+		}else{
+			inOrden(raiz->hijoIzqu);
+			cout<<raiz->dato<<" ";
+			inOrden(raiz->hijoDere);
+
+		}
+	}
+	
+	void posOrden(Nodo *raiz){
+		if(isEmpty(raiz)){
+			return ;
+		}else{
+			posOrden(raiz->hijoDere);
+			cout<<raiz->dato<<" ";
+			posOrden(raiz->hijoIzqu);
+		}
+	}
 } 

@@ -10,9 +10,12 @@ int main(){
 void menu(){
 	bool condition=true;
 	do{
-		cout<<"\n1. Insertar"<<endl;
+		cout<<"\n1.Insertar"<<endl;
 		cout<<"2.Mostrar "<<endl;
 		cout<<"3.Buscar "<<endl;
+		cout<<"4.Mostrar Preorden "<<endl;
+		cout<<"5.Mostrar Inorden "<<endl;
+		cout<<"6.Mostrar PosOrden "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -37,6 +40,17 @@ bool opciones(int op){
 				cout<<"\nNo existe\n";
 			}
 			break;
+		case 4:
+			preOrden(raiz);
+			break;
+		case 5:
+			inOrden(raiz);
+			break;
+		case 6:
+			posOrden(raiz);
+			break;
+		default :
+			return true;
 	}
 	return false;
 }
