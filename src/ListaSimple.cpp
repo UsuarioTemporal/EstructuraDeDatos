@@ -9,8 +9,7 @@ bool opciones(int);
 int main(){
 	system("color 0B");
 	menu();
-	delete inicio;
-	delete final;
+	inicio=final=NULL;
 	return 0;
 }
 void menu(){

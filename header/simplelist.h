@@ -189,7 +189,7 @@ namespace SimpleList{
 					}
 					
 				}
-				delete tem;
+				tem=NULL;
 			}else{
 				cout<<"\nNo existe"<<endl;
 			}
@@ -222,7 +222,7 @@ namespace SimpleList{
 		}
 		return cantidad;
 	}
-	void listaAuxliar(Nodo *&inicio,Nodo *&final){
+	bool verificar(){
 		
 	}
 	void eliminarDuplicados(Nodo *&inicio,Nodo *&final){
@@ -230,13 +230,19 @@ namespace SimpleList{
 			Nodo *recorrer=new Nodo;
 			recorrer=inicio;
 			while(recorrer!=NULL ){
-				int dato=recorrer->dato;
+				Nodo *nuevo=new Nodo;
+				nuevo=recorrer;
+				int dato=nuevo->dato;
 				int cantidad=numeroDeRepeticiones(inicio,dato)-1;
-				for(int i=1;i<=cantidad && recorrer!=NULL;i++){
-					recorrer=recorrer->siguiente;
+				for(int i=1;i<=cantidad ;i++){
 					deleteEspecific(inicio,final,dato);
 				}
-				recorrer=recorrer->siguiente;
+				if(recorrer==NULL){
+					break;
+				}else{
+					recorrer=recorrer->siguiente ;
+				}
+				
 			}
 		}else{
 			cout<<"\nVacio\n";
