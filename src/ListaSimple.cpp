@@ -26,8 +26,9 @@ void menu(){
 		cout<<"9. Cantidad de elementos  "<<endl;
 		cout<<"10. Menor y mayor "<<endl;
 		cout<<"11. Eliminar Nodos repetidos "<<endl;
-		cout<<"12. Limpiar "<<endl;
-		cout<<"13. Salir "<<endl;
+		cout<<"12. ELIMINAR DOS PRIMEROS "<<endl;
+		cout<<"13. Limpiar "<<endl;
+		cout<<"14. Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -97,6 +98,9 @@ bool opciones(int op){
 			eliminarDuplicados(inicio,final);
 			break;
 		case 12:
+			eliminarDosprimeros(inicio,final);
+			break;
+		case 13:
 			system("cls");
 			break;
 		default : 
@@ -104,3 +108,4 @@ bool opciones(int op){
 	}
 	return false;
 }
+

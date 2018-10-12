@@ -27,7 +27,7 @@ bool opciones(int op){
 		int dato;
 		case 1:
 			cin>>dato;
-			insertar(raiz,dato);
+			insertar(raiz,dato,NULL);
 			break;
 		case 2:
 			show(raiz,0);

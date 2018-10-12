@@ -1,14 +1,20 @@
 #include<iostream>
 using namespace std;
+//Para eliminar un nodo es necesario saber quien es el padre  (IMPORTANTE)
 namespace Tree{
 	typedef struct Nodo{
 		int dato;
 		Nodo *hijoDere=NULL;
 		Nodo *hijoIzqu=NULL;
+		
+		//Es opcional es uno de los metodos
+		//Existen muchas formas de crear un arbol
+		Nodo *padre=NULL;
 	};
-	Nodo *createNodo(int dato){
+	Nodo *createNodo(int dato,Nodo *padre){
 		Nodo *nuevoNodo=new Nodo;
 		nuevoNodo->dato=dato;
+		nuevoNodo->padre=padre;
 		return nuevoNodo;
 	}
 	bool isEmpty(Nodo *raiz){
@@ -26,16 +32,16 @@ namespace Tree{
 			return ;
 		}
 	}
-	void insertar(Nodo *&raiz,int dato){
+	void insertar(Nodo *&raiz,int dato,Nodo *padre){
 		if(isEmpty(raiz)){
-			Nodo *nuevo=createNodo(dato);
+			Nodo *nuevo=createNodo(dato,padre);
 			raiz=nuevo;
 		}else{
 			int valorRaiz=raiz->dato;
 			if(dato<valorRaiz){
-				insertar(raiz->hijoIzqu,dato);
+				insertar(raiz->hijoIzqu,dato,raiz);
 			}else{
-				insertar(raiz->hijoDere,dato);
+				insertar(raiz->hijoDere,dato,raiz);
 			}
 		}
 	}
@@ -82,5 +88,22 @@ namespace Tree{
 			cout<<raiz->dato<<" ";
 			posOrden(raiz->hijoIzqu);
 		}
+	}
+	
+	void eliminar(Nodo *raiz,int dato){
+		if(isEmpty(raiz)){
+			return ;
+		}else if(dato<raiz->dato){
+			eliminar(raiz->hijoIzqu,dato);
+		}else if(dato>raiz->hijoDere){
+			eliminar(raiz->hijoDere,dato);
+		}else{
+			eliminarNodo(raiz);
+		}
+	}
+	
+	void eliminarNodo(Nodo *&raiz){
+		//Borrar Un Nodo siempre y cuando tenga dos subarboles hijos
+		
 	}
 } 
