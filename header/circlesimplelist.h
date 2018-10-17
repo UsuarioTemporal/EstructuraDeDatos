@@ -14,17 +14,34 @@ namespace CircleSimpleList{
 		return ultimo==NULL;
 	}
 	
-	void insert(Nodo *&ultimo,int dato){
+	// HACER ESTO ES UNA ESTUPIDEZ , POR QUE ES UNA LISTA CIRCULAR SOLO PUEDES SIMULAR PARA EL ALGORITMO INSERTAR AL FINAL O AL COMIENZO PERO
+	// EN UNA LISTA CIRCULAR NO HAY FINAL NI INICIO ASI QUE SOLO LO HARE POR CUMPLIR , ASI QUE EL QUE LEA ESTO , ES INEFICIENTE .
+	// ASI QUE EL QUE SE MATE ANALIZANDO INSERTAR AL INICIO O AL FINAL ES UN ESTUPIDO . EJM ES COMO QUERER INSERTAR AL COMIENZO 
+	// PERO EN UNA PILA ASI DE ESTUPIDO ES . EL ELIMINAR,INSERTAR AL COMIENZO O AL FINAL ES PARA ESTRUCTURAS NETAMENTE LINEALES PURAMENTE }
+	// ejemplos de uso 
+	// lista simple, lista doble
+	void insertToEnd(Nodo *&ultimo,int dato){
 		Nodo *nuevo=new Nodo;
 		nuevo->dato=dato;
 		if(ultimo!=NULL){
 			nuevo->siguiente=ultimo->siguiente ;
 			ultimo->siguiente=nuevo;
-			
 		}
 		ultimo=nuevo;
+	void insertToStart(Nodo *&ultimo,int dato){
+		Nodo *nuevo=new Nodo;
+		nuevo->dato=dato;
+		if(isEmpty(ultimo)){
+			ultimo=nuevo;
+		}else{
+			Nodo *inicio=new Nodo;
+			inicio=ultimo->siguiente;
+			ultimo->siguiente=nuevo;
+			nuevo->siguiente=inicio;
+		}
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	bool find(Nodo *ultimo,int dato){
 		Nodo *actual=new Nodo;
 		actual=ultimo;
@@ -43,7 +60,7 @@ namespace CircleSimpleList{
 			if(find(ultimo,dato)){
 				Nodo *actual=new Nodo;
 				if(ultimo->siguiente==ultimo){
-					delete ultimo;
+					ultimo=NULL;
 				}else{
 					Nodo *anterior=ultimo;
 					actual=ultimo->siguiente;
@@ -58,7 +75,7 @@ namespace CircleSimpleList{
 						anterior->siguiente=actual->siguiente;
 					}
 				}
-				delete actual;
+				actual=NULL;
 			}else{
 				cout<<"\nNo existe\n";
 			}

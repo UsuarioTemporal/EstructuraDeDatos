@@ -207,9 +207,7 @@ namespace SimpleList{
 			cout<<"\nVacio"<<endl;
 		}
 	}
-	void ordenarQuickSort(){
-		
-	}
+	
 	int  numeroDeRepeticiones(Nodo *inicio,int dato){
 		Nodo *recorrer=new Nodo;
 		recorrer=inicio;
@@ -222,8 +220,23 @@ namespace SimpleList{
 		}
 		return cantidad;
 	}
-	bool verificar(){
-		
+	void eliminarDosprimeros(Nodo *&inicio,Nodo *&final){
+		if(conteo<2){
+			cout<<"No se puede"<<endl;
+		}else{
+			conteo=conteo-2;
+			if(conteo==2){
+				inicio=final=NULL;
+			}else{
+				Nodo *primero=new Nodo;
+				Nodo *segundo=new Nodo;
+				primero=inicio;
+				segundo=inicio->siguiente;
+				inicio=segundo->siguiente;
+				primero=NULL;
+				segundo=NULL;
+			}
+		}
 	}
 	void eliminarDuplicados(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
