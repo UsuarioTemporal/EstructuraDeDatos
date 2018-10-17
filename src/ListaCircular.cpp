@@ -10,11 +10,12 @@ int main(){
 void menu(){
 	bool condition=true;
 	do{
-		cout<<"\n1. Insertar"<<endl;
-		cout<<"2. Eliminar especifico"<<endl;
-		cout<<"3. Mostrar "<<endl;
-		cout<<"4. Limpiar "<<endl;
-		cout<<"5. Salir "<<endl;
+		cout<<"\n1. Insertar al final"<<endl;
+		cout<<"2. Insertar al inicio"<<endl;
+		cout<<"3. Eliminar especifico"<<endl;
+		cout<<"4. Mostrar "<<endl;
+		cout<<"5. Limpiar "<<endl;
+		cout<<"6. Salir "<<endl;
 		int op;
 		cin>>op;
 		condition=!opciones(op);
@@ -25,16 +26,20 @@ bool opciones(int op){
 		int dato;
 		case 1:
 			cin>>dato;
-			insert(ultimo,dato);
+			insertToEnd(ultimo,dato);
 			break;
 		case 2:
 			cin>>dato;
-			deleteEspecific(ultimo,dato);
+			insertToStart(ultimo,dato);
 			break;
 		case 3:
-			show(ultimo);
+			cin>>dato;
+			deleteEspecific(ultimo,dato);
 			break;
 		case 4:
+			show(ultimo);
+			break;
+		case 5:
 			system("cls");
 			break;
 		default : 

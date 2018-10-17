@@ -28,6 +28,7 @@ namespace CircleSimpleList{
 			ultimo->siguiente=nuevo;
 		}
 		ultimo=nuevo;
+	}	
 	void insertToStart(Nodo *&ultimo,int dato){
 		Nodo *nuevo=new Nodo;
 		nuevo->dato=dato;
@@ -40,8 +41,21 @@ namespace CircleSimpleList{
 			nuevo->siguiente=inicio;
 		}
 	}
+	void deleteToStart(){
+		
+	}
+	
+	void deleteToEnd(){
+		
+	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void insertToEndOrToStart(){
+		
+	}
+	
+	
 	bool find(Nodo *ultimo,int dato){
 		Nodo *actual=new Nodo;
 		actual=ultimo;
