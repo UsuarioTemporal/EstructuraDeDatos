@@ -9,11 +9,17 @@ namespace CircleSimpleList{
 		int dato;
 		Nodo *siguiente=this;
 	};
-	
+	int conteo=0;
 	bool isEmpty(Nodo *ultimo){
 		return ultimo==NULL;
 	}
-	
+	void contar(Nodo *ultimo){
+		if(isEmpty(ultimo)){
+			cout<<"\nVacio\n";
+		}else{
+			cout<<"\nNumero de elementos : "<<conteo<<endl;
+		}
+	}
 	// HACER ESTO ES UNA ESTUPIDEZ , POR QUE ES UNA LISTA CIRCULAR SOLO PUEDES SIMULAR PARA EL ALGORITMO INSERTAR AL FINAL O AL COMIENZO PERO
 	// EN UNA LISTA CIRCULAR NO HAY FINAL NI INICIO ASI QUE SOLO LO HARE POR CUMPLIR , ASI QUE EL QUE LEA ESTO , ES INEFICIENTE .
 	// ASI QUE EL QUE SE MATE ANALIZANDO INSERTAR AL INICIO O AL FINAL ES UN ESTUPIDO . EJM ES COMO QUERER INSERTAR AL COMIENZO 
@@ -23,6 +29,7 @@ namespace CircleSimpleList{
 	void insertToEnd(Nodo *&ultimo,int dato){
 		Nodo *nuevo=new Nodo;
 		nuevo->dato=dato;
+		conteo++;
 		if(ultimo!=NULL){
 			nuevo->siguiente=ultimo->siguiente ;
 			ultimo->siguiente=nuevo;
@@ -32,6 +39,7 @@ namespace CircleSimpleList{
 	void insertToStart(Nodo *&ultimo,int dato){
 		Nodo *nuevo=new Nodo;
 		nuevo->dato=dato;
+		conteo++;
 		if(isEmpty(ultimo)){
 			ultimo=nuevo;
 		}else{
@@ -43,6 +51,7 @@ namespace CircleSimpleList{
 	}
 	void deleteToStart(Nodo *&ultimo){
 		if(!isEmpty(ultimo)){
+			conteo--;
 			if(ultimo==ultimo->siguiente){
 				ultimo=NULL;
 			}else{
@@ -58,6 +67,7 @@ namespace CircleSimpleList{
 	
 	void deleteToEnd(Nodo *&ultimo){
 		if(!isEmpty(ultimo)){
+			conteo--;
 			if(ultimo==ultimo->siguiente){
 				ultimo=NULL;
 			}else{
