@@ -41,17 +41,46 @@ namespace CircleSimpleList{
 			nuevo->siguiente=inicio;
 		}
 	}
-	void deleteToStart(){
-		
+	void deleteToStart(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			if(ultimo==ultimo->siguiente){
+				ultimo=NULL;
+			}else{
+				Nodo *inicio=new Nodo;
+				inicio=ultimo->siguiente;
+				ultimo->siguiente=inicio->siguiente;
+				inicio=NULL;
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
 	}
 	
-	void deleteToEnd(){
-		
+	void deleteToEnd(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			if(ultimo==ultimo->siguiente){
+				ultimo=NULL;
+			}else{
+				Nodo *recorrer=new Nodo;
+				Nodo *posterior=new Nodo;
+				recorrer=ultimo->siguiente;
+				posterior=recorrer->siguiente;
+				while(recorrer->siguiente !=ultimo){
+					recorrer=recorrer->siguiente;
+					posterior=posterior->siguiente;
+				}
+				recorrer->siguiente =ultimo->siguiente;
+				ultimo=recorrer;
+				posterior=NULL;
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void insertToEndOrToStart(){
+	void insertToEndOrToStart(Nodo *&ultimo,int datoFijo,int dato){
 		
 	}
 	
