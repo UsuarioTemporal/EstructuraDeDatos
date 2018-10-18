@@ -90,8 +90,21 @@ namespace CircleSimpleList{
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void insertToEndOrToStart(Nodo *&ultimo,int datoFijo,int dato){
-		
+	void insertToEndOrToStart(Nodo *&ultimo,int datoFijo,int opcion,int dato){
+		if(!isEmpty(ultimo)){
+			if(find(ultimo,datoFijo)){
+				conteo++;
+				if(opcion==1){ //antes
+					
+				}else{ //despues
+					
+				}
+			}else{
+				cout<<"\nNo existe el dato fijo\n";
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
 	}
 	
 	
@@ -111,11 +124,13 @@ namespace CircleSimpleList{
 	void deleteEspecific(Nodo *&ultimo,int dato){
 		if(!isEmpty(ultimo)){
 			if(find(ultimo,dato)){
+				conteo--;
 				Nodo *actual=new Nodo;
 				if(ultimo->siguiente==ultimo){
 					ultimo=NULL;
 				}else{
-					Nodo *anterior=ultimo;
+					Nodo *anterior=new Nodo;
+					anterior=ultimo;
 					actual=ultimo->siguiente;
 					while(actual->dato!=dato){
 						actual=actual->siguiente;
