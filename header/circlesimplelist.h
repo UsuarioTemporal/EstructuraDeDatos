@@ -85,14 +85,36 @@ namespace CircleSimpleList{
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void insertToEndOrToStart(Nodo *&ultimo,int datoFijo,int opcion,int dato){
+	void insertToEndOrToStartOf(Nodo *&ultimo,int datoFijo,int opcion,int dato){
 		if(!isEmpty(ultimo)){
 			if(find(ultimo,datoFijo)){
 				conteo++;
+				Nodo *recorrer=new Nodo;
+				Nodo *nuevo=new Nodo;
 				if(opcion==1){ //antes
-					
+					if(ultimo->siguiente->dato==datoFijo){
+						insertToStart(ultimo,dato);
+					}else{
+						nuevo->dato=dato;
+						recorrer=ultimo->siguiente;
+						while(recorrer->siguiente->dato!=datoFijo){
+							recorrer=recorrer->siguiente;
+						}
+						nuevo->siguiente=recorrer->siguiente;
+						recorrer->siguiente =nuevo;
+					}
 				}else{ //despues
-					
+					if(ultimo->dato==datoFijo){
+						insertToEnd(ultimo,dato);
+					}else{
+						nuevo->dato=dato;
+						recorrer=ultimo->siguiente;
+						while(recorrer->dato!=datoFijo){
+							recorrer=recorrer->siguiente;
+						}
+						nuevo->siguiente=recorrer->siguiente;
+						recorrer->siguiente=nuevo;
+					}
 				}
 			}else{
 				cout<<"\nNo existe el dato fijo\n";
