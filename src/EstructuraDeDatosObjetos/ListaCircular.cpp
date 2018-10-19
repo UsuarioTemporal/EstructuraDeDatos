@@ -6,8 +6,8 @@
 using namespace std;
 class Nodo{
 	public :
-	int dato;
-	Nodo *siguiente=this;	
+		int dato;
+		Nodo *siguiente=this;	
 };
 class ListaCircular{
 	public:
