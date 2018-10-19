@@ -23,8 +23,7 @@ template <class T>class Lista{
 		}
 		void show(){
 			if(!inicio==NULL){
-				Nodo<T> *recorrer;
-				recorrer = inicio;
+				Nodo<T> *recorrer=inicio;
 				while(recorrer!=NULL){
 					cout<<"["<<recorrer->dato<<"]-->";
 					recorrer=recorrer->siguiente;
@@ -36,5 +35,11 @@ template <class T>class Lista{
 		}
 };
 int main(){
-	
+	Lista<int> lista();
+	lista.insertToTheStart(8);
+	lista.insertToTheStart(6);
+	lista.insertToTheStart(5);
+	lista.insertToTheStart(7);
+	lista.insertToTheStart(0);
+	lista.show();
 }
