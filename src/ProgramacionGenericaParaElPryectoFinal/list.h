@@ -13,8 +13,7 @@ using namespace std;
  
 template <class T>
  
-class List
-{
+class List{
     public:
         List();
         ~List();

@@ -5,8 +5,7 @@
 #include<locale.h>
 using namespace std;
  
-int main()
-{
+int main(){
 	setlocale(LC_ALL,"");
     List<int> list_1;
     List<int> list_2;
