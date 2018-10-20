@@ -1,5 +1,21 @@
 #include<iostream>
 using namespace std;
+class Persona{
+	private :
+		string nombre;
+		double sueldo;
+	public :
+		Persona(string nombre,double sueldo){
+			this->nombre=nombre;
+			this->sueldo=sueldo;
+		}
+		string getNombre(){
+			return nombre;
+		}
+		double getSueldo(){
+			return sueldo;
+		}
+};
 template <class T> class Nodo{
 	public :
 		T dato;
@@ -42,22 +58,7 @@ template <class T>class Lista{
 			}
 		}
 };
-class Persona{
-	private :
-		string nombre;
-		double sueldo;
-	public :
-		Persona(string nombre,double sueldo){
-			this->nombre=nombre;
-			this->sueldo=sueldo;
-		}
-		string getNombre(){
-			return nombre;
-		}
-		double getSueldo(){
-			return sueldo;
-		}
-};
+
 int main(){
 	Lista<int> lista=Lista<int>();
 	lista.insert(5);

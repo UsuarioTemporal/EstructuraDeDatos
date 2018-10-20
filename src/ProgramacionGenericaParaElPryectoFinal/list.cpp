@@ -4,15 +4,13 @@
 using namespace std;
  
 // Constructor por defecto
-template<typename T>
-List<T>::List(){
+template<typename T>List<T>::List(){
     m_num_nodes = 0;
     m_head = NULL;
 }
  
 // Insertar al inicio
-template<typename T>
-void List<T>::add_head(T data_){
+template<typename T>void List<T>::add_head(T data_){
     Node<T> *new_node = new Node<T> (data_);
     Node<T> *temp = m_head;
  
@@ -30,8 +28,7 @@ void List<T>::add_head(T data_){
 }
  
 // Insertar al final
-template<typename T>
-void List<T>::add_end(T data_){
+template<typename T>void List<T>::add_end(T data_){
     Node<T> *new_node = new Node<T> (data_);
     Node<T> *temp = m_head;
  
@@ -47,8 +44,7 @@ void List<T>::add_end(T data_){
 }
  
 // Insertar de manera ordenada
-template<typename T>
-void List<T>::add_sort(T data_){
+template<typename T>void List<T>::add_sort(T data_){
     Node<T> *new_node = new Node<T> (data_);
     Node<T> *temp = m_head;
  
@@ -70,8 +66,7 @@ void List<T>::add_sort(T data_){
 }
  
 // Concatenar a otra List
-template<typename T>
-void List<T>::concat(List list){
+template<typename T>void List<T>::concat(List list){
     Node<T> *temp2 = list.m_head;
  
     while (temp2) {
@@ -81,15 +76,13 @@ void List<T>::concat(List list){
 }
  
 // Eliminar todos los nodos
-template<typename T>
-void List<T>::del_all(){
+template<typename T>void List<T>::del_all(){
     m_head->delete_all();
     m_head = 0;
 }
  
 // Eliminar por data del nodo
-template<typename T>
-void List<T>::del_by_data(T data_){
+template<typename T>void List<T>::del_by_data(T data_){
     Node<T> *temp = m_head;
     Node<T> *temp1 = m_head->next;
  
@@ -117,8 +110,7 @@ void List<T>::del_by_data(T data_){
 }
  
 // Eliminar por posición del nodo
-template<typename T>
-void List<T>::del_by_position(int pos){
+template<typename T>void List<T>::del_by_position(int pos){
     Node<T> *temp = m_head;
     Node<T> *temp1 = temp->next;
  
@@ -141,8 +133,7 @@ void List<T>::del_by_position(int pos){
 }
  
 // Llenar la Lista por teclado
-template<typename T>
-void List<T>::fill_by_user(int dim){
+template<typename T>void List<T>::fill_by_user(int dim){
     T ele;
     for (int i = 0; i < dim; i++) {
         cout << "Ingresa el elemento " << i + 1 << endl;
@@ -152,8 +143,7 @@ void List<T>::fill_by_user(int dim){
 }
  
 // Llenar la Lista aleatoriamente para enteros
-template<typename T>
-void List<T>::fill_random(int dim){
+template<typename T>void List<T>::fill_random(int dim){
     srand(time(NULL));
     for (int i = 0; i < dim; i++) {
         add_end(rand() % 100);
@@ -161,8 +151,7 @@ void List<T>::fill_random(int dim){
 }
  
 // Usado por el método intersección
-template<typename T>
-void insert_sort(T a[], int size){
+template<typename T>void insert_sort(T a[], int size){
     T temp;
     for (int i = 0; i < size; i++) {
         for (int j = i-1; j>= 0 && a[j+1] < a[j]; j--) {
@@ -174,8 +163,7 @@ void insert_sort(T a[], int size){
 }
  
 // Números que coinciden en 2 Lists
-template<typename T>
-void List<T>::intersection(List list_2){
+template<typename T>void List<T>::intersection(List list_2){
     Node<T> *temp = m_head;
     Node<T> *temp2 = list_2.m_head;
  
@@ -240,8 +228,7 @@ void List<T>::intersection(List list_2){
 }
  
 // Invertir la lista
-template<typename T>
-void List<T>::invert(){
+template<typename T>void List<T>::invert(){
     Node<T> *prev = NULL;
     Node<T> *next = NULL;
     Node<T> *temp = m_head;
