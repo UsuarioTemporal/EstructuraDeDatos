@@ -98,11 +98,11 @@ int main(){
 	p1.nombre="Thom";
 	p1.sueldo=12.5;
 	Persona p2;
-	p1.nombre="Roman";
-	p1.sueldo=13.5;
+	p2.nombre="Roman";
+	p2.sueldo=13.5;
 	Persona p3;
-	p1.nombre="Aguilar";
-	p1.sueldo=15.5;
+	p3.nombre="Aguilar";
+	p3.sueldo=15.5;
 	listaDePersonas.insert(p1);
 	listaDePersonas.insert(p2);
 	listaDePersonas.insert(p3);
