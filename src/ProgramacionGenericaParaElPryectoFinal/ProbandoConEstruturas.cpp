@@ -42,7 +42,22 @@ template <class T>class Lista{
 			}
 		}
 };
-
+class Persona{
+	private :
+		string nombre;
+		double sueldo;
+	public :
+		Persona(string nombre,double sueldo){
+			this->nombre=nombre;
+			this->sueldo=sueldo;
+		}
+		string getNombre(){
+			return nombre;
+		}
+		double getSueldo(){
+			return sueldo;
+		}
+};
 int main(){
 	Lista<int> lista=Lista<int>();
 	lista.insert(5);
@@ -59,4 +74,9 @@ int main(){
 	listaDeString.insert("tres");
 	listaDeString.insert("cuatro");
 	listaDeString.show();
+	
+	
+	Lista<Persona> listaDePersonas=Lista<Persona>();
+	Persona p1=Persona("Thom",152.5);
+	listaDePersonas.insert(p1);
 }
