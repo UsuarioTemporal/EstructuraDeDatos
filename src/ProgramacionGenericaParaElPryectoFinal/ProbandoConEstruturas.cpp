@@ -1,20 +1,20 @@
 #include<iostream>
 using namespace std;
-class Persona{
-	private :
+struct Persona{
+//	private :
 		string nombre;
 		double sueldo;
-	public :
-		Persona(string nombre,double sueldo){
-			this->nombre=nombre;
-			this->sueldo=sueldo;
-		}
-		string getNombre(){
-			return nombre;
-		}
-		double getSueldo(){
-			return sueldo;
-		}
+//	public :
+//		Persona(string nombre,double sueldo){
+//			this->nombre=nombre;
+//			this->sueldo=sueldo;
+//		}
+//		string getNombre(){
+//			return nombre;
+//		}
+//		double getSueldo(){
+//			return sueldo;
+//		}
 };
 template <class T> class Nodo{
 	public :
@@ -24,10 +24,10 @@ template <class T> class Nodo{
 			dato=_dato;
 			siguiente=NULL;
 		}
-		Nodo(){
-			dato=NULL;
-			siguiente=NULL;
-		}
+//		Nodo(){
+//			dato=NULL;
+//			siguiente=NULL;
+//		}
 };
 template <class T>class Lista{
 	public :
@@ -78,6 +78,8 @@ int main(){
 	
 	
 	Lista<Persona> listaDePersonas=Lista<Persona>();
-	Persona p1=Persona("Thom",152.5);
+	Persona p1;
+	p1.nombre="dfdf";
+	p1.sueldo=12.5;
 	listaDePersonas.insert(p1);
 }
