@@ -46,9 +46,9 @@ template <class T>class Lista{
 int main(){
 	Lista<int> lista=Lista<int>();
 	lista.insert(5);
-//	lista.insertToTheStart(6);
-//	lista.insertToTheStart(5);
-//	lista.insertToTheStart(7);
-//	lista.insertToTheStart(0);
+	lista.insert(6);
+	lista.insert(5);
+	lista.insert(7);
+	lista.insert(0);
 	lista.show();
 }
