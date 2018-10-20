@@ -3,7 +3,11 @@ using namespace std;
 template <class T>class Nodo{
 	public :
 		T dato;
-		Nodo *siguiente=NULL;
+		Nodo *siguiente;
+		Nodo(T dato,Nodo *siguiente){
+			this->dato=dato;
+			this->siguiente=siguiente;
+		}
 };
 template <class T>class Lista{
 	public :
@@ -34,12 +38,12 @@ template <class T>class Lista{
 			}
 		}
 };
+//Lista<int> lista();
 int main(){
-	Lista<int> lista();
-	lista.insertToTheStart(8);
-	lista.insertToTheStart(6);
-	lista.insertToTheStart(5);
-	lista.insertToTheStart(7);
-	lista.insertToTheStart(0);
-	lista.show();
+//	lista.insertToTheStart(8);
+//	lista.insertToTheStart(6);
+//	lista.insertToTheStart(5);
+//	lista.insertToTheStart(7);
+//	lista.insertToTheStart(0);
+//	lista.show();
 }
