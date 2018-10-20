@@ -24,6 +24,10 @@ template <class T> class Nodo{
 			dato=_dato;
 			siguiente=NULL;
 		}
+		string imprimirNodo(){
+			Persona p=(Persona)dato;
+			return p.nombre;
+		}
 //		Nodo(){
 //			dato=NULL;
 //			siguiente=NULL;
@@ -57,6 +61,18 @@ template <class T>class Lista{
 				cout<<"\nVacio"<<endl;
 			}
 		}
+		void show2(){
+			if(!inicio==NULL){
+				Nodo<T> *recorrer=inicio;
+				while(recorrer!=NULL){
+					cout<<"["<<recorrer->imprimirNodo()<<"]-->";
+					recorrer=recorrer->siguiente;
+				}
+				cout<<" || "<<endl;
+			}else{
+				cout<<"\nVacio"<<endl;
+			}
+		}
 };
 
 int main(){
@@ -79,7 +95,16 @@ int main(){
 	
 	Lista<Persona> listaDePersonas=Lista<Persona>();
 	Persona p1;
-	p1.nombre="dfdf";
+	p1.nombre="Thom";
 	p1.sueldo=12.5;
+	Persona p2;
+	p1.nombre="Roman";
+	p1.sueldo=13.5;
+	Persona p3;
+	p1.nombre="Aguilar";
+	p1.sueldo=15.5;
 	listaDePersonas.insert(p1);
+	listaDePersonas.insert(p2);
+	listaDePersonas.insert(p3);
+	listaDePersonas.show2();
 }
