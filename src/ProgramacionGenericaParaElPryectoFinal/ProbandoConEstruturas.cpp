@@ -51,4 +51,12 @@ int main(){
 	lista.insert(7);
 	lista.insert(0);
 	lista.show();
+	
+	
+	Lista<string> listaDeString=Lista<string>();
+	listaDeString.insert("uno");
+	listaDeString.insert("dos");
+	listaDeString.insert("tres");
+	listaDeString.insert("cuatro");
+	listaDeString.show();
 }
