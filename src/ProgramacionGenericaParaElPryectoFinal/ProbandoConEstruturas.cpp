@@ -16,13 +16,12 @@ template <class T>class Lista{
 			inicio=final=NULL;
 		}
 		void insertToTheStart(T dato){
-			Nodo<T> *nuevo1;
-			nuevo1->dato=dato;
+			Nodo<T> *nuevo(dato,NULL);
 			if(inicio==NULL){
-				inicio=final=nuevo1;
+				inicio=final=nuevo;
 			}else{
-				nuevo1->siguiente=inicio;
-				inicio=nuevo1;
+				nuevo->siguiente=inicio;
+				inicio=nuevo;
 			}
 		}
 		void show(){
@@ -38,9 +37,9 @@ template <class T>class Lista{
 			}
 		}
 };
-//Lista<int> lista();
+Lista<int> lista();
 int main(){
-//	lista.insertToTheStart(8);
+	lista.insertToTheStart(8);
 //	lista.insertToTheStart(6);
 //	lista.insertToTheStart(5);
 //	lista.insertToTheStart(7);
