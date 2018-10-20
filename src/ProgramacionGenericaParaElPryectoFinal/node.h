@@ -5,10 +5,7 @@
  
 using namespace std;
  
-template <class T>
- 
-class Node
-{
+template <class T> class Node{
     public:
         Node();
         Node(T);

@@ -1,22 +1,27 @@
 #include<iostream>
 using namespace std;
-template <class T>class Nodo{
+template <class T> class Nodo{
 	public :
 		T dato;
 		Nodo *siguiente;
-		Nodo(T dato,Nodo *siguiente){
-			this->dato=dato;
-			this->siguiente=siguiente;
+		Nodo(T _dato){
+			dato=_dato;
+			siguiente=NULL;
+		}
+		Nodo(){
+			dato=NULL;
+			siguiente=NULL;
 		}
 };
 template <class T>class Lista{
 	public :
 		Nodo<T> *inicio,*final;
 		Lista(){
-			inicio=final=NULL;
+			inicio=NULL;
+			final=NULL;
 		}
-		void insertToTheStart(T dato){
-			Nodo<T> *nuevo(dato,NULL);
+		void insert(T dato){
+			Nodo<T> *nuevo=new Nodo<T>(dato);
 			if(inicio==NULL){
 				inicio=final=nuevo;
 			}else{
@@ -37,12 +42,13 @@ template <class T>class Lista{
 			}
 		}
 };
-Lista<int> lista();
+
 int main(){
-	lista.insertToTheStart(8);
+	Lista<int> lista=Lista<int>();
+	lista.insert(5);
 //	lista.insertToTheStart(6);
 //	lista.insertToTheStart(5);
 //	lista.insertToTheStart(7);
 //	lista.insertToTheStart(0);
-//	lista.show();
+	lista.show();
 }
