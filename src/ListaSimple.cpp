@@ -27,8 +27,10 @@ void menu(){
 		cout<<"10. Menor y mayor "<<endl;
 		cout<<"11. Eliminar Nodos repetidos "<<endl;
 		cout<<"12. ELIMINAR DOS PRIMEROS "<<endl;
-		cout<<"13. Limpiar "<<endl;
-		cout<<"14. Salir "<<endl;
+		cout<<"13. eliminar pares "<<endl;
+		cout<<"14. eliminar impares "<<endl;
+		cout<<"15. limpiar "<<endl;
+		cout<<"16. Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;

@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 namespace SimpleList{
 	int conteo=0;
@@ -261,4 +262,51 @@ namespace SimpleList{
 			cout<<"\nVacio\n";
 		}
 	}
+	
+	//Eliminar pares
+	void eliminarPares(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			vector<int> vect;
+			Nodo *recorrer=new Nodo;
+			recorrer=inicio;
+			while(recorrer!=NULL){
+				if(recorrer->dato%2==0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			for(int i=0;i<vect.size();i++){
+				deleteEspecific(inicio,final,vect[i]);
+			}
+			vect.clear();
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	
+	//Eliminar impares
+	void eliminarImpares(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			vector<int> vect;
+			Nodo *recorrer=new Nodo;
+			recorrer=inicio;
+			while(recorrer!=NULL){
+				if(recorrer->dato%2!=0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			for(int i=0;i<vect.size();i++){
+				deleteEspecific(inicio,final,vect[i]);
+			}
+			vect.clear();
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//ordenar
+	//eliminar posiciones pares
+	//eliminar posiciones impares
+	//mover cada ...
+	//insertar fibonacci
 }
