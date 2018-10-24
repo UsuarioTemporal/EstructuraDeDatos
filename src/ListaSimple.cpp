@@ -101,6 +101,11 @@ bool opciones(int op){
 			eliminarDosprimeros(inicio,final);
 			break;
 		case 13:
+			eliminarPares(inicio,final);
+		case 14:
+			eliminarImpares(inicio,final);
+			break;
+		case 15:
 			system("cls");
 			break;
 		default : 
