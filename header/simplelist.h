@@ -239,25 +239,29 @@ namespace SimpleList{
 			}
 		}
 	}
-	void eliminarDuplicados(Nodo *&inicio,Nodo *&final){
+	void eliminarRepetidos(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
+			vector<int> vect;
 			Nodo *recorrer=new Nodo;
 			recorrer=inicio;
-			while(recorrer!=NULL ){
+			while(recorrer!=NULL){
 				Nodo *nuevo=new Nodo;
 				nuevo=recorrer;
 				int dato=nuevo->dato;
 				int cantidad=numeroDeRepeticiones(inicio,dato)-1;
-				for(int i=1;i<=cantidad ;i++){
-					deleteEspecific(inicio,final,dato);
+				if(cantidad>1){
+					vect.push_back(dato);
+					vect.push_back(cantidad);
 				}
-				if(recorrer==NULL){
-					break;
-				}else{
-					recorrer=recorrer->siguiente ;
-				}
-				
+				recorrer=recorrer->siguiente ;
 			}
+			for(int i=0;i<vect.size();){
+				for(int j=1;j<vect[i+1];j++){
+					deleteEspecific(inicio,final,vect[i]);
+				}
+				i+=2;
+			}
+			vect.clear();
 		}else{
 			cout<<"\nVacio\n";
 		}
@@ -304,9 +308,15 @@ namespace SimpleList{
 			cout<<"\nVacio\n";
 		}
 	}
+	//Eliminar pares
+	//Eliminar impares
+	//eliminar repetidos
+	
 	//ordenar
-	//eliminar posiciones pares
+	//eliminar posiciones pares 
 	//eliminar posiciones impares
-	//mover cada ...
+	//mover cada ... ejm mover cada dos posiciones : 1 - 2 - 3 - 4 , resultado : 3 - 4 - 1 - 2 
 	//insertar fibonacci
+	//combinar listas
+	//invertir listar
 }

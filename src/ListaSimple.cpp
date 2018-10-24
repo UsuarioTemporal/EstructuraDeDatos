@@ -97,7 +97,7 @@ bool opciones(int op){
 			menorYMayor(inicio);
 			break;
 		case 11:
-			eliminarDuplicados(inicio,final);
+			eliminarRepetidos(inicio,final);
 			break;
 		case 12:
 			eliminarDosprimeros(inicio,final);
