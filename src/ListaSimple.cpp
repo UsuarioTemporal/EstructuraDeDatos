@@ -29,8 +29,9 @@ void menu(){
 		cout<<"12. ELIMINAR DOS PRIMEROS "<<endl;
 		cout<<"13. eliminar pares "<<endl;
 		cout<<"14. eliminar impares "<<endl;
-		cout<<"15. limpiar "<<endl;
-		cout<<"16. Salir "<<endl;
+		cout<<"15. Ordenar por burbuja "<<endl;
+		cout<<"16. limpiar "<<endl;
+		cout<<"17. Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -108,6 +109,9 @@ bool opciones(int op){
 			eliminarImpares(inicio,final);
 			break;
 		case 15:
+			ordenarPorBurbuja(inicio,final); 
+			break;
+		case 16:
 			system("cls");
 			break;
 		default : 
