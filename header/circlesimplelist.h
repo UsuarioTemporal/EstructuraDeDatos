@@ -397,13 +397,17 @@ namespace CircleSimpleList{
 	    Nodo *sigu = new Nodo;
 	    Nodo *temp = new Nodo;
 	    temp=ultimo->siguiente;
+	    bool si=true;
 	    do{
 	        sigu = temp->siguiente;
 	        temp->siguiente = ante;
 	        ante = temp;
 	        temp = sigu;
+	        if(si){
+	        	ultimo=ante;
+	        	si=false;
+			}
 	    }while (temp!=ultimo->siguiente);
 	    sigu = ante;
-//	    inicio=ante;
 	}
 }
