@@ -1,7 +1,8 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 namespace DoubleList{
-	
+	int conteo=0;
 	struct Nodo{
 		int dato;
 		Nodo *siguiente=NULL,*anterior=NULL;	
@@ -9,7 +10,17 @@ namespace DoubleList{
 	bool isEmpty(Nodo *inicio){
 		return inicio==NULL;
 	}
+	bool find(Nodo *inicio,int dato){
+		Nodo *recorrer=new Nodo;
+		recorrer=inicio;
+		while(recorrer!=NULL && dato!=recorrer->dato){
+			recorrer=recorrer->siguiente;
+		}
+		
+		return recorrer!=NULL;
+	}
 	void insertToTheStart(Nodo *&inicio,Nodo *&final,int dato){
+			conteo++;
 			Nodo *nuevo=new Nodo;
 			nuevo->dato=dato;
 			if(!isEmpty(inicio)){
@@ -22,6 +33,7 @@ namespace DoubleList{
 	}
 	
 	void insertToTheEnd(Nodo *&inicio,Nodo *&final,int dato){
+			conteo++;
 			Nodo *nuevo=new Nodo;
 			nuevo->dato=dato;
 			if(!isEmpty(inicio)){
@@ -32,8 +44,23 @@ namespace DoubleList{
 				inicio=final=nuevo;	
 			}
 	}
+	void buscar(Nodo *inicio,Nodo *final,int dato){
+			if(find(inicio,dato)){
+				Nodo *recorrer=new Nodo;
+				recorrer=inicio;
+				int posicion=1;
+				while(recorrer->dato!=dato){
+					posicion++;
+					recorrer=recorrer->siguiente;
+				}
+				cout<<"\nElemento encontrado "<<recorrer->dato<<" en la posicion : "<<posicion<<endl;
+			}else{
+				cout<<"\nNo existe\n";
+			}
+	}
 	void deleteTheStart(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
+			conteo--;
 			if(inicio==final){
 				delete inicio;
 				delete final;
@@ -50,7 +77,8 @@ namespace DoubleList{
 		}
 	}
 	void deleteTheEnd(Nodo *&inicio,Nodo *&final){
-				if(!isEmpty(inicio)){
+		if(!isEmpty(inicio)){
+			conteo--;
 			if(inicio==final){
 				delete inicio;
 				delete final;
@@ -66,19 +94,12 @@ namespace DoubleList{
 		}
 	}
 	
-	bool find(Nodo *inicio,int dato){
-		Nodo *recorrer=new Nodo;
-		recorrer=inicio;
-		while(recorrer!=NULL && dato!=recorrer->dato){
-			recorrer=recorrer->siguiente;
-		}
-		
-		return recorrer!=NULL;
-	}
+	
 	
 	void deleteEspecific(Nodo *&inicio,Nodo *&final,int dato){
 		if(!isEmpty(inicio)){
 			if(find(inicio,dato)){
+				conteo--;
 				Nodo *temporal=new Nodo;
 				
 				if(inicio==final){
@@ -129,5 +150,238 @@ namespace DoubleList{
 			cout<<"\nVacio "<<endl;
 		}
 			
+	}
+	
+	
+	int  numeroDeRepeticiones(Nodo *inicio,int dato){
+		Nodo *recorrer=new Nodo;
+		recorrer=inicio;
+		int cantidad=0;
+		while(recorrer!=NULL){
+			if(recorrer->dato==dato){
+				cantidad++;
+			}
+			recorrer=recorrer->siguiente ;
+		}
+		return cantidad;
+	}
+	void eliminarDosprimeros(Nodo *&inicio,Nodo *&final){
+		if(conteo<2){
+			cout<<"No se puede"<<endl;
+		}else{
+			if(conteo==2){
+				inicio=final=NULL;
+				conteo=conteo-2;
+			}else{
+				for(int i=1;i<=2;i++){
+					deleteTheStart(inicio,final);
+				}
+			}
+		}
+	}
+	void eliminando(vector<int> vect,Nodo *&inicio,Nodo *&final){
+		for(int i=0;i<vect.size();i++){
+				deleteEspecific(inicio,final,vect[i]);
+		}
+		vect.clear();
+	}
+	//eliminar repetidos
+	void eliminarRepetidos(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			vector<int> vect;
+			Nodo *recorrer=new Nodo;
+			int datoTemporal=0;
+			recorrer=inicio;
+			while(recorrer!=NULL){
+				Nodo *nuevo=new Nodo;
+				nuevo=recorrer;
+				int dato=nuevo->dato;
+				int cantidad=numeroDeRepeticiones(recorrer,dato);
+				if(cantidad>1){
+					vect.push_back(dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			for(int i=0;i<vect.size();i++){
+				deleteEspecific(inicio,final,vect[i]);
+			}
+			vect.clear();
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	
+	//Eliminar pares
+	void eliminarPares(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			vector<int> vect1;
+			Nodo *recorrer=new Nodo;
+			recorrer=inicio;
+			while(recorrer!=NULL){
+				if(recorrer->dato % 2 == 0){
+					vect1.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			recorrer=NULL;
+			eliminando(vect1,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	
+	//Eliminar impares
+	void eliminarImpares(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			vector<int> vect;
+			Nodo *recorrer=new Nodo;
+			recorrer=inicio;
+			while(recorrer!=NULL){
+				if(recorrer->dato%2!=0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			recorrer=NULL;
+			eliminando(vect,inicio,final); 
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	
+	
+	//ordenar
+	void ordenarPorBurbuja(Nodo *&inicio,Nodo *final){
+		if(!isEmpty(inicio)){
+			for(Nodo *primero=inicio;primero->siguiente!=NULL;primero=primero->siguiente){
+				for(Nodo *segundo=inicio;segundo!=final;segundo=segundo->siguiente){
+					if(segundo->dato>segundo->siguiente->dato){
+						int aux=segundo->siguiente->dato;
+						segundo->siguiente->dato=segundo->dato;
+						segundo->dato=aux;
+					}
+				}
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//eliminar numeroPrimos
+	void eliminarNumerosPrimos(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			vector<int> vect;
+			Nodo *recorrer=new Nodo;
+			bool primo=false;
+			while(recorrer!=NULL){
+				for(int i=2;i<recorrer->dato;i++){
+					if(recorrer->dato%i==0){
+						primo=true;
+						break;
+					}
+				}
+				if(primo){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//eliminar posiciones pares
+	void eliminarPosicionesPares(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			Nodo *recorrer=new Nodo;
+			vector<int> vect;
+			recorrer=inicio;
+			for(int i=1;i<=conteo;i++){
+				if(i%2==0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//eliminar posiciones impares
+	void eliminarPosicionesImpares(Nodo *&inicio,Nodo *&final){
+	if(!isEmpty(inicio)){
+			Nodo *recorrer=new Nodo;
+			vector<int> vect;
+			recorrer=inicio;
+			for(int i=1;i<=conteo;i++){
+				if(i%2!=0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	void insertarAntesODespues(Nodo *&inicio,Nodo *&final,int dato,int datoSoA,int opcion){
+			if(find(inicio,dato)){
+				conteo++;
+				Nodo *recorrer=new Nodo;
+				Nodo *nuevo=new Nodo;
+				if(opcion==1){
+					if(inicio->dato==dato){
+						recorrer->dato=datoSoA;
+						recorrer->siguiente=inicio;
+						inicio=recorrer;
+					}else{
+						recorrer=inicio->siguiente;
+						Nodo *anterior=new Nodo;
+						anterior=inicio;
+						while(recorrer->dato!=dato){
+							recorrer=recorrer->siguiente;
+							anterior=anterior->siguiente;
+						}
+						nuevo->dato=datoSoA;
+						anterior->siguiente=nuevo;
+						nuevo->siguiente=recorrer;
+					}
+				}else{
+					if(final->dato==dato){
+						recorrer->dato=datoSoA;
+						final->siguiente=recorrer;
+						final=final->siguiente;
+					}else{
+						nuevo->dato=datoSoA;
+						recorrer=inicio;
+						while(recorrer->dato!=dato){
+							recorrer=recorrer->siguiente;
+						}
+						nuevo->siguiente=recorrer->siguiente;
+						recorrer->siguiente=nuevo;
+					}
+				}
+			}else{
+				cout<<"\nNo existe\n";
+			}
+	}
+
+	// Invertir la lista
+	void invertir(Nodo *&inicio,Nodo *&final){
+	    Nodo *ante = NULL;
+	    Nodo *sigu = NULL;
+	    Nodo *temp = new Nodo;
+	    temp=inicio;
+	    while (temp!=NULL) {
+	    	
+	        sigu = temp->siguiente;
+	        temp->siguiente = ante;
+	        ante = temp;
+	        temp = sigu;
+	        if(ante->siguiente==NULL){
+	        	final=ante;
+			}
+	    }
+	    sigu = ante;
+	    inicio=ante;
 	}
 }
