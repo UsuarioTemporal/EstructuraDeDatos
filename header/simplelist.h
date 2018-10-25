@@ -242,7 +242,7 @@ namespace SimpleList{
 	}
 	void eliminando(vector<int> vect,Nodo *&inicio,Nodo *&final){
 		for(int i=0;i<vect.size();i++){
-				deleteEspecific(inicio,final,vect[i]);
+			deleteEspecific(inicio,final,vect[i]);
 		}
 		vect.clear();
 	}
@@ -332,17 +332,17 @@ namespace SimpleList{
 		if(!isEmpty(inicio)){
 			vector<int> vect;
 			Nodo *recorrer=new Nodo;
-			
+			recorrer=inicio;
 			while(recorrer!=NULL){
-				bool primo=false;
+				bool primo=true;
 				for(int i=2;i<recorrer->dato;i++){
 					
 					if(recorrer->dato%i==0){
-						primo=true;
+						primo=false;
 						break;
 					}
 				}
-				if(primo){
+				if(primo && recorrer->dato!=0 && recorrer->dato!=1){
 					vect.push_back(recorrer->dato);
 				}
 				recorrer=recorrer->siguiente;

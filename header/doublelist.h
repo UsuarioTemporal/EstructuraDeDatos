@@ -300,16 +300,17 @@ namespace DoubleList{
 		if(!isEmpty(inicio)){
 			vector<int> vect;
 			Nodo *recorrer=new Nodo;
-			
+			recorrer=inicio;
 			while(recorrer!=NULL){
-				bool primo=false;
+				bool primo=true;
 				for(int i=2;i<recorrer->dato;i++){
+					
 					if(recorrer->dato%i==0){
-						primo=true;
+						primo=false;
 						break;
 					}
 				}
-				if(primo){
+				if(primo && recorrer->dato!=0 && recorrer->dato!=1){
 					vect.push_back(recorrer->dato);
 				}
 				recorrer=recorrer->siguiente;
