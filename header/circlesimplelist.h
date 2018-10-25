@@ -232,5 +232,125 @@ namespace CircleSimpleList{
 			cout<<"\nVacio\n";
 		}
 	}
+	//Eliminar pares
+	void eliminarPares(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			vector<int> vect1;
+			Nodo *recorrer=new Nodo;
+			recorrer=ultimo;
+			do{
+				if(recorrer->dato % 2 == 0){
+					vect1.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}while(recorrer!=ultimo->siguiente);
+			recorrer=NULL;
+			eliminando(vect1,ultimo);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//Eliminar impares
+	void eliminarImares(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			vector<int> vect1;
+			Nodo *recorrer=new Nodo;
+			recorrer=ultimo;
+			do{
+				if(recorrer->dato % 2 != 0){
+					vect1.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}while(recorrer!=ultimo->siguiente);
+			recorrer=NULL;
+			eliminando(vect1,ultimo);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//eliminar numeroPrimos
+	void eliminarNumerosPrimos(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			vector<int> vect;
+			Nodo *recorrer=new Nodo;
+			recorrer=ultimo;
+			do{
+				bool primo=true;
+				for(int i=2;i<recorrer->dato;i++){
+					
+					if(recorrer->dato%i==0){
+						primo=false;
+						break;
+					}
+				}
+				if(primo && recorrer->dato!=0 && recorrer->dato!=1){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}while(recorrer!=ultimo->siguiente);
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
 	
+	//eliminar posiciones pares
+	void eliminarPosicionesPares(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			Nodo *recorrer=new Nodo;
+			vector<int> vect;
+			recorrer=ultimo;
+			for(int i=1;i<=conteo;i++){
+				if(i%2==0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//eliminar posiciones impares
+	void eliminarPosicionesPares(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			Nodo *recorrer=new Nodo;
+			vector<int> vect;
+			recorrer=ultimo;
+			for(int i=1;i<=conteo;i++){
+				if(i%2!=0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	
+	//ordenar
+	void ordenarPorBurbuja(Nodo *&ultimo){
+		if(!isEmpty(ultimo)){
+			if(conteo>1){
+				Nodo *primero=new Nodo;
+				primero=ultimo->siguiente;
+				do{
+					Nodo *segundo=new Nodo;
+					segundo=ultimo->siguiente;
+					do{
+						if(segundo->dato>segundo->siguiente->dato){
+							int aux=segundo->siguiente->dato;
+							segundo->siguiente->dato=segundo->dato;
+							segundo->dato=aux;
+						}
+						segundo=segundo->siguiente;
+					}while(segundo->siguiente!=ultimo);
+					primero=primero->siguiente;
+				}while(primero!=ultimo->siguiente);
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
 }
