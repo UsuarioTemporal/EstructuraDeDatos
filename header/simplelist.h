@@ -404,8 +404,7 @@ namespace SimpleList{
 		}else{
 			cout<<"\nVacio\n";
 		}
-	} 
-	//insertar fibonacci
+	}
 	// Invertir la lista
 	void invertir(Nodo *&inicio,Nodo *&final){
 	    Nodo *ante = NULL;
@@ -413,12 +412,17 @@ namespace SimpleList{
 	    Nodo *temp = new Nodo;
 	    temp=inicio;
 	    while (temp!=NULL) {
+	    	
 	        sigu = temp->siguiente;
 	        temp->siguiente = ante;
 	        ante = temp;
 	        temp = sigu;
+	        if(ante->siguiente==NULL){
+	        	final=ante;
+			}
 	    }
 	    sigu = ante;
+	    inicio=ante;
 	}
 	
 }
