@@ -264,9 +264,7 @@ namespace CircleSimpleList{
 				}
 				recorrer=recorrer->siguiente;
 			}while(recorrer!=ultimo->siguiente);
-			for(int i=0;i<vect.size();i++){
-				cout<<vect[i]<<" ";
-			}
+			
 			eliminando(vect,ultimo);
 		}else{
 			cout<<"\nVacio\n";
@@ -385,7 +383,7 @@ namespace CircleSimpleList{
 							segundo->dato=aux;
 						}
 						segundo=segundo->siguiente;
-					}while(segundo->siguiente!=ultimo);
+					}while(segundo!=ultimo);
 					primero=primero->siguiente;
 				}while(primero!=ultimo->siguiente);
 			}
