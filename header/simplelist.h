@@ -239,27 +239,30 @@ namespace SimpleList{
 			}
 		}
 	}
+	void eliminando(vector<int> vect,Nodo *&inicio,Nodo *&final){
+		for(int i=0;i<vect.size();i++){
+				deleteEspecific(inicio,final,vect[i]);
+		}
+	}
+	//eliminar repetidos
 	void eliminarRepetidos(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
 			vector<int> vect;
 			Nodo *recorrer=new Nodo;
+			int datoTemporal=0;
 			recorrer=inicio;
 			while(recorrer!=NULL){
 				Nodo *nuevo=new Nodo;
 				nuevo=recorrer;
 				int dato=nuevo->dato;
-				int cantidad=numeroDeRepeticiones(inicio,dato)-1;
+				int cantidad=numeroDeRepeticiones(recorrer,dato);
 				if(cantidad>1){
 					vect.push_back(dato);
-					vect.push_back(cantidad);
 				}
-				recorrer=recorrer->siguiente ;
+				recorrer=recorrer->siguiente;
 			}
-			for(int i=0;i<vect.size();){
-				for(int j=1;j<vect[i+1];j++){
-					deleteEspecific(inicio,final,vect[i]);
-				}
-				i+=2;
+			for(int i=0;i<vect.size();i++){
+				deleteEspecific(inicio,final,vect[i]);
 			}
 			vect.clear();
 		}else{
@@ -274,7 +277,7 @@ namespace SimpleList{
 			Nodo *recorrer=new Nodo;
 			recorrer=inicio;
 			while(recorrer!=NULL){
-				if(recorrer->dato%2==0){
+				if(recorrer->dato % 2 == 0){
 					vect.push_back(recorrer->dato);
 				}
 				recorrer=recorrer->siguiente;
@@ -282,7 +285,6 @@ namespace SimpleList{
 			for(int i=0;i<vect.size();i++){
 				deleteEspecific(inicio,final,vect[i]);
 			}
-			vect.clear();
 		}else{
 			cout<<"\nVacio\n";
 		}
@@ -303,16 +305,28 @@ namespace SimpleList{
 			for(int i=0;i<vect.size();i++){
 				deleteEspecific(inicio,final,vect[i]);
 			}
-			vect.clear();
 		}else{
 			cout<<"\nVacio\n";
 		}
 	}
-	//Eliminar pares
-	//Eliminar impares
-	//eliminar repetidos
+	
 	
 	//ordenar
+	void ordenarPorBurbuja(Nodo *&inicio,Nodo *final){
+		if(!isEmpty(inicio)){
+			for(Nodo *primero=inicio;primero->siguiente!=NULL;primero=primero->siguiente){
+				for(Nodo *segundo=inicio;segundo!=final;segundo=segundo->siguiente){
+					if(segundo->dato>segundo->siguiente->dato){
+						int aux=segundo->siguiente->dato;
+						segundo->siguiente->dato=segundo->dato;
+						segundo->dato=aux;
+					}
+				}
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
 	//eliminar posiciones pares 
 	//eliminar posiciones impares
 	//mover cada ... ejm mover cada dos posiciones : 1 - 2 - 3 - 4 , resultado : 3 - 4 - 1 - 2 
