@@ -323,41 +323,39 @@ namespace DoubleList{
 			cout<<"\nVacio\n";
 		}
 	}
-	void insertarAntesODespues(Nodo *&inicio,Nodo *&final,int dato,int datoSoA,int opcion){
-			if(find(inicio,dato)){
-				conteo++;
+	void insertarAntesODespues(Nodo *&inicio,Nodo *&final,int datoFijo,int dato,int opcion){
+			if(find(inicio,datoFijo)){
 				Nodo *recorrer=new Nodo;
 				Nodo *nuevo=new Nodo;
-				if(opcion==1){
-					if(inicio->dato==dato){
-						recorrer->dato=datoSoA;
-						recorrer->siguiente=inicio;
-						inicio=recorrer;
+				if(opcion==1){ // antes
+					if(inicio->dato==datoFijo){
+						insertToTheStart(inicio,final,dato);
 					}else{
-						recorrer=inicio->siguiente;
-						Nodo *anterior=new Nodo;
-						anterior=inicio;
-						while(recorrer->dato!=dato){
-							recorrer=recorrer->siguiente;
-							anterior=anterior->siguiente;
-						}
-						nuevo->dato=datoSoA;
-						anterior->siguiente=nuevo;
-						nuevo->siguiente=recorrer;
-					}
-				}else{
-					if(final->dato==dato){
-						recorrer->dato=datoSoA;
-						final->siguiente=recorrer;
-						final=final->siguiente;
-					}else{
-						nuevo->dato=datoSoA;
+						conteo++;
 						recorrer=inicio;
-						while(recorrer->dato!=dato){
-							recorrer=recorrer->siguiente;
+						while(recorrer->siguiente->dato!=datoFijo){
+							recorrer=recorrer->siguiente
 						}
+						nuevo->dato=dato;
 						nuevo->siguiente=recorrer->siguiente;
+						nuevo->siguiente->anterior=nuevo;
 						recorrer->siguiente=nuevo;
+						nuevo->anterior=recorrer;
+					}
+				}else{//despues
+					if(final->dato==datoFijo){
+						insertToTheEnd(inicio,final,dato);
+					}else{
+						conteo++;
+						recorrer=inicio;
+						while(recorrer->dato!=datoFijo){
+							recorrer=recorrer->siguiente
+						}
+						nuevo->dato=dato;
+						nuevo->siguiente=recorrer->siguiente;
+						nuevo->siguiente->anterior=nuevo;
+						recorrer->siguiente=nuevo;
+						nuevo->anterior=recorrer;
 					}
 				}
 			}else{

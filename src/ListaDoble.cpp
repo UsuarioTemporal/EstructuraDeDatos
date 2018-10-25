@@ -17,10 +17,24 @@ void menu(){
 		cout<<"3. Eliminar el inicio"<<endl;
 		cout<<"4. Eliminar el final"<<endl;
 		cout<<"5. Eliminar especifico"<<endl;
-		cout<<"6. Mostrar "<<endl;
-		cout<<"7. Limpiar "<<endl;
-		cout<<"8. Salir "<<endl;
+		cout<<"6. Buscar "<<endl;
+		cout<<"7. Ingresar dato en :  "<<endl;
+		cout<<"8. Mostrar  "<<endl;
+		cout<<"9. Cantidad de elementos  "<<endl;
+		cout<<"10. Menor y mayor "<<endl;
+		cout<<"11. Eliminar Nodos repetidos "<<endl;
+		cout<<"12. ELIMINAR DOS PRIMEROS "<<endl;
+		cout<<"13. eliminar pares "<<endl;
+		cout<<"14. eliminar impares "<<endl;
+		cout<<"15. Ordenar por burbuja "<<endl;
+		cout<<"16. Eliminar Posicion par "<<endl;
+		cout<<"17. Eliminar Posicion impar "<<endl;
+		cout<<"18. Eliminar numeros primos "<<endl;
+		cout<<"19. Invertir lista "<<endl;
+		cout<<"20. limpiar "<<endl;
+		cout<<"21. Salir "<<endl;
 		int op;
+		cout<<"\nOpcion : ";
 		cin>>op;
 		condition=!opciones(op);
 	}while(condition);
@@ -37,19 +51,81 @@ bool opciones(int op){
 			insertToTheEnd(inicio,final,dato);
 			break;
 		case 3:
-			deleteTheStart(inicio,final);
+			deleteToTheStart(inicio,final);
 			break;
 		case 4:
-			deleteTheEnd(inicio,final);
+			deleteToTheEnd(inicio,final);
 			break;
 		case 5:
-			cin>>dato;
-			deleteEspecific(inicio,final,dato);
+			if(isEmpty(inicio)){
+				cout<<"\nVacio\n";
+			}else{
+				cin>>dato;
+				deleteEspecific(inicio,final,dato);
+			}
 			break;
 		case 6:
-			show(inicio);
+			if(isEmpty(inicio)){
+				cout<<"\nVacio\n";
+			}else{
+				cin>>dato;
+				buscar(inicio,final,dato);
+			}
 			break;
 		case 7:
+			if(!isEmpty(inicio)){
+				int opcion;
+				int datoSoA;
+				cout<<"El valor que sera fijo : ";
+				cin>>dato;
+				cout<<"1.Antes"<<endl;
+				cout<<"2.Despues"<<endl;
+				cin>>opcion;
+				cout<<"Ingrese el dato : ";
+				cin>>datoSoA;
+				insertarAntesODespues(inicio,final,dato,datoSoA,opcion);
+			
+			}else{
+				cout<<"\nvacio\n";
+			}
+			break;
+		case 8:
+			show(inicio);
+			break;
+		case 9:
+			contar(inicio);
+			break;
+		case 10:
+			menorYMayor(inicio);
+			break;
+		case 11:
+			eliminarRepetidos(inicio,final);
+			break;
+		case 12:
+			eliminarDosprimeros(inicio,final);
+			break;
+		case 13:
+			eliminarPares(inicio,final);
+			break;
+		case 14:
+			eliminarImpares(inicio,final);
+			break;
+		case 15:
+			ordenarPorBurbuja(inicio,final); 
+			break;
+		case 16:
+			eliminarPosicionesPares(inicio,final);
+			break;
+		case 17:
+			eliminarPosicionesImpares(inicio,final);
+			break;
+		case 18:
+			eliminarNumerosPrimos(inicio,final);
+			break;
+		case 19:
+			invertir(inicio,final);
+			break;
+		case 20:
 			system("cls");
 			break;
 		default : 
