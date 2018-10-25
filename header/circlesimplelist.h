@@ -288,7 +288,7 @@ namespace CircleSimpleList{
 				}
 				recorrer=recorrer->siguiente;
 			}while(recorrer!=ultimo->siguiente);
-			eliminando(vect,inicio,final);
+			eliminando(vect,ultimo);
 		}else{
 			cout<<"\nVacio\n";
 		}
@@ -306,13 +306,13 @@ namespace CircleSimpleList{
 				}
 				recorrer=recorrer->siguiente;
 			}
-			eliminando(vect,inicio,final);
+			eliminando(vect,ultimo);
 		}else{
 			cout<<"\nVacio\n";
 		}
 	}
 	//eliminar posiciones impares
-	void eliminarPosicionesPares(Nodo *&ultimo){
+	void eliminarPosicionesImpares(Nodo *&ultimo){
 		if(!isEmpty(ultimo)){
 			Nodo *recorrer=new Nodo;
 			vector<int> vect;
@@ -323,7 +323,7 @@ namespace CircleSimpleList{
 				}
 				recorrer=recorrer->siguiente;
 			}
-			eliminando(vect,inicio,final);
+			eliminando(vect,ultimo);
 		}else{
 			cout<<"\nVacio\n";
 		}
