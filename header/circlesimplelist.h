@@ -353,4 +353,19 @@ namespace CircleSimpleList{
 			cout<<"\nVacio\n";
 		}
 	}
+	
+	void invertir(Nodo *&ultimo){
+	    Nodo *ante = this;
+	    Nodo *sigu = this;
+	    Nodo *temp = new Nodo;
+	    temp=ultimo;
+	    do{
+	        sigu = temp->siguiente;
+	        temp->siguiente = ante;
+	        ante = temp;
+	        temp = sigu;
+	    }while (temp!=ultimo->siguiente);
+	    sigu = ante;
+	    inicio=ante;
+	}
 }
