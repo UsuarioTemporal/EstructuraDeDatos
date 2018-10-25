@@ -40,7 +40,8 @@ namespace SimpleList{
 		}
 	}
 	void insertToTheStart(Nodo *&inicio,Nodo *&final,int dato){
-		conteo++;
+		conteo=conteo+1;
+		cout<<conteo;
 		Nodo *nuevo1=new Nodo;
 		nuevo1->dato=dato;
 		if(isEmpty(inicio)){
@@ -155,7 +156,7 @@ namespace SimpleList{
 			if(find(inicio,dato)){
 				Nodo *recorrer=new Nodo;
 				recorrer=inicio;
-				int posicion=0;
+				int posicion=1;
 				while(recorrer->dato!=dato){
 					posicion++;
 					recorrer=recorrer->siguiente;
@@ -327,9 +328,67 @@ namespace SimpleList{
 			cout<<"\nVacio\n";
 		}
 	}
-	//eliminar posiciones pares 
+	//eliminar numeroPrimos
+	void eliminarNumerosPrimos(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			vector<int> vect;
+			Nodo *recorrer=new Nodo;
+			bool primo=false;
+			while(recorrer!=NULL){
+				for(int i=2;i<recorrer->dato;i++){
+					if(recorrer->dato%i==0){
+						primo=true;
+						break;
+					}
+				}
+				if(primo){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//eliminar posiciones pares
+	void eliminarPosicionesPares(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			Nodo *recorrer=new Nodo;
+			vector<int> vect;
+			recorrer=inicio;
+			for(int i=1;i<=conteo;i++){
+				if(i%2==0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
 	//eliminar posiciones impares
-	//mover cada ... ejm mover cada dos posiciones : 1 - 2 - 3 - 4 , resultado : 3 - 4 - 1 - 2 
+	void eliminarPosicionesImpares(){
+	if(!isEmpty(inicio)){
+			Nodo *recorrer=new Nodo;
+			vector<int> vect;
+			recorrer=inicio;
+			for(int i=1;i<=conteo;i++){
+				if(i%2!=0){
+					vect.push_back(recorrer->dato);
+				}
+				recorrer=recorrer->siguiente;
+			}
+			eliminando(vect,inicio,final);
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//mover cada ... ejm mover cada dos posiciones : 1 - 2 - 3 - 4 , resultado : 3 - 4 - 1 - 2
+	void rotando(){
+		
+	} 
 	//insertar fibonacci
 	//combinar listas
 	//invertir listar
