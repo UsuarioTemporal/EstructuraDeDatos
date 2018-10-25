@@ -392,7 +392,7 @@ namespace CircleSimpleList{
 		}
 	}
 	
-	void invertir(Nodo *&ultimo){ // No funcional
+	void invertir(Nodo *&ultimo){
 	    Nodo *ante = new Nodo;
 	    Nodo *sigu = new Nodo;
 	    Nodo *temp = new Nodo;
