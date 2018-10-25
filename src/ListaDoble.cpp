@@ -51,10 +51,10 @@ bool opciones(int op){
 			insertToTheEnd(inicio,final,dato);
 			break;
 		case 3:
-			deleteToTheStart(inicio,final);
+			deleteTheStart(inicio,final);
 			break;
 		case 4:
-			deleteToTheEnd(inicio,final);
+			deleteTheEnd(inicio,final);
 			break;
 		case 5:
 			if(isEmpty(inicio)){

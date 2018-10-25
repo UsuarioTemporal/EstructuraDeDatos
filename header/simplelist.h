@@ -332,9 +332,11 @@ namespace SimpleList{
 		if(!isEmpty(inicio)){
 			vector<int> vect;
 			Nodo *recorrer=new Nodo;
-			bool primo=false;
+			
 			while(recorrer!=NULL){
+				bool primo=false;
 				for(int i=2;i<recorrer->dato;i++){
+					
 					if(recorrer->dato%i==0){
 						primo=true;
 						break;
@@ -404,6 +406,7 @@ namespace SimpleList{
 //			cout<<"\nVacio\n";
 //		}
 //	}
+
 	// Invertir la lista
 	void invertir(Nodo *&inicio,Nodo *&final){
 	    Nodo *ante = NULL;

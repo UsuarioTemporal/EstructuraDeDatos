@@ -10,6 +10,35 @@ namespace DoubleList{
 	bool isEmpty(Nodo *inicio){
 		return inicio==NULL;
 	}
+	void contar(Nodo *inicio){
+		if(!isEmpty(inicio)){
+			cout<<"\nCantidad de elementos : "<<conteo<<endl;
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	void menorYMayor(Nodo *inicio){
+		if(isEmpty(inicio)){
+			cout<<"\nVacio\n";
+		}else{
+			Nodo *recorrer=new Nodo;
+			recorrer=inicio;
+			int mayor=recorrer->dato;
+			int menor=recorrer->dato;
+			while(recorrer!=NULL){
+				if(menor>recorrer->dato){
+					menor=recorrer->dato;
+				}
+				if(mayor<recorrer->dato){
+					mayor=recorrer->dato;
+				}
+				recorrer=recorrer->siguiente;
+			}
+			
+			cout<<"\nEl menor de los datos es "<<menor;
+			cout<<"\nEl mayor de los datos es "<<mayor;
+		}
+	}
 	bool find(Nodo *inicio,int dato){
 		Nodo *recorrer=new Nodo;
 		recorrer=inicio;
@@ -271,8 +300,9 @@ namespace DoubleList{
 		if(!isEmpty(inicio)){
 			vector<int> vect;
 			Nodo *recorrer=new Nodo;
-			bool primo=false;
+			
 			while(recorrer!=NULL){
+				bool primo=false;
 				for(int i=2;i<recorrer->dato;i++){
 					if(recorrer->dato%i==0){
 						primo=true;
@@ -308,21 +338,21 @@ namespace DoubleList{
 	}
 	//eliminar posiciones impares
 	void eliminarPosicionesImpares(Nodo *&inicio,Nodo *&final){
-	if(!isEmpty(inicio)){
-			Nodo *recorrer=new Nodo;
-			vector<int> vect;
-			recorrer=inicio;
-			for(int i=1;i<=conteo;i++){
-				if(i%2!=0){
-					vect.push_back(recorrer->dato);
+		if(!isEmpty(inicio)){
+				Nodo *recorrer=new Nodo;
+				vector<int> vect;
+				recorrer=inicio;
+				for(int i=1;i<=conteo;i++){
+					if(i%2!=0){
+						vect.push_back(recorrer->dato);
+					}
+					recorrer=recorrer->siguiente;
 				}
-				recorrer=recorrer->siguiente;
+				eliminando(vect,inicio,final);
+			}else{
+				cout<<"\nVacio\n";
 			}
-			eliminando(vect,inicio,final);
-		}else{
-			cout<<"\nVacio\n";
 		}
-	}
 	void insertarAntesODespues(Nodo *&inicio,Nodo *&final,int datoFijo,int dato,int opcion){
 			if(find(inicio,datoFijo)){
 				Nodo *recorrer=new Nodo;
@@ -334,7 +364,7 @@ namespace DoubleList{
 						conteo++;
 						recorrer=inicio;
 						while(recorrer->siguiente->dato!=datoFijo){
-							recorrer=recorrer->siguiente
+							recorrer=recorrer->siguiente;
 						}
 						nuevo->dato=dato;
 						nuevo->siguiente=recorrer->siguiente;
@@ -349,7 +379,7 @@ namespace DoubleList{
 						conteo++;
 						recorrer=inicio;
 						while(recorrer->dato!=datoFijo){
-							recorrer=recorrer->siguiente
+							recorrer=recorrer->siguiente;
 						}
 						nuevo->dato=dato;
 						nuevo->siguiente=recorrer->siguiente;
