@@ -392,11 +392,12 @@ namespace CircleSimpleList{
 		}
 	}
 	
-	void invertir(Nodo *&ultimo){
+	void invertir(Nodo *&ultimo){ // No funcional
 	    Nodo *ante = new Nodo;
 	    Nodo *sigu = new Nodo;
 	    Nodo *temp = new Nodo;
 	    temp=ultimo->siguiente;
+	    ante=ultimo;
 	    bool si=true;
 	    do{
 	        sigu = temp->siguiente;
@@ -407,7 +408,7 @@ namespace CircleSimpleList{
 	        	ultimo=ante;
 	        	si=false;
 			}
-	    }while (temp!=ultimo->siguiente);
+	    }while (temp!=ultimo);
 	    sigu = ante;
 	}
 }
