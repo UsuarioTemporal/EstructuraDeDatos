@@ -274,7 +274,7 @@ namespace CircleSimpleList{
 		if(!isEmpty(ultimo)){
 			vector<int> vect1;
 			Nodo *recorrer=new Nodo;
-			recorrer=ultimo;
+			recorrer=ultimo->siguiente;
 			do{
 				if(recorrer->dato % 2 == 0){
 					vect1.push_back(recorrer->dato);
@@ -292,7 +292,7 @@ namespace CircleSimpleList{
 		if(!isEmpty(ultimo)){
 			vector<int> vect1;
 			Nodo *recorrer=new Nodo;
-			recorrer=ultimo;
+			recorrer=ultimo->siguiente;
 			do{
 				if(recorrer->dato % 2 != 0){
 					vect1.push_back(recorrer->dato);
@@ -310,7 +310,7 @@ namespace CircleSimpleList{
 		if(!isEmpty(ultimo)){
 			vector<int> vect;
 			Nodo *recorrer=new Nodo;
-			recorrer=ultimo;
+			recorrer=ultimo->siguiente;
 			do{
 				bool primo=true;
 				for(int i=2;i<recorrer->dato;i++){
@@ -336,7 +336,7 @@ namespace CircleSimpleList{
 		if(!isEmpty(ultimo)){
 			Nodo *recorrer=new Nodo;
 			vector<int> vect;
-			recorrer=ultimo;
+			recorrer=ultimo->siguiente;
 			for(int i=1;i<=conteo;i++){
 				if(i%2==0){
 					vect.push_back(recorrer->dato);
@@ -353,7 +353,7 @@ namespace CircleSimpleList{
 		if(!isEmpty(ultimo)){
 			Nodo *recorrer=new Nodo;
 			vector<int> vect;
-			recorrer=ultimo;
+			recorrer=ultimo->siguiente;
 			for(int i=1;i<=conteo;i++){
 				if(i%2!=0){
 					vect.push_back(recorrer->dato);
