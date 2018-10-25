@@ -251,7 +251,6 @@ namespace SimpleList{
 		if(!isEmpty(inicio)){
 			vector<int> vect;
 			Nodo *recorrer=new Nodo;
-			int datoTemporal=0;
 			recorrer=inicio;
 			while(recorrer!=NULL){
 				Nodo *nuevo=new Nodo;
@@ -263,10 +262,7 @@ namespace SimpleList{
 				}
 				recorrer=recorrer->siguiente;
 			}
-			for(int i=0;i<vect.size();i++){
-				deleteEspecific(inicio,final,vect[i]);
-			}
-			vect.clear();
+			eliminando(vect,inicio,final);
 		}else{
 			cout<<"\nVacio\n";
 		}
