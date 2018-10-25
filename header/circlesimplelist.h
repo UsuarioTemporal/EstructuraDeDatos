@@ -221,9 +221,9 @@ namespace CircleSimpleList{
 		}while(recorrer!=ultimo->siguiente);
 		cout<<"\n"<<cadena<<"\n";
 	}
-	int  numeroDeRepeticiones(Nodo *ultimo,int dato){
+	int  numeroDeRepeticiones(Nodo *posicion,Nodo *ultimo,int dato){
 		Nodo *recorrer=new Nodo;
-		recorrer=ultimo->siguiente;
+		recorrer=posicion;
 		int cantidad=0;
 		do{
 			if(recorrer->dato==dato){
@@ -258,12 +258,15 @@ namespace CircleSimpleList{
 				Nodo *nuevo=new Nodo;
 				nuevo=recorrer;
 				int dato=nuevo->dato;
-				int cantidad=numeroDeRepeticiones(recorrer,dato);
+				int cantidad=numeroDeRepeticiones(recorrer,ultimo,dato);
 				if(cantidad>1){
 					vect.push_back(dato);
 				}
 				recorrer=recorrer->siguiente;
 			}while(recorrer!=ultimo->siguiente);
+			for(int i=0;i<vect.size();i++){
+				cout<<vect[i]<<" ";
+			}
 			eliminando(vect,ultimo);
 		}else{
 			cout<<"\nVacio\n";
