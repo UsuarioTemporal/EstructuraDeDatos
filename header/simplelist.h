@@ -369,7 +369,7 @@ namespace SimpleList{
 		}
 	}
 	//eliminar posiciones impares
-	void eliminarPosicionesImpares(){
+	void eliminarPosicionesImpares(Nodo *&inicio,Nodo *&final){
 	if(!isEmpty(inicio)){
 			Nodo *recorrer=new Nodo;
 			vector<int> vect;
@@ -386,10 +386,39 @@ namespace SimpleList{
 		}
 	}
 	//mover cada ... ejm mover cada dos posiciones : 1 - 2 - 3 - 4 , resultado : 3 - 4 - 1 - 2
-	void rotando(){
-		
+	void rotando(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			int dato;cin>>dato;
+			if(dato>conteo){
+				Nodo *nuevoInicio=new Nodo;
+				nuevoInicio=inicio;
+				Nodo *nuevoFinal=new Nodo;
+				nuevoFinal=final;
+				Nodo *recorrer=new Nodo;
+				recorrer=inicio;
+				for(int i=1;i<dato;i++){
+					recorrer=recorrer->siguiente;
+				}
+				
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
 	} 
 	//insertar fibonacci
-	//combinar listas
-	//invertir listar
+	// Invertir la lista
+	void invertir(Nodo *&inicio,Nodo *&final){
+	    Nodo *ante = NULL;
+	    Nodo *sigu = NULL;
+	    Nodo *temp = new Nodo;
+	    temp=inicio;
+	    while (temp!=NULL) {
+	        sigu = temp->siguiente;
+	        temp->siguiente = ante;
+	        ante = temp;
+	        temp = sigu;
+	    }
+	    sigu = ante;
+	}
+	
 }
