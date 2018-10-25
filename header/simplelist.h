@@ -244,6 +244,7 @@ namespace SimpleList{
 		for(int i=0;i<vect.size();i++){
 				deleteEspecific(inicio,final,vect[i]);
 		}
+		vect.clear();
 	}
 	//eliminar repetidos
 	void eliminarRepetidos(Nodo *&inicio,Nodo *&final){
@@ -274,18 +275,17 @@ namespace SimpleList{
 	//Eliminar pares
 	void eliminarPares(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
-			vector<int> vect;
+			vector<int> vect1;
 			Nodo *recorrer=new Nodo;
 			recorrer=inicio;
 			while(recorrer!=NULL){
 				if(recorrer->dato % 2 == 0){
-					vect.push_back(recorrer->dato);
+					vect1.push_back(recorrer->dato);
 				}
 				recorrer=recorrer->siguiente;
 			}
-			for(int i=0;i<vect.size();i++){
-				deleteEspecific(inicio,final,vect[i]);
-			}
+			recorrer=NULL;
+			eliminando(vect1,inicio,final);
 		}else{
 			cout<<"\nVacio\n";
 		}
@@ -303,9 +303,8 @@ namespace SimpleList{
 				}
 				recorrer=recorrer->siguiente;
 			}
-			for(int i=0;i<vect.size();i++){
-				deleteEspecific(inicio,final,vect[i]);
-			}
+			recorrer=NULL;
+			eliminando(vect,inicio,final); 
 		}else{
 			cout<<"\nVacio\n";
 		}

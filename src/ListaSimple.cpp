@@ -30,8 +30,12 @@ void menu(){
 		cout<<"13. eliminar pares "<<endl;
 		cout<<"14. eliminar impares "<<endl;
 		cout<<"15. Ordenar por burbuja "<<endl;
-		cout<<"16. limpiar "<<endl;
-		cout<<"17. Salir "<<endl;
+		cout<<"16. Eliminar Posicion par "<<endl;
+		cout<<"17. Eliminar Posicion impar "<<endl;
+		cout<<"18. Eliminar numeros primos "<<endl;
+		cout<<"19. Invertir lista "<<endl;
+		cout<<"20. limpiar "<<endl;
+		cout<<"21. Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -105,6 +109,7 @@ bool opciones(int op){
 			break;
 		case 13:
 			eliminarPares(inicio,final);
+			break;
 		case 14:
 			eliminarImpares(inicio,final);
 			break;
@@ -112,6 +117,18 @@ bool opciones(int op){
 			ordenarPorBurbuja(inicio,final); 
 			break;
 		case 16:
+			eliminarPosicionesPares(inicio,final);
+			break;
+		case 17:
+			eliminarPosicionesImpares(inicio,final);
+			break;
+		case 18:
+			eliminarNumerosPrimos(inicio,final);
+			break;
+		case 19:
+			invertir(inicio,final);
+			break;
+		case 20:
 			system("cls");
 			break;
 		default : 
