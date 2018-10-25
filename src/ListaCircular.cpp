@@ -10,15 +10,29 @@ int main(){
 void menu(){
 	bool condition=true;
 	do{
-		cout<<"\n1. Insertar al final"<<endl;
-		cout<<"2. Insertar al inicio"<<endl;
-		cout<<"3. Eliminar al inicio"<<endl;
-		cout<<"4. Eliminar al final"<<endl;
+		cout<<"\n1. Insertar al comienzo "<<endl;
+		cout<<"2. Insertar al final "<<endl;
+		cout<<"3. Eliminar el inicio"<<endl;
+		cout<<"4. Eliminar el final"<<endl;
 		cout<<"5. Eliminar especifico"<<endl;
-		cout<<"6. Mostrar "<<endl;
-		cout<<"7. Limpiar "<<endl;
-		cout<<"8. Salir "<<endl;
+		cout<<"6. Buscar "<<endl;
+		cout<<"7. Ingresar dato en :  "<<endl;
+		cout<<"8. Mostrar  "<<endl;
+		cout<<"9. Cantidad de elementos  "<<endl;
+		cout<<"10. Menor y mayor "<<endl;
+		cout<<"11. Eliminar Nodos repetidos "<<endl;
+		cout<<"12. ELIMINAR DOS PRIMEROS "<<endl;
+		cout<<"13. eliminar pares "<<endl;
+		cout<<"14. eliminar impares "<<endl;
+		cout<<"15. Ordenar por burbuja "<<endl;
+		cout<<"16. Eliminar Posicion par "<<endl;
+		cout<<"17. Eliminar Posicion impar "<<endl;
+		cout<<"18. Eliminar numeros primos "<<endl;
+		cout<<"19. Invertir lista "<<endl;
+		cout<<"20. limpiar "<<endl;
+		cout<<"21. Salir "<<endl;
 		int op;
+		cout<<"\nOpcion : ";
 		cin>>op;
 		condition=!opciones(op);
 	}while(condition);
@@ -28,11 +42,11 @@ bool opciones(int op){
 		int dato;
 		case 1:
 			cin>>dato;
-			insertToEnd(ultimo,dato);
+			insertToStart(ultimo,dato);
 			break;
 		case 2:
 			cin>>dato;
-			insertToStart(ultimo,dato);
+			insertToEnd(ultimo,dato);
 			break;
 		case 3:
 			deleteToStart(ultimo);
@@ -41,13 +55,75 @@ bool opciones(int op){
 			deleteToEnd(ultimo);
 			break;
 		case 5:
-			cin>>dato;
-			deleteEspecific(ultimo,dato);
+			if(isEmpty(ultimo)){
+				cout<<"\nVacio\n";
+			}else{
+				cin>>dato;
+				deleteEspecific(ultimo,dato);
+			}
 			break;
 		case 6:
-			show(ultimo);
+			if(isEmpty(ultimo)){
+				cout<<"\nVacio\n";
+			}else{
+				cin>>dato;
+				buscar(ultimo,dato);
+			}
 			break;
 		case 7:
+			if(!isEmpty(ultimo)){
+				int opcion;
+				int datoSoA;
+				cout<<"El valor que sera fijo : ";
+				cin>>dato;
+				cout<<"1.Antes"<<endl;
+				cout<<"2.Despues"<<endl;
+				cin>>opcion;
+				cout<<"Ingrese el dato : ";
+				cin>>datoSoA;
+				insertToEndOrToStartOf(ultimo,dato,datoSoA,opcion);
+			
+			}else{
+				cout<<"\nvacio\n";
+			}
+			break;
+		case 8:
+			show(ultimo);
+			break;
+		case 9:
+			contar(ultimo);
+			break;
+		case 10:
+			menorYMayor(ultimo);
+			break;
+		case 11:
+			eliminarRepetidos(ultimo);
+			break;
+		case 12:
+			eliminarDosprimeros(ultimo);
+			break;
+		case 13:
+			eliminarPares(ultimo);
+			break;
+		case 14:
+			eliminarImpares(ultimo);
+			break;
+		case 15:
+			ordenarPorBurbuja(ultimo); 
+			break;
+		case 16:
+			eliminarPosicionesPares(ultimo);
+			break;
+		case 17:
+			eliminarPosicionesImpares(ultimo);
+			break;
+		case 18:
+			eliminarNumerosPrimos(ultimo);
+			break;
+		case 19:
+			invertir(ultimo);
+			break;
+		case 20:
 			system("cls");
 			break;
 		default : 

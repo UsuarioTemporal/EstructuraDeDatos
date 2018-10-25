@@ -21,7 +21,8 @@ namespace CircleSimpleList{
 			cout<<"\nNumero de elementos : "<<conteo<<endl;
 		}
 	}
-	/// :| 
+	/// :|
+	
 	void insertToEnd(Nodo *&ultimo,int dato){
 		Nodo *nuevo=new Nodo;
 		nuevo->dato=dato;
@@ -31,7 +32,29 @@ namespace CircleSimpleList{
 			ultimo->siguiente=nuevo;
 		}
 		ultimo=nuevo;
-	}	
+	}
+	void menorYMayor(Nodo *ultimo){
+		if(isEmpty(ultimo)){
+			cout<<"\nVacio\n";
+		}else{
+			Nodo *recorrer=new Nodo;
+			recorrer=ultimo->siguiente;
+			int mayor=recorrer->dato;
+			int menor=recorrer->dato;
+			do{
+				if(menor>recorrer->dato){
+					menor=recorrer->dato;
+				}
+				if(mayor<recorrer->dato){
+					mayor=recorrer->dato;
+				}
+				recorrer=recorrer->siguiente;
+			}while(recorrer!=ultimo->siguiente);
+			
+			cout<<"\nEl menor de los datos es "<<menor;
+			cout<<"\nEl mayor de los datos es "<<mayor;
+		}
+	}
 	void insertToStart(Nodo *&ultimo,int dato){
 		Nodo *nuevo=new Nodo;
 		nuevo->dato=dato;
@@ -96,6 +119,20 @@ namespace CircleSimpleList{
 			}
 		}
 		return actual->dato==dato;
+	}
+	void buscar(Nodo *ultimo,int dato){
+			if(find(ultimo,dato)){
+				Nodo *recorrer=new Nodo;
+				recorrer=ultimo->siguiente;
+				int posicion=1;
+				do{
+					posicion++;
+					recorrer=recorrer->siguiente;
+				}while(recorrer!=ultimo->siguiente);
+				cout<<"\nElemento encontrado "<<recorrer->dato<<" en la posicion : "<<posicion<<endl;
+			}else{
+				cout<<"\nNo existe\n";
+			}
 	}
 	void insertToEndOrToStartOf(Nodo *&ultimo,int datoFijo,int opcion,int dato){
 		if(!isEmpty(ultimo)){
@@ -251,7 +288,7 @@ namespace CircleSimpleList{
 		}
 	}
 	//Eliminar impares
-	void eliminarImares(Nodo *&ultimo){
+	void eliminarImpares(Nodo *&ultimo){
 		if(!isEmpty(ultimo)){
 			vector<int> vect1;
 			Nodo *recorrer=new Nodo;
@@ -355,10 +392,10 @@ namespace CircleSimpleList{
 	}
 	
 	void invertir(Nodo *&ultimo){
-	    Nodo *ante = this;
-	    Nodo *sigu = this;
+	    Nodo *ante = new Nodo;
+	    Nodo *sigu = new Nodo;
 	    Nodo *temp = new Nodo;
-	    temp=ultimo;
+	    temp=ultimo->siguiente;
 	    do{
 	        sigu = temp->siguiente;
 	        temp->siguiente = ante;
@@ -366,6 +403,6 @@ namespace CircleSimpleList{
 	        temp = sigu;
 	    }while (temp!=ultimo->siguiente);
 	    sigu = ante;
-	    inicio=ante;
+//	    inicio=ante;
 	}
 }
