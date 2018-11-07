@@ -18,21 +18,17 @@ class Persona{
 };
 template <class T> class Nodo{
 	public :
-		T dato;
+		T *dato;
 		Nodo *siguiente;
-		Nodo(T _dato){
+		Nodo(T *_dato){
 			dato=_dato;
 			siguiente=NULL;
 		}
 		string imprimirNodo(){
-			Persona p=(Persona)dato;
-			return p.nombre;
+			Persona *p=dato;
+			return p->getNombre();
 		}
 		
-//		Nodo(){
-//			dato=NULL;
-//			siguiente=NULL;
-//		}
 };
 template <class T>class Lista{
 	public :
@@ -41,7 +37,7 @@ template <class T>class Lista{
 			inicio=NULL;
 			final=NULL;
 		}
-		void insert(T dato){
+		void insert(T *dato){
 			Nodo<T> *nuevo=new Nodo<T>(dato);
 			if(inicio==NULL){
 				inicio=final=nuevo;
@@ -77,27 +73,27 @@ template <class T>class Lista{
 };
 
 int main(){
-	Lista<int> lista=Lista<int>();
-	lista.insert(5);
-	lista.insert(6);
-	lista.insert(5);
-	lista.insert(7);
-	lista.insert(0);
-	lista.show();
+//	Lista<int> lista=Lista<int>();
+//	lista.insert(5);
+//	lista.insert(6);
+//	lista.insert(5);
+//	lista.insert(7);
+//	lista.insert(0);
+//	lista.show();
+//	
+//	
+//	Lista<string> listaDeString=Lista<string>();
+//	listaDeString.insert("uno");
+//	listaDeString.insert("dos");
+//	listaDeString.insert("tres");
+//	listaDeString.insert("cuatro");
+//	listaDeString.show();
 	
 	
-	Lista<string> listaDeString=Lista<string>();
-	listaDeString.insert("uno");
-	listaDeString.insert("dos");
-	listaDeString.insert("tres");
-	listaDeString.insert("cuatro");
-	listaDeString.show();
-	
-	
-	Lista<Persona> listaDePersonas=Lista<Persona>();
-	Persona p1=Persona("Thom",12.5);
-	Persona p2=Persona("Thodfsdfm",172.5);
-	listaDePersonas.insert(p1);
-	listaDePersonas.insert(p2);
-	listaDePersonas.show2();
+	Lista<Persona> *listaDePersonas=new Lista<Persona>();
+	Persona *p1=new Persona("Thom",12.5);
+	Persona *p2=new Persona("Thodfsdfm",172.5);
+	listaDePersonas->insert(p1);
+	listaDePersonas->insert(p2);
+	listaDePersonas->show2();
 }

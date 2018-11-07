@@ -101,9 +101,62 @@ namespace Tree{
 			eliminarNodo(raiz);
 		}
 	}
+	void destruirNodo(Nodo *nodo){
+		nodo->hijoIzqu=NULL;
+		nodo->hijoDere=NULL;
+		delete nodo;
+	}
+	//Esta funcion te retornara el nodo mas ala izquierda
+	Nodo *encontrarNodoIzquierda(Nodo *nodoEncontrar){
+		if(isEmpty(nodoEncontrar)){
+			return NULL;
+		}
+		if(nodoEncontrar->hijoIzqu!=NULL){
+			return encontrarNodoIzquierda(nodoEncontrar->hijoIzqu);
+		}else{
+			return nodoEncontrar;
+		}
+	}
 	
+	void reemplazar(Nodo *raiz,Nodo *nuevoNodo){
+		if(raiz->padre!=NULL){
+			//raiz->padre hay que asignarle su nuevo hijo
+			if(raiz->dato=raiz->padre->hijoIzqu->dato){
+				raiz->padre->hijoIzqu=nuevoNodo;
+			}else if(raiz->dato=raiz->padre->hijoDere->dato){
+				raiz->padre->hijoDere=nuevoNodo;
+			}
+		}
+		if(nuevoNodo!=NULL){ //si el nuevo nodo existe
+			//Procedemos a asignarle su nuevo padre
+			nuevoNodo->padre=raiz->padre;
+		}
+	}
 	void eliminarNodo(Nodo *&raiz){
 		//Borrar Un Nodo siempre y cuando tenga dos subarboles hijos
+		//Luego se hara que se ira a la derecha , luego te iras
+		//a la mas izquierda posible
+		if(raiz->hijoDere!=NULL && raiz->hijoIzqu!=NULL){
+			Nodo *menor=encontrarNodoIzquierda(raiz->hijoDere);
+			raiz->dato=menor->dato;
+			eliminarNodo(menor);
+		}
+		
+		
+		//Imaginemos que solo tenga un solo hijo 
+		//Puede ser derecho o izquierdo pero solo uno 
+		else if(raiz->hijoIzqu!=NULL){
+			//El hijo toma el lugar del padre
+			  reemplazar(raiz,raiz->hijoIzqu);
+			  destruirNodo(raiz);
+		}
+		
+		else if(raiz->hijoDere!=NULL){
+			//El hijo toma el lugar del padre
+			  reemplazar(raiz,raiz->hijoDere);
+			  destruirNodo(raiz);
+		}
+		
 		
 	}
 } 
