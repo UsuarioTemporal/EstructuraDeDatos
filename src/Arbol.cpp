@@ -16,6 +16,7 @@ void menu(){
 		cout<<"4.Mostrar Preorden "<<endl;
 		cout<<"5.Mostrar Inorden "<<endl;
 		cout<<"6.Mostrar PosOrden "<<endl;
+		cout<<"7.Eliminar elemento "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -48,6 +49,10 @@ bool opciones(int op){
 			break;
 		case 6:
 			posOrden(raiz);
+			break;
+		case 7:
+			cin>>dato;
+			eliminar(raiz,dato);
 			break;
 		default :
 			return true;
