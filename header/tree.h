@@ -209,6 +209,28 @@ namespace Tree{
 		return profundidad;
 	}
 	
+	void mostrarAltura(int dato,Nodo *raiz){
+		if(raiz->dato==dato){
+			cout<<"\nLa Altura es : "<<height(raiz)<<endl;
+			return ;
+		}else if(raiz->dato <dato){
+			mostrarAltura(dato,raiz->hijoDere);
+		}else{
+			mostrarAltura(dato,raiz->hijoIzqu);
+			
+		}
+	}
+	void mostrarProfundidad(int dato,Nodo *raiz){
+		if(raiz->dato==dato){
+			cout<<"\nLa profundidad es : "<<depth(raiz)<<endl;
+			return ;
+		}else if(raiz->dato <dato){
+			mostrarProfundidad(dato,raiz->hijoDere);
+		}else{
+			mostrarProfundidad(dato,raiz->hijoIzqu);
+			
+		}
+	}
 	void cantidadDeNodos(Nodo *raiz){
 		if(!isEmpty(raiz)){
 			cout<<"\nEl arbol tiene "<<cantidad<<" nodos\n";

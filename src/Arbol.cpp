@@ -19,8 +19,10 @@ void menu(){
 		cout<<"7.Eliminar elemento "<<endl;
 		cout<<"8.Elemento menor "<<endl;
 		cout<<"9.Elemento mayor "<<endl;
-		cout<<"10.Limpirar "<<endl;
-		cout<<"11.Salir "<<endl;
+		cout<<"10.Profundidad "<<endl;
+		cout<<"11.Altura "<<endl;
+		cout<<"12.Limpirar "<<endl;
+		cout<<"13.Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -66,6 +68,15 @@ bool opciones(int op){
 			encotrarMayor(raiz);
 			break;
 		case 10:
+			
+			cin>>dato;
+			mostrarProfundidad(dato,raiz);
+			break;
+		case 11:
+			cin>>dato;
+			mostrarAltura(dato,raiz);
+			break;
+		case 12:
 			system("cls");
 			break;
 		default :
