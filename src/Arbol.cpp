@@ -17,8 +17,10 @@ void menu(){
 		cout<<"5.Mostrar Inorden "<<endl;
 		cout<<"6.Mostrar PosOrden "<<endl;
 		cout<<"7.Eliminar elemento "<<endl;
-		cout<<"8.Limpirar "<<endl;
-		cout<<"9.Salir "<<endl;
+		cout<<"8.Elemento menor "<<endl;
+		cout<<"9.Elemento mayor "<<endl;
+		cout<<"10.Limpirar "<<endl;
+		cout<<"11.Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -58,6 +60,12 @@ bool opciones(int op){
 			eliminar(raiz,dato);
 			break;
 		case 8:
+			encotrarMenor(raiz);
+			break;
+		case 9:
+			encotrarMayor(raiz);
+			break;
+		case 10:
 			system("cls");
 			break;
 		default :

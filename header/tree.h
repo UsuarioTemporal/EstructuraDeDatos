@@ -1,5 +1,17 @@
 #include<iostream>
 using namespace std;
+
+
+//La altura de del arbol es la altura de n odo raiz
+//La altura de un nodo se cuenta desde la raiz hasta el nodo querido
+
+//DIFERENCIAS ENTRE UN ARBOL ABB Y UN AVL 
+// ES QUE UN ARBOL ABB SE CREA PARA IMPLEMENTAR UN
+//MEJOR TIEMPO DE ACCESO A LOS DATOS EN LAS OPERACIONES DE 
+//BUSQUEDA , ELIMINACION Y DERIVADOS
+//eS RECOMENDABLE QUE LA ALTURA DEL ARBOL SEA LA MENOR POSIBLE
+
+
 //Para eliminar un nodo es necesario saber quien es el padre  (IMPORTANTE)
 namespace Tree{
 	typedef struct Nodo{
@@ -11,6 +23,7 @@ namespace Tree{
 		//Existen muchas formas de crear un arbol
 		Nodo *padre=NULL;
 	};
+	int cantidad=0;
 	Nodo *createNodo(int dato,Nodo *padre){
 		Nodo *nuevoNodo=new Nodo;
 		nuevoNodo->dato=dato;
@@ -36,6 +49,7 @@ namespace Tree{
 		if(isEmpty(raiz)){
 			Nodo *nuevo=createNodo(dato,padre);
 			raiz=nuevo;
+			cantidad++;
 		}else{
 			int valorRaiz=raiz->dato;
 			if(dato<valorRaiz){
@@ -90,17 +104,7 @@ namespace Tree{
 		}
 	}
 	
-	void eliminar(Nodo *raiz,int dato){
-		if(isEmpty(raiz)){
-			return ;
-		}else if(dato<raiz->dato){
-			eliminar(raiz->hijoIzqu,dato);
-		}else if(dato>raiz->hijoDere){
-			eliminar(raiz->hijoDere,dato);
-		}else{
-			eliminarNodo(raiz);
-		}
-	}
+	
 	void destruirNodo(Nodo *nodo){
 		nodo->hijoIzqu=NULL;
 		nodo->hijoDere=NULL;
@@ -121,9 +125,9 @@ namespace Tree{
 	void reemplazar(Nodo *raiz,Nodo *nuevoNodo){
 		if(raiz->padre!=NULL){
 			//raiz->padre hay que asignarle su nuevo hijo
-			if(raiz->dato=raiz->padre->hijoIzqu->dato){
+			if(raiz->dato==raiz->padre->hijoIzqu->dato){
 				raiz->padre->hijoIzqu=nuevoNodo;
-			}else if(raiz->dato=raiz->padre->hijoDere->dato){
+			}else if(raiz->dato==raiz->padre->hijoDere->dato){
 				raiz->padre->hijoDere=nuevoNodo;
 			}
 		}
@@ -156,7 +160,87 @@ namespace Tree{
 			  reemplazar(raiz,raiz->hijoDere);
 			  destruirNodo(raiz);
 		}
+		else{ //Nodo hoja
+			reemplazar(raiz,NULL);
+			destruirNodo(raiz);
+		}
 		
-		
+	}
+	
+	//Funcion principal
+	void eliminar(Nodo *raiz,int dato){
+		if(isEmpty(raiz)){
+			return ;
+		}else if(dato<raiz->dato){
+			eliminar(raiz->hijoIzqu,dato);
+		}else if(dato> raiz->hijoDere->dato){
+			eliminar(raiz->hijoDere,dato);
+		}else{
+			eliminarNodo(raiz);
+		}
+	}
+	
+	
+	
+	
+	int height(Nodo *raiz){
+		int altura=0;
+		int supuesto=0;
+		if(raiz->hijoDere!=NULL || raiz->hijoIzqu!=NULL){
+			if(raiz->hijoIzqu!=NULL){
+				supuesto=height(raiz->hijoIzqu);
+				altura= altura > supuesto ? altura : supuesto;
+			}
+			if(raiz->hijoDere!=NULL){
+				supuesto=height(raiz->hijoDere);
+				altura= altura > supuesto ? altura : supuesto;
+			}
+			altura++;
+			
+		}
+		return altura;
+	}
+	
+	int depth(Nodo *raiz){
+		int profundidad=0;
+		if(raiz->padre!=NULL){
+			profundidad=1+depth(raiz->padre);
+		}
+		return profundidad;
+	}
+	
+	void cantidadDeNodos(Nodo *raiz){
+		if(!isEmpty(raiz)){
+			cout<<"\nEl arbol tiene "<<cantidad<<" nodos\n";
+		}else{
+			cout<<"\nEl arbol esta vacio\n";
+		}
+	}
+	
+	//menor valor 
+	void encotrarMenor(Nodo *raiz){
+		if(!isEmpty(raiz)){
+			if(raiz->hijoIzqu!=NULL){
+				encotrarMenor(raiz->hijoIzqu);
+			}else{
+				cout<<raiz->dato;
+				return ;
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	//mayor valor
+	void encotrarMayor(Nodo *raiz){
+		if(!isEmpty(raiz)){
+			if(raiz->hijoDere!=NULL){
+				encotrarMayor(raiz->hijoDere);
+			}else{
+				cout<<raiz->dato;
+				return ;
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
 	}
 } 
