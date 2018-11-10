@@ -18,8 +18,8 @@ void quickSortParecido(int [],int ,int);
 void radixSort();
 void mergeSort(int[],int,int);
 void merge(int[],int,int,int);
-
 void shellSort(int[],int);
+
 void heapSort();
 int main(){
 	array=new int[numero];
