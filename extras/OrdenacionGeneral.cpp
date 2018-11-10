@@ -4,6 +4,7 @@
 #include<math.h>
 #include<vector>
 using namespace std;
+
 int numero=10;
 int *array;
 vector< vector<int> > Vec;
@@ -18,9 +19,8 @@ void radixSort();
 void mergeSort(int[],int,int);
 void merge(int[],int,int,int);
 
-void shellSort();
+void shellSort(int[],int);
 void heapSort();
-
 int main(){
 	array=new int[numero];
 	int a[]={3,0,1,8,7,2,5,4,9,6};
@@ -37,7 +37,9 @@ int main(){
 //	quickSortPivoteCentro(array,0,numero-1);
 //	quickSortParecido(array,0,numero-1);
 //	radixSort();
-	mergeSort(array,0,numero-1);
+//	mergeSort(array,0,numero-1);
+//	shellSort(array,Countof(array));
+	shellSort(array,numero);
 	show();
 	delete array;
 }
@@ -251,3 +253,15 @@ void merge(int arr[],int inicio,int medio,int final){
 		k++;
 	}
 }
+ 	
+ 	void shellSort(int arr[], int n) {
+	    for (int gap = n/2; gap > 0; gap /= 2){
+	        for (int i = gap; i < n; i += 1){
+	            int temp = arr[i];
+	            int j; 
+	            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) 
+	                arr[j] = arr[j - gap]; 
+	            arr[j] = temp; 
+	        } 
+	    }
+	} 
