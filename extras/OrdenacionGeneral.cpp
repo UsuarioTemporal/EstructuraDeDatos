@@ -5,7 +5,7 @@
 #include<vector>
 using namespace std;
 
-int numero=10;
+int numero=20;
 int *array;
 vector< vector<int> > Vec;
 void show();
@@ -19,7 +19,7 @@ void radixSort();
 void mergeSort(int[],int,int);
 void merge(int[],int,int,int);
 void shellSort(int[],int);
-
+void shellSorT(int[],int);
 void heapSort();
 int main(){
 	array=new int[numero];
@@ -39,7 +39,8 @@ int main(){
 //	radixSort();
 //	mergeSort(array,0,numero-1);
 //	shellSort(array,Countof(array));
-	shellSort(array,numero);
+//	shellSort(array,numero);
+	shellSorT(array,numero);
 	show();
 	delete array;
 }
@@ -254,14 +255,34 @@ void merge(int arr[],int inicio,int medio,int final){
 	}
 }
  	
- 	void shellSort(int arr[], int n) {
-	    for (int gap = n/2; gap > 0; gap /= 2){
-	        for (int i = gap; i < n; i += 1){
-	            int temp = arr[i];
-	            int j; 
-	            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) 
-	                arr[j] = arr[j - gap]; 
-	            arr[j] = temp; 
-	        } 
-	    }
-	} 
+void shellSort(int arr[], int n) {
+	for (int gap = n/2; gap > 0; gap /= 2){
+	    for (int i = gap; i < n; i += 1){
+	        int temp = arr[i];
+	        int j; 
+	        for (j = i; j >= gap && arr[j - gap] > temp; j -= gap){
+	            arr[j] = arr[j - gap]; 
+	        }
+	        arr[j] = temp; 
+	    } 
+	}
+}
+
+//Primero : longitudArray/2
+//Segundo : Primero / 2
+//Tercero : Segundo / 2 
+//...
+
+void shellSorT(int array[],int length){
+	for(int steps=length/2;steps>0;steps/=2){
+		for(int i=steps;i<length;i++){
+			int temp=array[i];
+			int j;
+			for(j=i;j>=steps && array[j-steps]>temp;j-=steps){
+				array[j]=array[j-steps];
+			}
+			array[j]=temp;
+		}
+	}
+}
+	

@@ -111,7 +111,7 @@ bool opciones(int op){
 			eliminarImpares(inicio,final);
 			break;
 		case 15:
-			ordenarPorBurbuja(inicio,final); 
+			shellSort(inicio);
 			break;
 		case 16:
 			eliminarPosicionesPares(inicio,final);
