@@ -31,8 +31,8 @@ void torresHanoi(int discos,char A,char B,char C,Pila *torreA,Pila *torreB,Pila 
 	}else{
 		torresHanoi(discos-1,A,C,B,torreA,torreC,torreB);
 		int cima = torreA->pop();
-      	cout<<++conteo<<". Moviendo "<<cima<<" de la pila "<<A<<" hacia la pila "<<C<<endl;
-      	torreC->push(cima);
-      	torresHanoi(discos-1,B,A,C,torreB,torreA,torreC);
+    	cout<<++conteo<<". Moviendo "<<cima<<" de la pila "<<A<<" hacia la pila "<<C<<endl;
+    	torreC->push(cima);
+    	torresHanoi(discos-1,B,A,C,torreB,torreA,torreC);
 	}
 }
