@@ -29,12 +29,6 @@ using namespace std;
 		//Es opcional es uno de los metodos
 		//Existen muchas formas de crear un arbol
 		Nodo *padre=NULL;
-		
-		
-		//atributos de la cola
-		Nodo *primero=NULL;
-		Nodo *ultimo=NULL;
-		string datoCola;
 	};
 	int cantidad=0;
 	Nodo *createNodo(int dato,Nodo *padre){
