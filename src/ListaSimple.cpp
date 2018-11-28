@@ -1,5 +1,7 @@
 #include<simplelist.h>
 #include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
 //ordenar
 using namespace SimpleList;
 Nodo *inicio=NULL;
@@ -8,8 +10,21 @@ void menu();
 bool opciones(int);
 int main(){
 	system("color 0B");
-	menu();
-	inicio=final=NULL;
+	srand(time(NULL));
+	for(int i=0;i<11;i++){
+		insertToTheEnd(inicio,final,rand()%(11));
+	}
+	show(inicio);
+	cout<<"\n";
+//	ordenarSeleccion(inicio,final);
+//	ordenarPorBurbuja(inicio,final);
+//	shellSort(inicio,final);
+//	ordenarInsercion(inicio,final);
+//	radix(inicio,final);
+//	mergeSort(inicio);
+	show(inicio);
+//	menu();
+//	inicio=final=NULL;
 	return 0;
 }
 void menu(){

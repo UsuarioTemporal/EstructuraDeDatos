@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<Math.h>
 using namespace std;
 namespace SimpleList{
 	int conteo=0;
@@ -323,6 +324,162 @@ namespace SimpleList{
 			cout<<"\nVacio\n";
 		}
 	}
+	Nodo *retroceder(Nodo *supuestoP,int lugar){
+			for(int i=1;i<=lugar;i++){
+				supuestoP=supuestoP->siguiente;
+			}
+			return supuestoP;
+	}
+	void ordenarSeleccion(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			for(Nodo *primero=inicio;primero!=final;primero=primero->siguiente){
+				for(Nodo *segundo=primero->siguiente;segundo!=NULL;segundo=segundo->siguiente){
+					if(segundo->dato<primero->dato){
+						int aux=segundo->dato;
+						segundo->dato=primero->dato;
+						primero->dato=aux;
+					}
+				}
+			}
+		}else{
+			cout<<"\nVacio\n";
+		}
+	}
+	
+	
+	void ordenarInsercion(Nodo *&inicio,Nodo *&final){
+		if(!isEmpty(inicio)){
+			int posTem=0;
+			for(Nodo *primero=inicio;primero!=NULL;primero=primero->siguiente){
+				int supPosTem=posTem;
+				Nodo *pos=primero;
+				Nodo *ant=retroceder(inicio,posTem-1);
+				while(supPosTem>0 && pos->dato<ant->dato){
+					int aux=ant->dato;
+					ant->dato=pos->dato;
+					pos->dato=aux;
+					ant=retroceder(inicio,supPosTem-2);
+					pos=retroceder(inicio,supPosTem-1);
+					supPosTem--;
+				}
+				posTem++;
+			}
+		}
+	}
+	vector< vector<int> > Vec;
+	void radix(Nodo *&inicio,Nodo *&final){
+		Vec.resize(10);
+		int temporal;
+		int mayor=inicio->dato;
+		for(Nodo *recorrer=inicio;recorrer!=NULL;recorrer=recorrer->siguiente){
+			if(recorrer->dato>mayor){
+				mayor=recorrer->dato;
+			}
+		}
+		int cifras=0;
+		while(mayor!=0){
+			mayor/=10;
+			cifras++;
+		}
+		
+		for(int i=0;i<cifras;i++){
+			int m=0;
+			for(int j=0;j<conteo;j++){
+				Nodo *sup=retroceder(inicio,j);
+				temporal=(int)(sup->dato/pow(10,i))%10;
+				Vec[temporal].push_back(sup->dato);
+			}
+			for(int k=0;k<10;k++){
+				for(int l=0;l<Vec[k].size();l++){
+					retroceder(inicio,m)->dato=Vec[k][l];
+					m++;
+				}
+				Vec[k].clear();
+			}
+		}
+	}
+	int getLength(Nodo *partida){
+		Nodo* recorrer = partida;
+		int i=0;
+		for(;recorrer!=NULL;recorrer=recorrer->siguiente){
+			i++;
+		}
+		return i;
+	}
+	Nodo* merge(Nodo *&inicio1,Nodo *&inicio2){
+		Nodo* nuevoInicio;
+		if(inicio1==NULL) return inicio2;
+		else if(inicio2 ==NULL) return inicio1;
+		
+		if(inicio1->dato < inicio2->dato){
+			nuevoInicio = inicio1;
+			nuevoInicio->siguiente = merge(inicio1->siguiente,inicio2);
+		}
+		else{
+			nuevoInicio = inicio2;
+			nuevoInicio->siguiente = merge(inicio1,inicio2->siguiente);
+		}
+		
+		return nuevoInicio;
+	}	
+	void mergeSort(Nodo *&inicio){
+		if(inicio->siguiente!=NULL){
+			Nodo* inicio1;
+			Nodo* inicio2 = inicio;
+			int len = getLength(inicio);
+			for(int i=0; i<len/2;i++){   
+				inicio1 = inicio2; 
+				inicio2 = inicio2->siguiente;
+			}
+			inicio1->siguiente = NULL;	
+			inicio1 = inicio;
+			mergeSort(inicio1);
+			mergeSort(inicio2);
+			inicio = merge(inicio1,inicio2);
+		}
+	}
+
+	void shellSort(Nodo *&inicio,Nodo *&final){
+			Nodo *q=NULL;
+		    int saltos = conteo / 2;
+		    while (saltos > 0) {
+		        q = inicio;
+		        for (int i = 1; i <=saltos; i++) {
+		            q = q->siguiente;
+		        }
+		        Nodo *p= inicio;
+		        int posicionQ=saltos;
+		        while (q != NULL) {
+					Nodo *supuestoQ=q;
+					Nodo *supuestoP=p;
+					int supuestaPosicionQ=posicionQ;
+					do{
+						if (supuestoP->dato > supuestoQ->dato) {
+				            int aux = supuestoP->dato;
+				            supuestoP->dato = supuestoQ->dato;
+				            supuestoQ->dato = aux;
+			            }
+			            int supuestaPosicionP=supuestaPosicionQ-saltos;
+			            if(supuestaPosicionP>=saltos && supuestoP!=inicio){
+			                supuestoQ=supuestoP;
+			                supuestoP=retroceder(inicio,supuestaPosicionP-saltos);
+			                supuestaPosicionQ-=saltos;
+						}else{
+							break;
+						}
+					}while(supuestoP->dato > supuestoQ->dato);
+			        p = p->siguiente;
+			        q = q->siguiente;
+			        posicionQ++;
+		        }
+		        saltos/= 2;
+			}	        
+		}
+		
+		
+		
+		
+		
 	//eliminar numeroPrimos
 	void eliminarNumerosPrimos(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
