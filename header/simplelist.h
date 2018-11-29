@@ -442,7 +442,7 @@ namespace SimpleList{
 	void shellSort(Nodo *&inicio){
 		for(int saltos=conteo/2;saltos>0;saltos/=2){
 			Nodo *primero=inicio;
-			Nodo *ultimo=getNodo(inicio,saltos);
+			Nodo *ultimo=retroceder(inicio,saltos);
 			int posUltimo=saltos;
 			while(ultimo!=NULL){
 				Nodo *supUltimo=ultimo;
@@ -457,7 +457,7 @@ namespace SimpleList{
 					int supPosPrimero=supPosUltimo-saltos;
 					if(supPosPrimero>=saltos && supPrimero!=inicio){
 						supUltimo=supPrimero;
-						supPrimero=getNodo(inicio,supPosPrimero-saltos);
+						supPrimero=retroceder(inicio,supPosPrimero-saltos);
 						supPosUltimo-=saltos;
 					}else{
 						break;
