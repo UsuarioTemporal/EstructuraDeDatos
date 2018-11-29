@@ -18,10 +18,11 @@ int main(){
 	cout<<"\n";
 //	ordenarSeleccion(inicio,final);
 //	ordenarPorBurbuja(inicio,final);
-//	shellSort(inicio,final);
+//	shellSort(inicio);
 //	ordenarInsercion(inicio,final);
 //	radix(inicio,final);
 //	mergeSort(inicio);
+//	inicio=quickSortRecur(inicio,final);
 	show(inicio);
 //	menu();
 //	inicio=final=NULL;
