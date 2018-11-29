@@ -439,47 +439,39 @@ namespace SimpleList{
 		}
 	}
 
-	void shellSort(Nodo *&inicio,Nodo *&final){
-			Nodo *q=NULL;
-		    int saltos = conteo / 2;
-		    while (saltos > 0) {
-		        q = inicio;
-		        for (int i = 1; i <=saltos; i++) {
-		            q = q->siguiente;
-		        }
-		        Nodo *p= inicio;
-		        int posicionQ=saltos;
-		        while (q != NULL) {
-					Nodo *supuestoQ=q;
-					Nodo *supuestoP=p;
-					int supuestaPosicionQ=posicionQ;
-					do{
-						if (supuestoP->dato > supuestoQ->dato) {
-				            int aux = supuestoP->dato;
-				            supuestoP->dato = supuestoQ->dato;
-				            supuestoQ->dato = aux;
-			            }
-			            int supuestaPosicionP=supuestaPosicionQ-saltos;
-			            if(supuestaPosicionP>=saltos && supuestoP!=inicio){
-			                supuestoQ=supuestoP;
-			                supuestoP=retroceder(inicio,supuestaPosicionP-saltos);
-			                supuestaPosicionQ-=saltos;
-						}else{
-							break;
-						}
-					}while(supuestoP->dato > supuestoQ->dato);
-			        p = p->siguiente;
-			        q = q->siguiente;
-			        posicionQ++;
-		        }
-		        saltos/= 2;
-			}	        
+	void shellSort(Nodo *&inicio){
+		for(int saltos=conteo/2;saltos>0;saltos/=2){
+			Nodo *primero=inicio;
+			Nodo *ultimo=getNodo(inicio,saltos);
+			int posUltimo=saltos;
+			while(ultimo!=NULL){
+				Nodo *supUltimo=ultimo;
+				Nodo *supPrimero=primero;
+				int supPosUltimo=posUltimo;
+				do{
+					if(supUltimo->dato<supPrimero->dato){
+						int aux=supUltimo->dato;
+						supUltimo->dato=supPrimero->dato;
+						supPrimero->dato=aux;
+					}
+					int supPosPrimero=supPosUltimo-saltos;
+					if(supPosPrimero>=saltos && supPrimero!=inicio){
+						supUltimo=supPrimero;
+						supPrimero=getNodo(inicio,supPosPrimero-saltos);
+						supPosUltimo-=saltos;
+					}else{
+						break;
+					}
+				}while(supUltimo->dato<supPrimero->dato);
+				ultimo=ultimo->siguiente;
+				primero=primero->siguiente;
+				posUltimo++;
+			}
+			
 		}
-		
-		
-		
-		
-		
+	}
+	
+	
 	//eliminar numeroPrimos
 	void eliminarNumerosPrimos(Nodo *&inicio,Nodo *&final){
 		if(!isEmpty(inicio)){
