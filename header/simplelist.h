@@ -468,7 +468,53 @@ namespace SimpleList{
 			
 		}
 	}
-	
+	Nodo *obtenerNodoFinalDe(Nodo *inicio){
+		while(inicio!=NULL && inicio->siguiente!=NULL)
+			inicio=inicio->siguiente;
+		return inicio;
+	}
+	Nodo *division(Nodo *inicio, Nodo *final, Nodo *&supInicio, Nodo *&supFinal){
+		Nodo *actual=inicio;
+		Nodo *pivote=final;
+		Nodo *col=pivote;
+		Nodo *anterior=NULL;
+		while(actual!=pivote){
+			if(actual->dato<pivote->dato){
+				if(supInicio==NULL) supInicio=actual;
+				anterior=actual;
+				actual=actual->siguiente;
+			}else{
+				if(anterior!=NULL) anterior->siguiente=actual->siguiente;
+				Nodo *temp=actual->siguiente;
+				actual->siguiente=NULL;
+				col->siguiente=actual;
+				col=actual;
+				actual=temp;
+			}
+		}
+		if(supInicio==NULL) supInicio=pivote;
+		supFinal=col;
+		return pivote;
+	}
+	Nodo *quickSortRecursivo(Nodo *inicio, Nodo *final){
+		if(inicio==NULL || inicio==final) return inicio;
+			Nodo *supInicio=NULL, *supFinal=NULL;
+			Nodo *pivote=division(inicio,final,supInicio,supFinal);
+			if(supInicio!=pivote){
+				Nodo *aux=supInicio;
+				while(aux->siguiente!=pivote)
+					aux=aux->siguiente;
+				aux->siguiente=NULL;
+				supInicio=quickSortRecursivo(supInicio,aux);
+				aux=obtenerNodoFinalDe(supInicio);
+				aux->siguiente=pivote;
+			}
+			pivote->siguiente=quickSortRecursivo(pivote->siguiente,supFinal);
+			return supInicio;
+	}
+	void quickSort(Nodo *&inicio,Nodo *&final){
+		inicio=quickSortRecursivo(inicio,final);
+	}
 	
 	//eliminar numeroPrimos
 	void eliminarNumerosPrimos(Nodo *&inicio,Nodo *&final){

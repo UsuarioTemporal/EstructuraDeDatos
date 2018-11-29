@@ -11,14 +11,15 @@ bool opciones(int);
 int main(){
 	system("color 0B");
 	srand(time(NULL));
-	for(int i=0;i<12;i++){
-		insertToTheEnd(inicio,final,rand()%(11));
+	for(int i=0;i<20;i++){
+		insertToTheEnd(inicio,final,rand()%(101));
 	}
 	show(inicio);
 	cout<<"\n";
 //	ordenarSeleccion(inicio,final);
 //	ordenarPorBurbuja(inicio,final);
-	shellSort(inicio);
+//	shellSort(inicio);
+	quickSort(inicio,final);
 //	ordenarInsercion(inicio,final);
 //	radix(inicio,final);
 //	mergeSort(inicio);
