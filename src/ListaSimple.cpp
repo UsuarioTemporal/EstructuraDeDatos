@@ -19,11 +19,10 @@ int main(){
 //	ordenarSeleccion(inicio,final);
 //	ordenarPorBurbuja(inicio,final);
 //	shellSort(inicio);
-	quickSort(inicio,final);
 //	ordenarInsercion(inicio,final);
 //	radix(inicio,final);
 //	mergeSort(inicio);
-//	inicio=quickSortRecur(inicio,final);
+	quickSort(inicio,final);
 	show(inicio);
 //	menu();
 //	inicio=final=NULL;
