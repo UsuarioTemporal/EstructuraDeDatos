@@ -459,9 +459,7 @@ namespace SimpleList{
 						supUltimo=supPrimero;
 						supPrimero=retroceder(inicio,supPosPrimero-saltos);
 						supPosUltimo-=saltos;
-					}else{
-						break;
-					}
+					}else break ;
 				}while(supUltimo->dato<supPrimero->dato);
 				ultimo=ultimo->siguiente;
 				primero=primero->siguiente;

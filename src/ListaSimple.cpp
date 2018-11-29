@@ -11,7 +11,7 @@ bool opciones(int);
 int main(){
 	system("color 0B");
 	srand(time(NULL));
-	for(int i=0;i<11;i++){
+	for(int i=0;i<12;i++){
 		insertToTheEnd(inicio,final,rand()%(11));
 	}
 	show(inicio);
