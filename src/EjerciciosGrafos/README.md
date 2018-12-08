@@ -39,9 +39,7 @@ Es una secuencia de numeros que corresponde a los grupos de los vertices del gra
 ## **Multigrafo**
 Si dice que G es un multigrafo si se permite que entre un mismo par de vertices se trace más de una arista , u un pseudografo si se permiten aristas de tipo(v,v)
 
-## **Vecindarios**
-Un vertice v es adyacente a otro vertice w en G si (v,w) pertenece a E(G) 
-El vencidario de un vertice v en un grafo G es el conjunto
+
 
 
 
