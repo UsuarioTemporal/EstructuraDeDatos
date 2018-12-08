@@ -25,7 +25,12 @@ Normalmente un grafo se represente por la union de dos objetos o vertices uniend
     -  Cruce : aristas que cruzan por el mismo vertice
 - Vertices : Objetos , nodos , elementos que forman un grafo 
 
-
+## **Representación de grafos**
+Para representar los grafos la mejor manera es manipularlo como listas y las matrices , aunque se recomienda usar ambas.
+### **Lista de adyacencia**
+Es una representación de todas las aristas o arcos de un grafo mediante una lista
+Si el grafo es no dirigido , cada entrada es un conjunto o multiconjunto de
+dos vertices conteniendo los dos extemos
 ````python
     # Estudiante de la carrera Ingenieria de Sistemas
     # Autor : Thom Maurick Roman Aguilar
