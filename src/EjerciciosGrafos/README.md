@@ -34,6 +34,17 @@ dos vertices conteniendo los dos extremos de la arista correspondiente.Si el gra
 de dos nodos , uno denotado el nodo fuente y el otro denotando el nodo destino del arco correspondiente
 ### **Lista de grados**
 Es una secuencia de numeros que corresponde a los grupos de los vertices del grafo
+
+
+## **Multigrafo**
+Si dice que G es un multigrafo si se permite que entre un mismo par de vertices se trace más de una arista , u un pseudografo si se permiten aristas de tipo(v,v)
+
+## **Vecindarios**
+Un vertice v es adyacente a otro vertice w en G si (v,w) pertenece a E(G) 
+El vencidario de un vertice v en un grafo G es el conjunto
+
+
+
 ````python
     # Estudiante de la carrera Ingenieria de Sistemas
     # Autor : Thom Maurick Roman Aguilar
