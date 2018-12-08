@@ -15,11 +15,15 @@ Matematicamente estudiar los grafos puede ser un poco complejo por las notacione
 
 Normalmente un grafo se represente por la union de dos objetos o vertices uniendos estas dos por una linea no direccionada , pero si esta misma lleva un dirección será denominado un grafo dirigido donde se le conocerá como digrafo y los conjuntos que forman esta arista direccionada se conocerá como par ordenado
 
-
-
-
 > fuente wikipedia : https://es.wikipedia.org/wiki/Teor%C3%ADa_de_grafos
 
+## **Elementos de un grafo**
+- Aristas : lineas con o sin dirección que uniran a los nodos u objetos (vertices del grafo)
+    - Aristas adyacente : 2 aristas son adyacentes si convergen en el mismo vétice , es decir parten o se dirigen al mismo vertice
+    -  Aristas paralelas : dos aristas son paraletas si si su vertice final e inicial son los mismos
+    -  Aristas cíclicas : --><-- sale para volver a entrar 
+    -  Cruce : aristas que cruzan por el mismo vertice
+- Vertices : Objetos , nodos , elementos que forman un grafo 
 
 
 ````python
