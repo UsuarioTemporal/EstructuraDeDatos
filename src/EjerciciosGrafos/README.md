@@ -30,7 +30,8 @@ Para representar los grafos la mejor manera es manipularlo como listas y las mat
 ### **Lista de adyacencia**
 Es una representación de todas las aristas o arcos de un grafo mediante una lista
 Si el grafo es no dirigido , cada entrada es un conjunto o multiconjunto de
-dos vertices conteniendo los dos extemos
+dos vertices conteniendo los dos extremos de la arista correspondiente.Si el grafo es dirigido , cada entrada es una tupla
+de dos nodos , uno denotado el nodo fuente y el otro denotando el nodo destino del arco correspondiente
 ````python
     # Estudiante de la carrera Ingenieria de Sistemas
     # Autor : Thom Maurick Roman Aguilar
