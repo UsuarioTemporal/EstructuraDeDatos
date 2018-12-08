@@ -1,14 +1,14 @@
 #ifndef GRAFO_H
 #define GRAFO_H
-#include<isotream>
+#include<iostream>
 using namespace std;
 struct Nodo{
 	char etiqueta;
-	Nodo *siguiente=NULL;
-	Arista *aristaAdyacente;
+	struct Nodo *siguiente=NULL;
+	struct Arista *aristaAdyacente;
 };
 struct Arista{
-	Nodo *destino=NULL;
-	Arista *siguiente=NULL;
+	struct Nodo *destino=NULL;
+	struct Arista *siguiente=NULL;
 };
-#endif GREAFO_H
+#endif 
