@@ -9,12 +9,29 @@ struct Arista{
 };
 struct Nodo{
 	char etiqueta;
-	struct Nodo *siguiente=NULL;
 	struct Arista *aristaAdyacente=NULL;
+	struct Nodo *siguiente=NULL;
 	
 };
 int conteo=0;
+void isEmpty(Nodo *grafo){
+	return grafo==NULL;
+}
 
-
+void insertNode(Nodo *&grafo){
+	Nodo *nuevo=new Nodo;
+	if(isEmpty(grafo)){
+		grafo=nuevo;
+	}else{
+		Nodo *aux=grafo;
+		while(aux->siguiente!=NULL){
+			aux=aux->siguiente;
+		}
+		aux->siguiente=nuevo;
+	}
+}
+void insertEdge(){
+	
+}
 
 #endif 
