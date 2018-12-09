@@ -2,7 +2,7 @@
 #define CLASSGRAPH__H
 #include<iostream>
 using namespace std;
-
+class Arista;
 class Vertice{ //nodo
 	public:
 		Vertice *siguiente =NULL;
