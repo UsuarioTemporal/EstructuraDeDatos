@@ -24,15 +24,15 @@ class Grafo{
 			
 		}
 	public :
-		Vertice *h;
+		Vertice *partida;
 		Grafo(){
-			h=NULL;
+			partida=NULL;
 		}
 		bool isEmpty(){
-			return h==NULL;
+			return partida==NULL;
 		}
 		Vertice *getVertice(char etiqueta){
-			Vertice *aux=h;
+			Vertice *aux=partida;
 			while(aux!=NULL){
 				if(aux->etiqueta==etiqueta){
 					return aux;
@@ -44,8 +44,9 @@ class Grafo{
 		void insertarVertice(char etiqueta){
 			Vertice *nuevo=new Vertice;
 			nuevo->etiqueta=etiqueta;
+			conteo++;
 			if(isEmpty()){
-				
+				partida=nuevo;
 			}
 		}
 		
