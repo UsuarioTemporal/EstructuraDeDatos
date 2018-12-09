@@ -2,7 +2,7 @@
 #define CLASSGRAPH__H
 #include<iostream>
 using namespace std;
-class Arista;
+class Arista; // prototipo
 class Vertice{ //nodo
 	public:
 		Vertice *siguiente =NULL;
@@ -19,12 +19,25 @@ class Arista{
 };
 class Grafo{
 	private :
+		Vertice *partida;
 		int conteo=0;
 		void insertEdge(Vertice *origen,Vertice *destino,int peso){
-			
+			Arista *nueva=new Arista;
+			nueva->peso=peso;
+			Arista *aux=origen->verticeAdyacente;
+			if(aux==NULL){
+				origen->verticeAdyacente=nueva;
+				nueva->adyacente=destino;
+			}else{
+				while(aux->siguiente!=NULL){
+					aux=aux->siguiente;
+				}
+				aux->siguiente=nueva;
+				nueva->adyacente=destino;
+			}
 		}
 	public :
-		Vertice *partida;
+		
 		Grafo(){
 			partida=NULL;
 		}
@@ -47,10 +60,49 @@ class Grafo{
 			conteo++;
 			if(isEmpty()){
 				partida=nuevo;
+			}else{
+				Vertice *aux=partida;
+				while(aux->siguiente!=NULL){
+					aux=aux->siguiente;
+				}
+				aux->siguiente=nuevo;
+				
 			}
 		}
 		
+		void listaAdyacencia(){
+			Vertice *verticeAux=partida;
+			Arista *arisAux;
+			while(verticeAux!=NULL){
+				cout<<verticeAux->etiqueta<<"-->";
+				arisAux=verticeAux->verticeAdyacente;
+				while(arisAux!=NULL){
+					cout<<arisAux->adyacente->etiqueta<<"-->";
+					arisAux=arisAux->siguiente;
+				}
+				verticeAux=verticeAux->siguiente;
+				cout<<"\n";
+			}
+		}
 		
+		void anular(){
+			Vertice *aux;
+			while(partida!=NULL){
+				aux=partida;
+				partida=partida->siguiente;
+				delete(aux);
+			}
+		}
+		
+		void insertArtista(){
+			char inicio;
+			char final ;
+			cin>>inicio;
+			cin>>final;
+			int peso;
+			cin>>peso;
+			insertEdge(getVertice(inicio),getVertice(final),peso);			
+		}
 };
 
 #endif
