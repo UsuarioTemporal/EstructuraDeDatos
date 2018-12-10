@@ -36,6 +36,32 @@ class Grafo{
 				nueva->adyacente=destino;
 			}
 		}
+		
+		
+		void eliminarArista(Vertice *origen,Vertice *destino){
+			Arista *actual=origen->verticeAdyacente,*anterior;
+			bool bandera = false;
+			if(actual==NULL){
+				cout<<"\nEl vertice  no tiene aristas\n";
+			}else if(actual->adyacente==destino){
+				origen->verticeAdyacente=actual->siguiente;
+				delete(actual);
+			}else{
+				while(actual->adyacente!=NULL){
+					if(actual->adyacente==destino){
+						bandera=true;
+						anterior->siguiente=actual->siguiente;
+						delete(actual);
+						break;
+					}
+					anterior=actual;
+					actual=actual->siguiente;
+				}
+				if(!bandera){
+					cout<<"\nLos vertices ingresados no estan conectados\n";
+				}
+			}
+		}
 	public :
 		
 		Grafo(){
@@ -103,6 +129,8 @@ class Grafo{
 			cin>>peso;
 			insertEdge(getVertice(inicio),getVertice(final),peso);			
 		}
+		
+		
 };
 
 #endif
