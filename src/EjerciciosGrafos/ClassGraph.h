@@ -269,6 +269,22 @@ class Grafo{
 				}
 			}
 		}
+		
+		void getGrado(int grado,Vertice *vertice){
+			int conteo=0;
+			if(grado==0){ //grado general
+				
+				
+			}else if(grado==1){//grado de entrada
+				
+			}else{//grado de salida
+				Arista *arisAux=vertice->verticeAdyacente;
+				while(arisAux!=NULL){
+					conteo++;
+				}
+				cout<<"El grado de salida de "<<vertice->etiqueta<<" es : "<<conteo;
+			}
+		}
 };
 
 #endif
