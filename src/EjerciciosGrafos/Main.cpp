@@ -11,11 +11,14 @@ int main(){
 	graph->insertarVertice('e');
 	graph->insertarVertice('f');
 	graph->insertArtista();
+	graph->insertArtista();
+	graph->insertArtista();
 	graph->listaAdyacencia();
 //	graph->deleteArista();
 //	graph->listaAdyacencia();
 //	graph->deleteVertice();
 //	graph->listaAdyacencia();
 	cout<<"\n";
-	graph->recorridoProfundidad(graph->getVertice('a'));
+//	graph->recorridoProfundidad(graph->getVertice('a'));
+	graph->existeCamino(graph->getVertice('a'),graph->getVertice('c'));
 }
