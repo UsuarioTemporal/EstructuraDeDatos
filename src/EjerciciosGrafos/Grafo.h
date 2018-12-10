@@ -17,10 +17,13 @@ int conteo=0;
 bool isEmpty(Nodo *grafo){
 	return grafo==NULL;
 }
-
-void insertNode(Nodo *&grafo){
+Nodo *getNodo(char etiqueta){
+	
+}
+void insertNode(char etiqueta,Nodo *&grafo){
 	Nodo *nuevo=new Nodo;
 	conteo++;
+	nuevo->etiqueta=etiqueta;
 	if(isEmpty(grafo)){
 		grafo=nuevo;
 	}else{
@@ -31,16 +34,22 @@ void insertNode(Nodo *&grafo){
 		aux->siguiente=nuevo;
 	}
 }
-void insertEdge(Nodo *origen,Nodo *destino,int peso){
-	Arista *nuevo=new Arista;
-	nuevo->peso=peso;
-	Arista *aux=origen->vertAdyacente;
-	if(aux==NULL){
-		origen->vertAdyacente=nuevo;
-		nuevo->destino=destino
-	}else{
+void insertEdge(Nodo *&grafo,Nodo *&origen,Nodo *&destino,int peso){
+	if(getNodo(origen->etiqueta) && getNodo(destino->etiqueta)){
 		
+	}else if(getNodo(origen->etiqueta)){
+		cout<<"\nEl vertice "<<destino->etiqueta<<" no existe en el grafo\n";
+	}else if(getNodo(destino->etiqueta)){
+		cout<<"\nEl vertice "<<origen->etiqueta<<" no existe en el grafo\n";
+	}else{
+		cout<<"\nLos vertices ingresados no existen\n";
 	}
 }
 
+int getGradoEntrada(){
+	
+}
+int getGradoSalida(){
+	
+}
 #endif 
