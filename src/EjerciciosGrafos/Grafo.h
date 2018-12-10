@@ -17,10 +17,17 @@ int conteo=0;
 bool isEmpty(Nodo *grafo){
 	return grafo==NULL;
 }
-Nodo *getNodo(char etiqueta){
-	
+Nodo *getNodo(char etiqueta,Nodo *&grafo){ //funcion que me retorna el nodo buscado
+	Nodo *aux=grafo;
+	while(aux!=NULL){
+		if(aux->etiqueta==etiqueta){
+			return aux;
+		}
+		aux=aux->siguiente;
+	}
+	return NULL;
 }
-void insertNode(char etiqueta,Nodo *&grafo){
+void insertarNodo(char etiqueta,Nodo *&grafo){
 	Nodo *nuevo=new Nodo;
 	conteo++;
 	nuevo->etiqueta=etiqueta;
@@ -34,12 +41,24 @@ void insertNode(char etiqueta,Nodo *&grafo){
 		aux->siguiente=nuevo;
 	}
 }
-void insertEdge(Nodo *&grafo,Nodo *&origen,Nodo *&destino,int peso){
-	if(getNodo(origen->etiqueta) && getNodo(destino->etiqueta)){
-		
-	}else if(getNodo(origen->etiqueta)){
+void insertarArista(Nodo *&grafo,Nodo *&origen,Nodo *&destino,int peso){
+	if(getNodo(origen->etiqueta,grafo) && getNodo(destino->etiqueta,grafo)){
+		Arista *nueva=new Arista;
+		nueva->peso=peso;
+		Arista *aux=origen->vertAdyacente;
+		if(aux==NULL){
+			origen->vertAdyacente=nueva;
+			nueva->destino=destino;
+		}else{
+			while(aux->siguiente!=NULL){
+				aux=aux->siguiente;
+			}
+			aux->siguiente=nueva;
+			nueva->destino=destino;
+		}
+	}else if(getNodo(origen->etiqueta,grafo)){
 		cout<<"\nEl vertice "<<destino->etiqueta<<" no existe en el grafo\n";
-	}else if(getNodo(destino->etiqueta)){
+	}else if(getNodo(destino->etiqueta,grafo)){
 		cout<<"\nEl vertice "<<origen->etiqueta<<" no existe en el grafo\n";
 	}else{
 		cout<<"\nLos vertices ingresados no existen\n";
