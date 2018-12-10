@@ -129,7 +129,11 @@ class Grafo{
 			cin>>peso;
 			insertEdge(getVertice(inicio),getVertice(final),peso);			
 		}
-		
+		void deleteArista(){
+			char inicio,final;
+			cin>>inicio>>final;
+			eliminarArista(getVertice(inicio),getVertice(final));
+		}
 		
 };
 
