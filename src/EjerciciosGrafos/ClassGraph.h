@@ -62,6 +62,34 @@ class Grafo{
 				}
 			}
 		}
+		
+		void eliminarVertice(Vertice *vertice){
+			Vertice *actual=partida,*anterior;
+			Arista *aux;
+			while(actual!=NULL){
+				aux=actual->verticeAdyacente;
+				while(aux!=NULL){
+					if(aux->adyacente==vertice){
+						eliminarArista(actual,aux->adyacente);
+						break;
+					}
+					aux=aux->siguiente;
+				}
+				actual=actual->siguiente;
+			}
+			actual=partida;
+			if(partida==vertice){
+				partida=partida->siguiente;
+				delete(actual);
+			}else{
+				while(actual!=vertice){
+					anterior=actual;
+					actual=actual->siguiente;
+				}
+				anterior->siguiente=actual->siguiente;
+				delete(actual);
+			}
+		}
 	public :
 		
 		Grafo(){
@@ -133,6 +161,11 @@ class Grafo{
 			char inicio,final;
 			cin>>inicio>>final;
 			eliminarArista(getVertice(inicio),getVertice(final));
+		}
+		void deleteVertice(){
+			char vetice ;
+			cin>>vetice;
+			eliminarVertice(getVertice(vetice));
 		}
 		
 };

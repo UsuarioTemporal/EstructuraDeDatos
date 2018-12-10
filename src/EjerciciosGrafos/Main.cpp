@@ -14,4 +14,6 @@ int main(){
 	graph->listaAdyacencia();
 	graph->deleteArista();
 	graph->listaAdyacencia();
+	graph->deleteVertice();
+	graph->listaAdyacencia();
 }
