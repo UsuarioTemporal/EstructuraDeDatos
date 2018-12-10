@@ -9,7 +9,7 @@ struct Arista{
 };
 struct Nodo{
 	char etiqueta;
-	struct Arista *aristaAdyacente=NULL;
+	struct Arista *vertAdyacente=NULL;
 	struct Nodo *siguiente=NULL;
 	
 };
@@ -20,6 +20,7 @@ bool isEmpty(Nodo *grafo){
 
 void insertNode(Nodo *&grafo){
 	Nodo *nuevo=new Nodo;
+	conteo++;
 	if(isEmpty(grafo)){
 		grafo=nuevo;
 	}else{
@@ -30,8 +31,16 @@ void insertNode(Nodo *&grafo){
 		aux->siguiente=nuevo;
 	}
 }
-void insertEdge(){
-	
+void insertEdge(Nodo *origen,Nodo *destino,int peso){
+	Arista *nuevo=new Arista;
+	nuevo->peso=peso;
+	Arista *aux=origen->vertAdyacente;
+	if(aux==NULL){
+		origen->vertAdyacente=nuevo;
+		nuevo->destino=destino
+	}else{
+		
+	}
 }
 
 #endif 
