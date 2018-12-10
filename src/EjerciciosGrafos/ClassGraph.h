@@ -244,6 +244,31 @@ class Grafo{
 				}
 			}
 		}
+		
+		void existeCamino(Vertice *origen,Vertice *destino){
+			Arista *actual=origen->verticeAdyacente,*anterior;
+			bool bandera = false;
+			if(actual==NULL){
+				cout<<"\nEl vertice  no tiene aristas\n";
+			}else if(actual->adyacente==destino){
+				origen->verticeAdyacente=actual->siguiente;
+				cout<<"\nSi tiene camino\n";
+			}else{
+				while(actual->adyacente!=NULL){
+					if(actual->adyacente==destino){
+						bandera=true;
+						anterior->siguiente=actual->siguiente;
+						cout<<"\nSi tiene camino\n";
+						break;
+					}
+					anterior=actual;
+					actual=actual->siguiente;
+				}
+				if(!bandera){
+					cout<<"\nLos vertices ingresados no estan conectados\n";
+				}
+			}
+		}
 };
 
 #endif
