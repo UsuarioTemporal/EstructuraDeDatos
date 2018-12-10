@@ -65,10 +65,38 @@ void insertarArista(Nodo *&grafo,Nodo *&origen,Nodo *&destino,int peso){
 	}
 }
 
-int getGradoEntrada(){
-	
+int getGradoEntrada(Nodo *vertice,Nodo *grafo){
+	if(getNodo(vertice->etiqueta,grafo)){
+		int grado=0;
+		Nodo *verticeAux=grafo;
+		Arista *aristaAux;
+		while(verticeAux!=NULL){
+			aristaAux=vertice->vertAdyacente;
+			while(aristaAux!=NULL){
+				if(aristaAux->destino->etiqueta==vertice->etiqueta){
+					grado++;
+				}
+				aristaAux=aristaAux->siguiente;
+			}
+			verticeAux=verticeAux->siguiente;
+		}
+		return grado;
+	}
+	return 0;
 }
-int getGradoSalida(){
-	
+int getGradoSalida(Nodo *vertice,Nodo *grafo){
+	if(getNodo(vertice->etiqueta,grafo)){
+		int grado=0;
+		if(vertice->vertAdyacente!=NULL){
+			grado=1;
+		}
+		Arista *arisAux=vertice->vertAdyacente;
+		while(arisAux!=NULL){
+			grado++;
+			arisAux=arisAux->siguiente;
+		}
+		return grado;
+	}
+	return 0;
 }
 #endif 
