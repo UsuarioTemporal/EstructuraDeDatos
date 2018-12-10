@@ -1,6 +1,9 @@
 #ifndef CLASSGRAPH__H
 #define CLASSGRAPH__H
 #include<iostream>
+#include<list>
+#include<queue>
+#include<stack>
 using namespace std;
 class Arista; // prototipo
 class Vertice{ //nodo
@@ -90,6 +93,8 @@ class Grafo{
 				delete(actual);
 			}
 		}
+		
+		
 	public :
 		
 		Grafo(){
@@ -167,7 +172,50 @@ class Grafo{
 			cin>>vetice;
 			eliminarVertice(getVertice(vetice));
 		}
-		
+		void recorridoAnchura(Vertice *origen){
+			bool bandera,bandera2;
+			Vertice *actual;
+			queue<Vertice*> cola;
+			list<Vertice*> lista;
+			list<Vertice*>::iterator next;
+			cola.push(origen);
+			while(!cola.empty()){
+				bandera=false;
+				actual=cola.front();
+				cola.pop();
+				for(next=lista.begin();next!=lista.end();next++){
+					if(*next==actual){
+						bandera=true;
+					}
+				}
+				if(!bandera){
+					cout<<actual->etiqueta<<", ";
+					lista.push_back(actual);
+					Arista *aux=actual->verticeAdyacente;
+					while(aux!=NULL){
+						bandera2=false;
+						for(next=lista.begin();next!=lista.end();next++){
+							if(aux->adyacente==*next){
+								bandera2=true;
+							}
+						}
+						if(!bandera2){
+							cola.push(aux->adyacente);
+						}
+						aux=aux->siguiente;
+					}
+				}
+			}
+		}
+		void recorridoProfundidad(Vertice *origen){
+			Vertice *actual;
+			stack<Vertice*> pila;
+			list<Vertice*> lista;
+			pila.push(origen);
+			while(!pila.empty()){
+				
+			}
+		}
 };
 
 #endif

@@ -12,8 +12,10 @@ int main(){
 	graph->insertarVertice('f');
 	graph->insertArtista();
 	graph->listaAdyacencia();
-	graph->deleteArista();
-	graph->listaAdyacencia();
-	graph->deleteVertice();
-	graph->listaAdyacencia();
+//	graph->deleteArista();
+//	graph->listaAdyacencia();
+//	graph->deleteVertice();
+//	graph->listaAdyacencia();
+	cout<<"\n";
+	graph->recorridoAnchura(graph->getVertice('a'));
 }
