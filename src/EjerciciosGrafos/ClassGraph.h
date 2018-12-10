@@ -136,7 +136,7 @@ class Grafo{
 				cout<<verticeAux->etiqueta<<"-->";
 				arisAux=verticeAux->verticeAdyacente;
 				while(arisAux!=NULL){
-					cout<<arisAux->adyacente->etiqueta<<"-->";
+					cout<<arisAux->adyacente->etiqueta<<":"<<arisAux->peso<<"-->";
 					arisAux=arisAux->siguiente;
 				}
 				verticeAux=verticeAux->siguiente;
@@ -211,9 +211,37 @@ class Grafo{
 			Vertice *actual;
 			stack<Vertice*> pila;
 			list<Vertice*> lista;
+			bool bandera,bandera2;
+			list<Vertice*>::iterator next;
 			pila.push(origen);
 			while(!pila.empty()){
-				
+				bandera=false;
+				actual=pila.top();
+				pila.pop();
+				for(next=lista.begin();next!=lista.end();next++){
+					if(*next==actual){
+						bandera=true;
+					}
+				}
+				if(!bandera){
+					
+					cout<<actual->etiqueta<<",";
+					lista.push_back(actual);
+					Arista *aux;
+					aux=actual->verticeAdyacente;
+					while(aux!=NULL){
+						bandera2=false;
+						for(next=lista.begin();next!=lista.end();next++){
+							if(*next==aux->adyacente){
+								bandera2=true;
+							}
+						}
+						if(!bandera2){
+							pila.push(aux->adyacente);
+						}
+						aux=aux->siguiente;
+					}
+				}
 			}
 		}
 };

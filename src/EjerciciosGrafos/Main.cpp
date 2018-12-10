@@ -17,5 +17,5 @@ int main(){
 //	graph->deleteVertice();
 //	graph->listaAdyacencia();
 	cout<<"\n";
-	graph->recorridoAnchura(graph->getVertice('a'));
+	graph->recorridoProfundidad(graph->getVertice('a'));
 }
