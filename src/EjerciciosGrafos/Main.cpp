@@ -12,4 +12,6 @@ int main(){
 	graph->insertarVertice('f');
 	graph->insertArtista();
 	graph->listaAdyacencia();
+	graph->deleteArista();
+	graph->listaAdyacencia();
 }
