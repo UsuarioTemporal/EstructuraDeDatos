@@ -99,4 +99,46 @@ int getGradoSalida(Nodo *vertice,Nodo *grafo){
 	}
 	return 0;
 }
+void listaAdyacencia(Nodo *grafo){
+	if(!isEmpty(grafo)){
+		Nodo *verticeAux=grafo;
+		Arista *arisAux;
+		while(verticeAux!=NULL){
+			cout<<verticeAux->etiqueta<<"-->";
+			arisAux=verticeAux->vertAdyacente;
+			while(arisAux!=NULL){
+				cout<<arisAux->destino->etiqueta<<":"<<arisAux->peso<<"-->";
+				arisAux=arisAux->siguiente;
+			}
+			verticeAux=verticeAux->siguiente;
+			cout<<"\n";
+		}
+	}else{
+		cout<<"\nGrafo vacio\n";
+	}
+}
+void existeCamino(Nodo *origen,Nodo *destino){
+	Arista *actual=origen->vertAdyacente,*anterior;
+	bool bandera = false;
+	if(actual==NULL){
+		cout<<"\nEl vertice  no tiene aristas\n";
+	}else if(actual->destino==destino){
+		origen->vertAdyacente=actual->siguiente;
+		cout<<"\nSi tiene camino\n";
+	}else{
+		while(actual->destino!=NULL){
+			if(actual->destino==destino){
+				bandera=true;
+				anterior->siguiente=actual->siguiente;
+				cout<<"\nSi tiene camino\n";
+				break;
+			}
+			anterior=actual;
+			actual=actual->siguiente;
+		}
+		if(!bandera){
+			cout<<"\nLos vertices ingresados no estan conectados\n";
+		}
+	}
+}
 #endif 
