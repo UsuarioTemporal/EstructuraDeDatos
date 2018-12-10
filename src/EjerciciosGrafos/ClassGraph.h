@@ -94,7 +94,31 @@ class Grafo{
 			}
 		}
 		
-		
+		int getGradoEntrada(Vertice *vertice){
+			int grad=0;
+			Vertice *verticeAux=partida;
+			Arista *arisAux;
+			while(verticeAux!=NULL){
+				arisAux=verticeAux->verticeAdyacente;
+				while(arisAux!=NULL){
+					if(arisAux->adyacente->etiqueta==vertice->etiqueta){
+						grad++;
+					}
+					arisAux=arisAux->siguiente;
+				}
+				verticeAux=verticeAux->siguiente;
+			}
+			return grad;	
+		}
+		int getGradoSalida(Vertice *vertice){
+			int grad=0;
+			Arista *arisAux=vertice->verticeAdyacente;
+			while(arisAux!=NULL){
+				grad++;
+				arisAux=arisAux->siguiente;
+			}
+			return grad;
+		}
 	public :
 		
 		Grafo(){
@@ -271,31 +295,12 @@ class Grafo{
 		}
 		
 		void getGrado(int grado,Vertice *vertice){
-			int conteo=0;
 			if(grado==0){ //grado general
-				
-				
+				cout<<"El grado en general de "<<vertice->etiqueta<<" es "<<(getGradoEntrada(vertice)+getGradoSalida(vertice))<<endl;
 			}else if(grado==1){//grado de entrada
-				Vertice *verticeAux=partida;
-				Arista *arisAux;
-				while(verticeAux!=NULL){
-					arisAux=verticeAux->verticeAdyacente;
-					while(arisAux!=NULL){
-						if(arisAux->adyacente->etiqueta==vertice->etiqueta){
-							conteo++;
-						}
-						arisAux=arisAux->siguiente;
-					}
-					verticeAux=verticeAux->siguiente;
-				}
-				cout<<"El grado de Entrada de "<<vertice->etiqueta<<" es : "<<conteo;
+				cout<<"El grado de entrada de "<<vertice->etiqueta<<" es "<<getGradoEntrada(vertice)<<endl;
 			}else{//grado de salida
-				Arista *arisAux=vertice->verticeAdyacente;
-				while(arisAux!=NULL){
-					conteo++;
-					arisAux=arisAux->siguiente;
-				}
-				cout<<"El grado de salida de "<<vertice->etiqueta<<" es : "<<conteo;
+				cout<<"El grado de Salida de "<<vertice->etiqueta<<" es "<<getGradoSalida(vertice)<<endl;
 			}
 		}
 };
