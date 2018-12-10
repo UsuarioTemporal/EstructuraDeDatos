@@ -112,6 +112,9 @@ class Grafo{
 		}
 		int getGradoSalida(Vertice *vertice){
 			int grad=0;
+			if(vertice->verticeAdyacente!=NULL){
+				grad=1;
+			}
 			Arista *arisAux=vertice->verticeAdyacente;
 			while(arisAux!=NULL){
 				grad++;

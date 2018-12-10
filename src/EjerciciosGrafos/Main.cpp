@@ -13,6 +13,9 @@ int main(){
 	graph->insertArtista();
 	graph->insertArtista();
 	graph->insertArtista();
+	graph->insertArtista();
+	graph->insertArtista();
+	graph->insertArtista();
 	graph->listaAdyacencia();
 //	graph->deleteArista();
 //	graph->listaAdyacencia();
@@ -21,4 +24,7 @@ int main(){
 	cout<<"\n";
 //	graph->recorridoProfundidad(graph->getVertice('a'));
 	graph->existeCamino(graph->getVertice('a'),graph->getVertice('c'));
+	graph->getGrado(0,graph->getVertice('a'));
+	graph->getGrado(1,graph->getVertice('a'));
+	graph->getGrado(2,graph->getVertice('a'));
 }
