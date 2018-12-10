@@ -276,11 +276,24 @@ class Grafo{
 				
 				
 			}else if(grado==1){//grado de entrada
-				
+				Vertice *verticeAux=partida;
+				Arista *arisAux;
+				while(verticeAux!=NULL){
+					arisAux=verticeAux->verticeAdyacente;
+					while(arisAux!=NULL){
+						if(arisAux->adyacente->etiqueta==vertice->etiqueta){
+							conteo++;
+						}
+						arisAux=arisAux->siguiente;
+					}
+					verticeAux=verticeAux->siguiente;
+				}
+				cout<<"El grado de Entrada de "<<vertice->etiqueta<<" es : "<<conteo;
 			}else{//grado de salida
 				Arista *arisAux=vertice->verticeAdyacente;
 				while(arisAux!=NULL){
 					conteo++;
+					arisAux=arisAux->siguiente;
 				}
 				cout<<"El grado de salida de "<<vertice->etiqueta<<" es : "<<conteo;
 			}
