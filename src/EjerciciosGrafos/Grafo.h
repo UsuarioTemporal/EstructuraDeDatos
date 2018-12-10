@@ -14,7 +14,7 @@ struct Nodo{
 	
 };
 int conteo=0;
-void isEmpty(Nodo *grafo){
+bool isEmpty(Nodo *grafo){
 	return grafo==NULL;
 }
 
