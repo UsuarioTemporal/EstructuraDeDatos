@@ -17,7 +17,7 @@ int conteo=0;
 bool isEmpty(Nodo *grafo){
 	return grafo==NULL;
 }
-Nodo *getNodo(char etiqueta,Nodo *&grafo){ //funcion que me retorna el nodo buscado
+Nodo *getNodo(char etiqueta,Nodo *grafo){ //funcion que me retorna el nodo buscado
 	Nodo *aux=grafo;
 	while(aux!=NULL){
 		if(aux->etiqueta==etiqueta){
@@ -41,7 +41,7 @@ void insertarNodo(char etiqueta,Nodo *&grafo){
 		aux->siguiente=nuevo;
 	}
 }
-void insertarArista(Nodo *&grafo,Nodo *&origen,Nodo *&destino,int peso){
+void insertarArista(Nodo *grafo,Nodo *origen,Nodo *destino,int peso){
 	if(getNodo(origen->etiqueta,grafo) && getNodo(destino->etiqueta,grafo)){
 		Arista *nueva=new Arista;
 		nueva->peso=peso;

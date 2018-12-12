@@ -3,6 +3,8 @@ Nodo *graph=NULL;
 void menu(){
 	do{
 		int opcion;
+		char etiqueta;
+		fflush(stdin);
 		cout<<"\n1.Insertar Nodo\n";
 		cout<<"2.Insertar Arista\n";
 		cout<<"3.Recorrido Anchura\n";
@@ -15,16 +17,23 @@ void menu(){
 		cin>>opcion;
 		switch(opcion){
 			case 1:
+				system("cls");
+				cout<<"\n1.Insertar etiqueta :";
+				cin>>etiqueta;
+				insertarNodo(etiqueta,graph);
 				break;
 			case 2:
+				
 				break;
 			case 3:
 				break;
 			case 4:
 				break;
 			case 5:
+				listaAdyacencia(graph);
 				break;
 			case 6:
+				
 				break;
 			case 7:
 				break;
