@@ -42,7 +42,7 @@ void insertarNodo(char etiqueta,Nodo *&grafo){
 	}
 }
 void insertarArista(Nodo *grafo,Nodo *origen,Nodo *destino,int peso){
-	if(getNodo(origen->etiqueta,grafo) && getNodo(destino->etiqueta,grafo)){
+	if(getNodo(origen->etiqueta,grafo)!=NULL && getNodo(destino->etiqueta,grafo)!=NULL){
 		Arista *nueva=new Arista;
 		nueva->peso=peso;
 		Arista *aux=origen->vertAdyacente;
@@ -56,10 +56,10 @@ void insertarArista(Nodo *grafo,Nodo *origen,Nodo *destino,int peso){
 			aux->siguiente=nueva;
 			nueva->destino=destino;
 		}
-	}else if(getNodo(origen->etiqueta,grafo)){
+	}else if(getNodo(origen->etiqueta,grafo)==NULL){
 		cout<<"\nEl vertice "<<destino->etiqueta<<" no existe en el grafo\n";
-	}else if(getNodo(destino->etiqueta,grafo)){
-		cout<<"\nEl vertice "<<origen->etiqueta<<" no existe en el grafo\n";
+	}else if(getNodo(destino->etiqueta,grafo)==NULL){
+		cout<<"\nEl vertice "<<destino->etiqueta<<" no existe en el grafo\n";
 	}else{
 		cout<<"\nLos vertices ingresados no existen\n";
 	}
@@ -140,5 +140,18 @@ void existeCamino(Nodo *origen,Nodo *destino){
 			cout<<"\nLos vertices ingresados no estan conectados\n";
 		}
 	}
+}
+
+void insertarAris(Nodo *grafo){
+	char inicio;
+	cout<<"\nIngrese la etiqueta inicio : ";
+	cin>>inicio;
+	cout<<"\nIngrese la etiqueta destino : ";
+	char destino;
+	cin>>destino;
+	cout<<"\nIngrese el peso  : ";
+	int peso;
+	cin>>peso;
+	insertarArista(grafo,getNodo(inicio,grafo),getNodo(destino,grafo),peso);
 }
 #endif 

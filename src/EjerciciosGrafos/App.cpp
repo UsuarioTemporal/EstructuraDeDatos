@@ -23,7 +23,7 @@ void menu(){
 				insertarNodo(etiqueta,graph);
 				break;
 			case 2:
-				
+				insertarAris(graph);
 				break;
 			case 3:
 				break;
