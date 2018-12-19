@@ -52,11 +52,14 @@ void menu(){
 				graph->getGrado(2,vertice);
 				break;
 			case 9:
+				graph->deleteVertice();
 				break;
 			case 10:
+				graph->deleteArista();
 				break;
 			case 11:
 				//camino
+				graph->existeCamino();
 				break;
 			case 12:
 				//ruta mas corta
@@ -66,13 +69,8 @@ void menu(){
 				break;
 			default :
 				exit(0);
-				break;
 		}
 	}while(true);
 }
 int main(){
-	graph->existeCamino(graph->getVertice('a'),graph->getVertice('c'));
-	graph->getGrado(0,graph->getVertice('a'));
-	graph->getGrado(1,graph->getVertice('a'));
-	graph->getGrado(2,graph->getVertice('a'));
 }
