@@ -326,10 +326,6 @@ using namespace std;
         		cout<<"\nEl dato "<<dato<<" fue encontrado en el nivel "<<nivel<<"\n";
 				return;
 			}else{
-				char buffer[10]; // 10 significa la cantidad maxima que puede soportar un entero
-				char *intStr = itoa(raiz->dato,buffer,10);
-				string dato=string(intStr);
-	            niveles[nivel] = dato + " , " + niveles[nivel];
 	            encontrarNivel(raiz->hijoDere, nivel + 1,dato);
 	            encontrarNivel(raiz->hijoIzqu, nivel + 1,dato);
 			}
@@ -337,11 +333,7 @@ using namespace std;
         }
     }
 	void mostrarNivelDe(Nodo *raiz,int dato){
-		int size=profundidad(raiz)+1;
-        niveles=new string[size];
-        for (int i = 0; i < size; i++) {
-            niveles[i]={""};
-        }
+		
         encontrarNivel(raiz, 0,dato);
 	}
 #endif
