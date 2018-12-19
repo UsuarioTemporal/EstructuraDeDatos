@@ -319,9 +319,10 @@ using namespace std;
 	//mostrar nodos de solo los niveles ingresaods
 	void mostrarNodoDelNivel(Nodo *raiz,int nivel){
 		int size=profundidad(raiz)+1;
-        if(nivel>size || nivel<size){
+        if(nivel>size-1 || nivel<size-1){
         	cout<<"\nNivel no existe\n";
 		}else{
+//			cout<<endl<<size<<endl;
 			niveles=new string[size];
 	        for (int i = 0; i < size; i++) {
 	            niveles[i]={""};
