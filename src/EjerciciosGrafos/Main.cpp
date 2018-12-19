@@ -31,7 +31,11 @@ void menu(){
 				graph->insertarVertice(etiqueta);
 				break;
 			case 2:
-				graph->insertArtista();
+				if(!graph->isEmpty()){
+					graph->insertArtista();
+				}else{
+					cout<<"\nel grafo esta vacio\n";
+				}
 				break;
 			case 3:
 				graph->recorridoAnchura();
@@ -73,4 +77,6 @@ void menu(){
 	}while(true);
 }
 int main(){
+	menu();
+	return 0;
 }

@@ -187,7 +187,14 @@ class Grafo{
 			cin>>final;
 			int peso;
 			cin>>peso;
-			insertEdge(getVertice(inicio),getVertice(final),peso);			
+			Vertice *origen=getVertice(inicio);
+			Vertice *destino=getVertice(final);
+			if(origen!=NULL && destino!=NULL){
+				
+				insertEdge(getVertice(inicio),getVertice(final),peso);			
+			}else{
+				cout<<"\nLos vertices ingresados no existen\n";
+			}
 		}
 		void deleteArista(){
 			char inicio,final;
