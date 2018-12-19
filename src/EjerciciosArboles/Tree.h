@@ -324,11 +324,11 @@ using namespace std;
 		}else{
 //			cout<<endl<<size<<endl;
 			niveles=new string[size];
-	        for (int i = 0; i < size; i++) {
-	            niveles[i]={""};
+	    	for (int i = 0; i < size; i++) {
+	    		niveles[i]={""};
 	        }
-	        imprimirNivelRecursivo(raiz, 0);
-	        cout<<niveles[nivel]<<" En nivel: "<<nivel<<endl;
+	    	imprimirNivelRecursivo(raiz, 0);
+	    	cout<<niveles[nivel]<<" En nivel: "<<nivel<<endl;
 		}
 	}
 	
