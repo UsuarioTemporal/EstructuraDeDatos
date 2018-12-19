@@ -1,7 +1,7 @@
 #include "ClassGraph.h"
 using namespace std;
 Grafo *graph=new Grafo();
-//Ruta mas corta
+//dirigido y no dirigido
 void menu(){
 	do{
 		int opcion;
@@ -43,19 +43,23 @@ void menu(){
 				graph->listaAdyacencia();
 				break;
 			case 6:
-				
+				graph->getGrado(0,vertice);
 				break;
 			case 7:
+				graph->getGrado(1,vertice);
 				break;
 			case 8:
+				graph->getGrado(2,vertice);
 				break;
 			case 9:
 				break;
 			case 10:
 				break;
 			case 11:
+				//camino
 				break;
 			case 12:
+				//ruta mas corta
 				break;
 			case 13:
 				system("cls");
