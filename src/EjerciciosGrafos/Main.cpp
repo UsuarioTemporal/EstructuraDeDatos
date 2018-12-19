@@ -1,6 +1,7 @@
 #include "ClassGraph.h"
 using namespace std;
 Grafo *graph=new Grafo();
+//Ruta mas corta
 void menu(){
 	do{
 		int opcion;
@@ -14,6 +15,10 @@ void menu(){
 		cout<<"6.Obtener grado general\n";
 		cout<<"7.Obtener grado entrada\n";
 		cout<<"8.Obtener grado salida\n";
+		cout<<"9.Eliminar Vertice\n";
+		cout<<"10.Eliminar Arista\n";
+		cout<<"11.Limpiar\n";
+		cout<<"12.Salir\n";
 		cout<<"Opcion : ";
 		cin>>opcion;
 		switch(opcion){
@@ -27,10 +32,13 @@ void menu(){
 				graph->insertArtista();
 				break;
 			case 3:
+				graph->recorridoAnchura();
 				break;
 			case 4:
+				graph->recorridoProfundidad();
 				break;
 			case 5:
+				graph->listaAdyacencia();
 				break;
 			case 6:
 				
@@ -38,6 +46,15 @@ void menu(){
 			case 7:
 				break;
 			case 8:
+				break;
+			case 9:
+				break;
+			case 10:
+				break;
+			case 11:
+				break;
+			default :
+				exit(0);
 				break;
 		}
 	}while(true);
