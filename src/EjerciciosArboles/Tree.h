@@ -82,7 +82,19 @@ using namespace std;
 			return false;
 		}	
 	}
-	
+	bool isExist(Nodo *raiz,int dato){
+		if(!isEmpty(raiz)){
+			if(raiz->dato==dato){
+				return true;
+			}else if(raiz->dato>dato){
+				return isExist(raiz->hijoIzqu,dato);
+			}else{
+				return isExist(raiz->hijoDere,dato);
+			}
+		}else{
+			return false;
+		}
+	}
 	void preOrden(Nodo *raiz){
 		if(isEmpty(raiz)){
 			return ;
@@ -333,8 +345,11 @@ using namespace std;
         }
     }
 	void mostrarNivelDe(Nodo *raiz,int dato){
-		
-        encontrarNivel(raiz, 0,dato);
+		if(isExist(raiz,dato)){
+        	encontrarNivel(raiz, 0,dato);
+		}else{
+			cout<<"\nAquel nodo no existe \n";
+		}
 	}
 #endif
  

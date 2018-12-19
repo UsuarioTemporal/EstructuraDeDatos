@@ -27,8 +27,10 @@ void menu(){
 		cout<<"13.Recorrido por anchura"<<endl;//hecho
 		cout<<"14.Cantidad de nodos o tamaño del arbol"<<endl;  //hecho
 		cout<<"15.Imprimir solo padres"<<endl;//hecho
-		cout<<"16.Limpirar "<<endl;
-		cout<<"17.Salir "<<endl;
+		cout<<"16.Imprimir nodos del nivel : "<<endl;//hecho
+		cout<<"17.Imprimir nivel del nodo : "<<endl;//hecho
+		cout<<"18.Limpiar "<<endl;
+		cout<<"19.Salir "<<endl;
 		int op;
 		cout<<"\nOpcion : ";
 		cin>>op;
@@ -94,6 +96,15 @@ bool opciones(int op){
 			mostrarPadres(raiz);
 			break;
 		case 16:
+			int nivel;
+			cin>>nivel;
+			mostrarNodoDelNivel(raiz,nivel);
+			break;
+		case 17:
+			cin>>dato;
+			mostrarNivelDe(raiz,dato);
+			break;
+		case 18:
 			system("cls");
 			break;
 			
