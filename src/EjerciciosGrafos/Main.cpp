@@ -17,8 +17,10 @@ void menu(){
 		cout<<"8.Obtener grado salida\n";
 		cout<<"9.Eliminar Vertice\n";
 		cout<<"10.Eliminar Arista\n";
-		cout<<"11.Limpiar\n";
-		cout<<"12.Salir\n";
+		cout<<"11.Exite camino\n";
+		cout<<"12.Ruta mas corta\n";
+		cout<<"13.Limpiar\n";
+		cout<<"14.Salir\n";
 		cout<<"Opcion : ";
 		cin>>opcion;
 		switch(opcion){
@@ -53,6 +55,11 @@ void menu(){
 				break;
 			case 11:
 				break;
+			case 12:
+				break;
+			case 13:
+				system("cls");
+				break;
 			default :
 				exit(0);
 				break;
@@ -60,13 +67,6 @@ void menu(){
 	}while(true);
 }
 int main(){
-	graph->listaAdyacencia();
-//	graph->deleteArista();
-//	graph->listaAdyacencia();
-//	graph->deleteVertice();
-//	graph->listaAdyacencia();
-	cout<<"\n";
-//	graph->recorridoProfundidad(graph->getVertice('a'));
 	graph->existeCamino(graph->getVertice('a'),graph->getVertice('c'));
 	graph->getGrado(0,graph->getVertice('a'));
 	graph->getGrado(1,graph->getVertice('a'));
