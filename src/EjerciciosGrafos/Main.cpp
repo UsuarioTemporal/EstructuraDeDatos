@@ -44,7 +44,15 @@ void menu(){
 				break;
 			case 3:
 				if(!graph->isEmpty()){
-//					graph->recorridoAnchura();
+					cout<<"\n1.Insertar etiqueta :";
+					cin>>etiqueta;
+					Vertice *origen=graph->getVertice(etiqueta);
+					if(origen==NULL){
+						cout<<"\nVertice no existe\n";
+					}else{
+						graph->recorridoAnchura(origen);
+						
+					}
 				}else{
 					cout<<"\nel grafo esta vacio\n";
 				}
@@ -52,7 +60,15 @@ void menu(){
 				break;
 			case 4:
 				if(!graph->isEmpty()){
-//					graph->recorridoProfundidad();
+					cout<<"\n1.Insertar etiqueta :";
+					cin>>etiqueta;
+					Vertice *origen=graph->getVertice(etiqueta);
+					if(origen==NULL){
+						cout<<"\nVertice no existe\n";
+					}else{
+						graph->recorridoProfundidad(origen);
+						
+					}
 				}else{
 					cout<<"\nel grafo esta vacio\n";
 				}
