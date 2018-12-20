@@ -1,9 +1,9 @@
 #include "ClassGraph.h"
 using namespace std;
 Grafo *graph=new Grafo();
-//dirigido y no dirigido
 //conexo o no
 //matriz de adyacencia
+//dirigido y no dirigido
 //kruskal
 //prim
 void menu(){
