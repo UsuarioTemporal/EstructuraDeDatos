@@ -183,9 +183,12 @@ class Grafo{
 		void insertArtista(){
 			char inicio;
 			char final ;
+			cout<<"\nInsertar origen : ";
 			cin>>inicio;
+			cout<<"Insertar destino : ";
 			cin>>final;
 			int peso;
+			cout<<"Insertar peso : ";
 			cin>>peso;
 			Vertice *origen=getVertice(inicio);
 			Vertice *destino=getVertice(final);
@@ -198,13 +201,29 @@ class Grafo{
 		}
 		void deleteArista(){
 			char inicio,final;
-			cin>>inicio>>final;
-			eliminarArista(getVertice(inicio),getVertice(final));
+			cout<<"\nOrigen : ";
+			cin>>inicio;
+			cout<<"Deatino : ";
+			cin>>final;
+			Vertice *origen = getVertice(inicio);
+			Vertice *destino = getVertice(final);
+			if(origen!=NULL && destino!=NULL){
+				eliminarArista(origen,destino);
+			}else{
+				cout<<"\nNo existen Nodos";
+			}
+			
 		}
 		void deleteVertice(){
 			char vetice ;
 			cin>>vetice;
-			eliminarVertice(getVertice(vetice));
+			Vertice *ver=getVertice(vetice);
+			if(ver!=NULL){
+				
+				eliminarVertice(ver);
+			}else{
+				cout<<"\nNo existe vertice\n";
+			}
 		}
 		void recorridoAnchura(Vertice *origen){
 			bool bandera,bandera2;
@@ -304,13 +323,18 @@ class Grafo{
 			}
 		}
 		
-		void getGrado(int grado,Vertice *vertice){
-			if(grado==0){ //grado general
+		void getGrado(int grado,char etiqueta){
+			Vertice *vertice = getVertice(etiqueta);
+			if(vertice!=NULL){
+				if(grado==0){ //grado general
 				cout<<"El grado en general de "<<vertice->etiqueta<<" es "<<(getGradoEntrada(vertice)+getGradoSalida(vertice))<<endl;
-			}else if(grado==1){//grado de entrada
-				cout<<"El grado de entrada de "<<vertice->etiqueta<<" es "<<getGradoEntrada(vertice)<<endl;
-			}else{//grado de salida
-				cout<<"El grado de Salida de "<<vertice->etiqueta<<" es "<<getGradoSalida(vertice)<<endl;
+				}else if(grado==1){//grado de entrada
+					cout<<"El grado de entrada de "<<vertice->etiqueta<<" es "<<getGradoEntrada(vertice)<<endl;
+				}else{//grado de salida
+					cout<<"El grado de Salida de "<<vertice->etiqueta<<" es "<<getGradoSalida(vertice)<<endl;
+				}
+			}else{
+				cout<<"\nLa etiqueta no existe\n";
 			}
 		}
 };

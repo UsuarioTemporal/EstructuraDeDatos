@@ -2,6 +2,8 @@
 using namespace std;
 Grafo *graph=new Grafo();
 //dirigido y no dirigido
+//conexo o no
+//matriz de adyacencia
 void menu(){
 	do{
 		int opcion;
@@ -38,32 +40,73 @@ void menu(){
 				}
 				break;
 			case 3:
-				graph->recorridoAnchura();
+				if(!graph->isEmpty()){
+//					graph->recorridoAnchura();
+				}else{
+					cout<<"\nel grafo esta vacio\n";
+				}
+				
 				break;
 			case 4:
-				graph->recorridoProfundidad();
+				if(!graph->isEmpty()){
+//					graph->recorridoProfundidad();
+				}else{
+					cout<<"\nel grafo esta vacio\n";
+				}
 				break;
 			case 5:
-				graph->listaAdyacencia();
+				if(!graph->isEmpty()){
+					graph->listaAdyacencia();
+				}else{
+					cout<<"\nel grafo esta vacio\n";
+				}
 				break;
 			case 6:
-				graph->getGrado(0,vertice);
+				cout<<"\n1.Insertar etiqueta :";
+				cin>>etiqueta;
+				if(!graph->isEmpty()){
+					graph->getGrado(0,etiqueta);
+				}else{
+					cout<<"\nEl grafo esta vacio\n";
+				}
 				break;
 			case 7:
-				graph->getGrado(1,vertice);
+				cout<<"\n1.Insertar etiqueta :";
+				cin>>etiqueta;
+				if(!graph->isEmpty()){
+					graph->getGrado(1,etiqueta);
+				}else{
+					cout<<"\nEl grafo esta vacio\n";
+				}
 				break;
 			case 8:
-				graph->getGrado(2,vertice);
+				cout<<"\n1.Insertar etiqueta :";
+				cin>>etiqueta;
+				if(!graph->isEmpty()){
+					graph->getGrado(2,etiqueta);
+				}else{
+					cout<<"\nEl grafo esta vacio\n";
+				}
 				break;
 			case 9:
-				graph->deleteVertice();
+				if(!graph->isEmpty()){
+					graph->deleteVertice();
+				}else{
+					cout<<"\nEl grafo esta vacio\n";
+				}
+				
 				break;
 			case 10:
-				graph->deleteArista();
+				if(!graph->isEmpty()){
+					graph->deleteArista();
+				}else{
+					cout<<"\nEl grafo esta vacio\n";
+				}
+				
 				break;
 			case 11:
-				//camino
-				graph->existeCamino();
+//				camino
+//				graph->existeCamino();
 				break;
 			case 12:
 				//ruta mas corta
