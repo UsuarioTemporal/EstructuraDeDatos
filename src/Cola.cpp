@@ -1,4 +1,4 @@
-#include<queue.h>
+#include "../header/queue.h"
 using namespace Queue;
 void menu();
 bool opciones(int);

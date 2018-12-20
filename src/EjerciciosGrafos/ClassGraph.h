@@ -11,14 +11,14 @@ class Vertice{ //nodo
 		Vertice *siguiente =NULL;
 		Arista *verticeAdyacente =NULL; //conexion
 		char etiqueta ;
-		friend class Grafo;
+		class Grafo;
 };
 class Arista{
 	public :
 		Arista *siguiente = NULL;
 		Vertice *adyacente =NULL;
 		int peso;
-		friend class Grafo;
+		class Grafo;
 };
 class Grafo{
 	private :

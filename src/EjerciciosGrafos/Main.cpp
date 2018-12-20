@@ -7,6 +7,7 @@ Grafo *graph=new Grafo();
 //kruskal
 //ruta mas corta
 //prim
+
 void menu(){
 	do{
 		int opcion;
