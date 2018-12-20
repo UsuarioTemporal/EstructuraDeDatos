@@ -34,7 +34,6 @@ namespace Queue{
 			}else{
 				primero=primero->siguiente;
 			}
-			delete temporal;
 			temporal=NULL;
 		}else{
 			cout<<"\nVacio "<<endl;
