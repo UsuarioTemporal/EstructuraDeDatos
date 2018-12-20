@@ -122,6 +122,31 @@ class Grafo{
 			}
 			return grad;
 		}
+		void existeCamino(Vertice *origen,Vertice *destino){
+			Arista *actual=origen->verticeAdyacente;
+			bool bandera = false;
+			if(actual==NULL){
+				cout<<"\nEl vertice  no tiene aristas\n";
+			}else if(actual->adyacente->etiqueta==destino->etiqueta){
+				cout<<"\nSi tiene camino\n";
+			}else{
+				Arista *temporal=actual;
+				while(actual->adyacente!=NULL){
+					if(actual->adyacente->etiqueta==destino->etiqueta){
+						bandera=true;
+						cout<<"\nSi tiene camino\n";
+						break;
+					}else if(actual->adyacente->verticeAdyacente!=NULL){
+						actual=actual->adyacente->verticeAdyacente;
+					}else{
+						actual=temporal->siguiente;
+					}
+				}
+				if(!bandera){
+					cout<<"\nLos vertices ingresados no estan conectados\n";
+				}
+			}
+		}
 	public :
 		
 		Grafo(){
@@ -298,28 +323,13 @@ class Grafo{
 			}
 		}
 		
-		void existeCamino(Vertice *origen,Vertice *destino){
-			Arista *actual=origen->verticeAdyacente,*anterior;
-			bool bandera = false;
-			if(actual==NULL){
-				cout<<"\nEl vertice  no tiene aristas\n";
-			}else if(actual->adyacente==destino){
-				origen->verticeAdyacente=actual->siguiente;
-				cout<<"\nSi tiene camino\n";
+		void caminoEntre(char inicio,char final){
+			Vertice *origen = getVertice(inicio);
+			Vertice *destino=getVertice(final);
+			if(origen!=NULL && destino!=NULL){
+				existeCamino(origen,destino);
 			}else{
-				while(actual->adyacente!=NULL){
-					if(actual->adyacente==destino){
-						bandera=true;
-						anterior->siguiente=actual->siguiente;
-						cout<<"\nSi tiene camino\n";
-						break;
-					}
-					anterior=actual;
-					actual=actual->siguiente;
-				}
-				if(!bandera){
-					cout<<"\nLos vertices ingresados no estan conectados\n";
-				}
+				cout<<"\nNo existen los vertices ingresados\n";
 			}
 		}
 		

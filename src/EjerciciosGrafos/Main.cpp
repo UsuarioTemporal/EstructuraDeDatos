@@ -4,6 +4,8 @@ Grafo *graph=new Grafo();
 //dirigido y no dirigido
 //conexo o no
 //matriz de adyacencia
+//kruskal
+//prim
 void menu(){
 	do{
 		int opcion;
@@ -105,8 +107,17 @@ void menu(){
 				
 				break;
 			case 11:
-//				camino
-//				graph->existeCamino();
+				if(!graph->isEmpty()){
+					char inicio;
+					char final;
+					cout<<"\nIngrese la etiqueta origen : ";
+					cin>>inicio;
+					cout<<"\nIngrese la etiqueta destino : ";
+					cin>>final;
+					graph->caminoEntre(inicio,final);
+				}else{
+					cout<<"\nEl grafo esta vacio\n";
+				}
 				break;
 			case 12:
 				//ruta mas corta
