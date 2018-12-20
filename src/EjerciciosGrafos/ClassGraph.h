@@ -136,10 +136,13 @@ class Grafo{
 						bandera=true;
 						cout<<"\nSi tiene camino\n";
 						break;
-					}else if(actual->adyacente->verticeAdyacente->adyacente!=NULL){
+					}else if(actual->adyacente->verticeAdyacente!=NULL){
 						actual=actual->adyacente->verticeAdyacente;
 					}else{
 						actual=temporal->siguiente;
+						if(actual==NULL){
+							break;
+						}
 					}
 				}
 				if(!bandera){

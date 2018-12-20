@@ -5,6 +5,7 @@ Grafo *graph=new Grafo();
 //matriz de adyacencia
 //dirigido y no dirigido
 //kruskal
+//ruta mas corta
 //prim
 void menu(){
 	do{
