@@ -31,10 +31,10 @@ def radixSort(arr):
     for i,content in enumerate(arr) :
       temp = (content//pow(10,index))%10
       list_[int(temp)].append(content)
-    for x in range(10) :
-      for y in range(len(list_[x])):
-        arr[m]=list_[x][y]
-        m= m+1
+    # for x in range(10) :
+    #   for y in range(len(list_[x])):
+    #     arr[m]=list_[x][y]
+    #     m= m+1
   print(list_)
 
 
