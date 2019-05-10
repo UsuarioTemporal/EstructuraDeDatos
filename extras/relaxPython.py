@@ -23,11 +23,7 @@ print(matriz)"""
 def radixSort(arr):
 
   list_ = [[] for i in range(10)]
-  maxValue = arr[0]
-  for index in range(len(arr)):
-    if maxValue<arr[index] : maxValue=arr[index]
-  iterator = len(str(maxValue))
-
+  iterator = len(str(max(arr)))
   for index in range(iterator) :
     m = 0
     for i in range(len(arr)) :
