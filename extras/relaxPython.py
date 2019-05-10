@@ -1,4 +1,4 @@
-
+from math import pow
 def binarySearch(arr,number):
   if len(arr)==0 :return False
   if arr[0]!=number and len(arr)==1 : return False
@@ -21,17 +21,26 @@ matriz[0] = [1,2]
 print(matriz)"""
 
 def radixSort(arr):
-  list_ = []
+  m = 0
+  list_ = [[] for i in range(10)]
   maxValue = arr[0]
-  for item in range(len(arr)) :
-    if maxValue<arr[item] : maxValue= arr[item]
+  for idex,item in enumerate(arr):
+    if maxValue<item : maxValue=item
   iterator = len(str(maxValue))
   for index in range(iterator) :
-    
+    for i,content in enumerate(arr) :
+      temp = (content//pow(10,index))%10
+      list_[int(temp)].append(content)
+    for x in range(10) :
+      for y in range(len(list_[x])):
+        arr[m]=list_[x][y]
+        m= m+1
+  print(list_)
 
-  print(length)
 
 radixSort([1,20,2,3])
 #print(bubbleSort([1,0,7,6,25,0,1,2]))
 #solution = binarySearch([1,2,3],3)
 #1print(solution)
+
+
