@@ -21,22 +21,28 @@ matriz[0] = [1,2]
 print(matriz)"""
 
 def radixSort(arr):
-  m = 0
+
   list_ = [[] for i in range(10)]
   maxValue = arr[0]
-  for idex,item in enumerate(arr):
-    if maxValue<item : maxValue=item
+  for index in range(len(arr)):
+    if maxValue<arr[index] : maxValue=arr[index]
   iterator = len(str(maxValue))
-  for index in range(iterator) :
-    for i,content in enumerate(arr) :
-      temp = (content//pow(10,index))%10
-      list_[int(temp)].append(content)
-    # for x in range(10) :
-    #   for y in range(len(list_[x])):
-    #     arr[m]=list_[x][y]
-    #     m= m+1
-  print(list_)
 
+  for index in range(iterator) :
+    m = 0
+    for i in range(len(arr)) :
+      temp = (arr[i]//pow(10,index))%10
+      list_[int(temp)].append(arr[i])
+    for x in range(10) :
+      if(len(list_[x])==0) : continue
+      for y in range(len(list_[x])):
+        arr[m]=list_[x][y]
+        m= m+1
+      list_[x].clear()
+  print(arr)
+
+def quickSort(arr):
+  pass
 
 radixSort([1,20,2,3])
 #print(bubbleSort([1,0,7,6,25,0,1,2]))
