@@ -30,7 +30,7 @@ def radixSort(arr):
       temp = (arr[i]//pow(10,index))%10
       list_[int(temp)].append(arr[i])
     for x in range(10) :
-      if(len(list_[x])==0) : continue
+      if len(list_[x])==0 : continue
       for y in range(len(list_[x])):
         arr[m]=list_[x][y]
         m= m+1
