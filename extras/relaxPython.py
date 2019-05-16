@@ -38,10 +38,21 @@ def radixSort(arr):
   print(arr)
 
 # este algoritmo se parece al de C++ y java
-def quickSort(arr):
-  i = arr[0],j =arr[-1],pivot = arr[i]
+def quickSort(arr,start,end):
+  i = start
+  j = end
+  pivot = arr[start]
   while i<j :
-    pass
+    while pivot<arr[j]:
+      j=j-1
+    while pivot>=arr[i] and j>i:
+      i=i+1
+    if i<j : arr[j],arr[i]=arr[i],arr[j]
+  arr[start],arr[i]=arr[i],pivot
+  if start<j-1: quickSort(arr,start,j-1)
+  if end>i+1 :quickSort(arr,i+1,end)
+
+  
 
 # algoritmo quicksort para el lenguaje python
 def quickSortPython(arr):
@@ -51,8 +62,15 @@ def quickSortPython(arr):
   greater = []
 
 radixSort([1,20,2,3])
+list_ = [3,0,1,8,7,2,5,4,9,6]
+quickSort(list_,0,len(list_)-1)
+print(list_)
 #print(bubbleSort([1,0,7,6,25,0,1,2]))
 #solution = binarySearch([1,2,3],3)
 #1print(solution)
 
 
+# def sum (x)->1:
+#   return sum.__annotations__
+
+# print(sum(4))
