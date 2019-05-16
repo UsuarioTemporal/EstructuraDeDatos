@@ -37,8 +37,14 @@ def radixSort(arr):
       list_[x].clear()
   print(arr)
 
+# este algoritmo se parece al de C++ y java
 def quickSort(arr):
-  pass
+  if len(arr)<2 : return arr
+  pivot = arr[0]
+  
+
+# algiritmo quicksort para el lenguaje python
+
 
 radixSort([1,20,2,3])
 #print(bubbleSort([1,0,7,6,25,0,1,2]))
