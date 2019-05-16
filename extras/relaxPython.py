@@ -39,10 +39,11 @@ def radixSort(arr):
 
 # este algoritmo se parece al de C++ y java
 def quickSort(arr):
-  pass
-  
+  i = arr[0],j =arr[-1],pivot = arr[i]
+  while i<j :
+    pass
 
-# algiritmo quicksort para el lenguaje python
+# algoritmo quicksort para el lenguaje python
 def quickSortPython(arr):
   if len(arr)<2 : return arr
   pivot = arr[0]
