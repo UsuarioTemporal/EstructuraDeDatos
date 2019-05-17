@@ -45,9 +45,8 @@ def radixSort2(arr):
     for index,item in enumerate(arr) :
       temp = item//pow(10,i)%10
       brackets[temp].append(item)
-      del temp
+    # TODO en javascript arr = [].concat(...brackets) hacer eso en python
     arr = [item for subList in brackets for item in subList]
-    del brackets
   return arr
 # este algoritmo se parece al de C++ y java
 def quickSort(arr,start,end):
