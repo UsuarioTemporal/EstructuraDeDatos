@@ -10,7 +10,7 @@ const binarySearch = (arr,number)=>{
 
 const radixSort = arr=>{
     let iteration = Math.max(...arr)
-    for (let index = 0; index < iterator; index++) {
+    for (let index = 0; index < iteration; index++) {
         let brackets = Array.from({length:10},()=>[])
         arr.forEach(element => {
             let temp = parseInt(element/Math.pow(10,index))%10
