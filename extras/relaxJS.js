@@ -35,16 +35,16 @@ const bubbleSort= arr=>{
     return arr
 }
 
-// algoritmo parecido al de java  c++
-const quickSort_ = arr=>{
-
-}
-
 // algoritmo de quicksort utilizando la rapidez de javascript
 
 const quickSort = arr=>{
-
+    if (arr.length<2) return arr
+    let pivot = arr[0]
+    let less = [],greater=[]
+    arr.splice(1).forEach(element=>element<=pivot?less.push(element):greater.push(element))
+    return [].concat(quickSort(less),[pivot],quickSort(greater))
 }
+// version in place
 let arr = [1,2,3,4,5]
 let arr_1 = []
 let rangeA = 0

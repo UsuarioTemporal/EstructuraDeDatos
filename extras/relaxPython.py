@@ -74,6 +74,8 @@ def quickSortPython(arr):
   return quickSortPython(less) + [pivot] + quickSortPython(greater)
   # print(less,greater) 
 
+# quicksort version in place
+
 radixSort([1,20,2,3])
 list_ = [3,0,1,8,7,2,5,4,9,6]
 quickSort(list_,0,len(list_)-1)
