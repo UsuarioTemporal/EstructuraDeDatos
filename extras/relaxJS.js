@@ -10,7 +10,16 @@ const binarySearch = (arr,number)=>{
 
 const radixSort = arr=>{
     let iteration = Math.max(...arr)
-    
+    for (let index = 0; index < arr.length; index++) {
+        let brackets = Array.from({length:10},()=>[])
+        arr.forEach(element => {
+            let temp = parseInt(element/Math.pow(10,index))%10
+            brackets[temp].push(element)
+        });
+        arr= [].concat(...brackets)
+        delete brackets
+    }
+    return arr
 }
 const bubbleSort= arr=>{
     for(let iteration=0;iteration<arr.length;iteration++){
