@@ -46,7 +46,9 @@ def radixSort2(arr):
       temp = item//pow(10,i)%10
       brackets[temp].append(item)
       del temp
+    arr = [item for subList in brackets for item in subList]
     del brackets
+  return arr
 # este algoritmo se parece al de C++ y java
 def quickSort(arr,start,end):
   i = start
