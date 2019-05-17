@@ -70,7 +70,9 @@ def quickSortPython(arr):
   if len(arr)<2 : return arr
   pivot = arr[0]
   less= [i for i in arr[1:] if i<=pivot]
-  greater = []
+  greater = [i for i in arr[1:] if i>pivot]
+  return quickSortPython(less) + [pivot] + quickSortPython(greater)
+  # print(less,greater) 
 
 radixSort([1,20,2,3])
 list_ = [3,0,1,8,7,2,5,4,9,6]
