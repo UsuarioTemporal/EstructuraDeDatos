@@ -43,7 +43,9 @@ def radixSort2(arr):
   for i in range(iterator) :
     brackets=[[] for i in range(10)]
     for index,item in enumerate(arr) :
-      pass
+      temp = item//pow(10,i)%10
+      brackets[temp].append(item)
+      del temp
     del brackets
 # este algoritmo se parece al de C++ y java
 def quickSort(arr,start,end):
