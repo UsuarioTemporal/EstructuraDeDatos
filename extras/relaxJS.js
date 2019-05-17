@@ -18,7 +18,7 @@ const radixSort = arr=>{
             brackets[temp].push(element)
         });
         arr= [].concat(...brackets)
-        delete brackets
+        // delete brackets
     }
     return arr
 }

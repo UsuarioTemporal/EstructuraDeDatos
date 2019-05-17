@@ -35,8 +35,16 @@ def radixSort(arr):
         arr[m]=list_[x][y]
         m= m+1
       list_[x].clear()
+      
   print(arr)
 
+def radixSort2(arr):
+  iterator = len(str(max(arr)))
+  for i in range(iterator) :
+    brackets=[[] for i in range(10)]
+    for index,item in enumerate(arr) :
+      pass
+    del brackets
 # este algoritmo se parece al de C++ y java
 def quickSort(arr,start,end):
   i = start
