@@ -9,7 +9,8 @@ const binarySearch = (arr,number)=>{
 }
 
 const radixSort = arr=>{
-    let iteration = Math.max(...arr)
+    let iteration = Math.max(...arr).toString().length
+    console.log(iteration)
     for (let index = 0; index < iteration; index++) {
         let brackets = Array.from({length:10},()=>[])
         arr.forEach(element => {
